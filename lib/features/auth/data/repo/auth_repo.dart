@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:sport/core/services/shared_pref/pref_keys.dart';
+import 'package:sport/core/services/shared_pref/shared_pref.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/error/custom_errors.dart';
@@ -30,5 +32,10 @@ class AuthRepo {
       final message = AuthExceptionHandler.handle(error);
       return Left(message);
     }
+  }
+
+  //save user data to local storage
+  Future<void> saveUserData({required String value}) async {
+    SharedPref.saveData(key: PrefKeys.coachId, value: value);
   }
 }

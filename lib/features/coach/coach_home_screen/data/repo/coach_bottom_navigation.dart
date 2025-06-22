@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
+import '../../../coach_home_page/presentation/views/coach_home_page.dart';
 
 class CoachBottomNavigation {
   static List<String> titles = [
@@ -13,7 +14,7 @@ class CoachBottomNavigation {
 
   static List<Widget> itemsBody() {
     return [
-      Center(child: AppText(LangKeys.home)),
+      CoachHomePage(),
       Center(child: AppText(LangKeys.teams)),
       Center(child: AppText(LangKeys.players)),
       Center(child: AppText(LangKeys.profile)),

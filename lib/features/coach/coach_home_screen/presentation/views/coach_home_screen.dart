@@ -9,8 +9,8 @@ class CoachHomeScreen extends StatelessWidget {
   final bool isAdmin;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomBarCubit(isAdmin),
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => BottomBarCubit(isAdmin))],
       child: BottomBarBody(),
     );
   }

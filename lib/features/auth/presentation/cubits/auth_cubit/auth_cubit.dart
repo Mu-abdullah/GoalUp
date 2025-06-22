@@ -32,6 +32,7 @@ class AuthCubit extends Cubit<AuthState> {
       },
       (r) {
         if (!isClosed) {
+          repo.saveUserData(value: r.user!.id);
           debugPrint('Success: ${r.toString()}');
           emit(AuthSuccess(r));
         }
