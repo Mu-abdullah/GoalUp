@@ -24,12 +24,13 @@ class _CoachHomePageState extends State<CoachHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CoachHomeCubit(),
-      child: Column(children: [
-           
-        ],
-      ),
+    return BlocBuilder<CoachHomeCubit, CoachHomeState>(
+      builder: (context, state) {
+        return Column(children: [
+             
+          ],
+        );
+      },
     );
   }
 }
