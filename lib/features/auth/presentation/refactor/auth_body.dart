@@ -28,7 +28,11 @@ class AuthBody extends StatelessWidget {
           );
         } else if (state is AuthSuccess) {
           Navigator.pop(context);
-          context.pushReplacementNamed(RoutesNames.coachHome);
+          context.pushReplacementNamed(
+            RoutesNames.checkRole,
+            arguments: {'uid': state.user.user!.id},
+          );
+          debugPrint('AuthBody: AuthSuccess - User ID: ${state.user.user!.id}');
         } else if (state is AuthLoading) {
           showProgressIndicator(context);
         }

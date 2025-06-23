@@ -21,6 +21,7 @@
     "done": "Done",
     "male": "Male",
     "female": "Female",
+    "unKnown": "Unknown",
 
 
     "####AuthScreen":"",

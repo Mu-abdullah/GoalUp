@@ -23,6 +23,7 @@ class LangKeys {
   static const String done = 'done';
   static const String male = 'male';
   static const String female = 'female';
+  static const String unKnown = 'unKnown';
 
   ////[AUTH SCREEN]
   static const String email = 'email';

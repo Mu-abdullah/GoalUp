@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport/features/auth/presentation/refactor/check_role.dart';
 
 import '../../features/admin/admin_academies/presentation/views/admin_academies.dart';
 import '../../features/admin/admin_countries/presentation/views/admin_countries.dart';
@@ -35,6 +36,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.auth:
       return BaseRoute(page: const AuthScreen());
+
+    case RoutesNames.checkRole:
+      return BaseRoute(page: CheckRole(uid: args?['uid']));
 
     /////////
     /////////[admin feature routes]////////////

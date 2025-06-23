@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sport/features/coach/coach_players/presentation/views/coach_players.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
@@ -16,7 +17,7 @@ class CoachBottomNavigation {
     return [
       CoachHomePage(),
       Center(child: AppText(LangKeys.teams)),
-      Center(child: AppText(LangKeys.players)),
+      CoachPlayers(),
       Center(child: AppText(LangKeys.profile)),
     ];
   }

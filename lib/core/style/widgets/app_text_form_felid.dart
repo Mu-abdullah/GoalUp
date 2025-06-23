@@ -121,7 +121,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return customTextStyle(
       context,
       isBold: !isError,
-      fontSize: !isError ? 11.0 : 14.0,
+      fontSize: 11,
       color: isError ? AppColors.red : AppColors.black,
     );
   }

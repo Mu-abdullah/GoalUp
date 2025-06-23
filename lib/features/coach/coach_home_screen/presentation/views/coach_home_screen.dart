@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sport/core/app/user/app_user_cubit/app_user_cubit.dart';
 
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../../coach_home_page/presentation/cubits/coach_home_cubit/coach_home_cubit.dart';
@@ -14,11 +15,16 @@ class CoachHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lac = locator<GetCoachPlayers>();
+    var academyId = context.read<AppUserCubit>().academyId;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BottomBarCubit(isAdmin)),
         BlocProvider(create: (context) => CoachHomeCubit()),
-        BlocProvider(create: (context) => CoachPlayersCubit(lac)),
+        BlocProvider(
+          create:
+              (context) =>
+                  CoachPlayersCubit(lac)..getCoachPlayers(academyId: academyId),
+        ),
       ],
       child: BottomBarBody(),
     );
