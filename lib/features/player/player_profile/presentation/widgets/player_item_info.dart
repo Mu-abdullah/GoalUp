@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 
 class PlayerItemInfo extends StatelessWidget {
@@ -20,7 +21,7 @@ class PlayerItemInfo extends StatelessWidget {
     return InkWell(
       onTap: onTab,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 15),
+        padding: AppPadding.symmetricPadding(horizontal: 0, vertical: 6),
         child: Row(
           children: [
             Container(

@@ -1,74 +1,93 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:sport/core/extextions/extentions.dart';
-import 'package:sport/core/routes/routes_name.dart';
 
+import '../../../../../core/routes/routes_name.dart';
+import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/back_screen_button.dart';
-import '../../../../../core/style/statics/image_test.dart';
+import '../../../../../core/style/widgets/app_text.dart';
+import '../../data/model/player_profile_model.dart';
+import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 
-class PlayerImageHeader extends StatelessWidget {
-  const PlayerImageHeader({
-    super.key,
-    required this.isAdmin,
-    this.imageUrl,
-    this.playerName,
-  });
+class PlayerImage extends StatelessWidget {
+  const PlayerImage({super.key, required this.player, required this.cubit});
 
-  final bool isAdmin;
-  final String? imageUrl;
-  final String? playerName;
+  final PlayerProfileModel player;
+  final PlayerProfileCubit cubit;
+
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      expandedHeight: 280,
-      floating: false,
-      pinned: true,
-      automaticallyImplyLeading: isAdmin,
-      leading: isAdmin ? const BackScreenButton() : null,
-      flexibleSpace: FlexibleSpaceBar(
-        background: Stack(
-          fit: StackFit.expand,
+    final lang = context.langCode == 'ar';
+    return InkWell(
+      onTap: imagePreview(context),
+      child: Container(
+        height: context.height(percent: .7),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(player.image!),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        child: Stack(
           children: [
-            imageUrl != null
-                ? InkWell(
-                  onTap: imagePreview(context),
-                  child: Image.network(imageUrl!, fit: BoxFit.cover),
-                )
-                : Image.asset(AppImages.player, fit: BoxFit.cover),
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.black.withValues(alpha: 0.8),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
+            Positioned(
+              top: 30,
+              left: lang ? null : 20,
+              right: lang ? 20 : null,
+              child: BackScreenButton(),
             ),
             Positioned(
-              bottom: 30,
-              left: 20,
-              child: InkWell(
-                onTap: imagePreview(context),
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.amber, width: 3),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.5),
-                        blurRadius: 10,
-                        spreadRadius: 2,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.3),
+
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(25),
                       ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage:
-                        imageUrl != null
-                            ? NetworkImage(imageUrl!)
-                            : AssetImage(AppImages.player), // Replace
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AppText(
+                                player.name!,
+                                color: AppColors.white,
+                                translate: false,
+                                isBold: true,
+                                isTitle: true,
+                              ),
+                              AppText(
+                                cubit.academy,
+                                color: AppColors.white,
+                                textAlign: TextAlign.start,
+                                translate: false,
+                              ),
+                              SizedBox(height: 4),
+                            ],
+                          ),
+                        ),
+                        AppText(
+                          player.nationality!,
+                          fontSize: 24,
+                          translate: false,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -80,13 +99,13 @@ class PlayerImageHeader extends StatelessWidget {
   }
 
   imagePreview(BuildContext context) {
-    return imageUrl != null
+    return player.image != null
         ? () {
           context.pushNamed(
             RoutesNames.imagePreview,
             arguments: {
-              'imageUrl': imageUrl,
-              'title': playerName ?? 'Player Image',
+              'imageUrl': player.image,
+              'title': player.name ?? 'Player Image',
             },
           );
         }

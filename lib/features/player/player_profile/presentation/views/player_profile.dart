@@ -7,7 +7,12 @@ import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import '../refactor/player_profile_body.dart';
 
 class PlayerProfile extends StatelessWidget {
-  const PlayerProfile({super.key, this.isAdmin = false, this.playerId, this.academy});
+  const PlayerProfile({
+    super.key,
+    this.isAdmin = false,
+    this.playerId,
+    this.academy,
+  });
   final bool isAdmin;
   final String? playerId;
   final String? academy;
@@ -17,7 +22,7 @@ class PlayerProfile extends StatelessWidget {
     return BlocProvider(
       create:
           (context) =>
-              PlayerProfileCubit(lac, isAdmin: isAdmin,academy: academy!)
+              PlayerProfileCubit(lac, isAdmin: isAdmin, academy: academy!)
                 ..getPlayerProfile(playerId!),
       child: Scaffold(body: PlayerProfileBody()),
     );
