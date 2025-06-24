@@ -5,10 +5,6 @@ class AuthModel {
 
   AuthModel({this.email, this.password, this.uid});
 
-  Map<String, dynamic> toJson() {
-    return {'email': email, 'password': password, 'uid': uid};
-  }
-
   factory AuthModel.fromJson(Map<String, dynamic> json) {
     return AuthModel(
       email: json['email'] as String?,

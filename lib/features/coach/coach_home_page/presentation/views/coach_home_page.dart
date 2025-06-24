@@ -1,36 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
-import '../cubits/coach_home_cubit/coach_home_cubit.dart';
+import '../refactor/coach_home_page_body.dart';
 
-class CoachHomePage extends StatefulWidget {
+class CoachHomePage extends StatelessWidget {
   const CoachHomePage({super.key});
 
   @override
-  State<CoachHomePage> createState() => _CoachHomePageState();
-}
-
-class _CoachHomePageState extends State<CoachHomePage> {
-  late String empID;
-
-  @override
-  void initState() {
-    super.initState();
-
-    empID = context.read<AppUserCubit>().coachId;
-    debugPrint('Coach ID: $empID');
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CoachHomeCubit, CoachHomeState>(
-      builder: (context, state) {
-        return Column(children: [
-             
-          ],
-        );
-      },
-    );
+    return CoachHomePageBody();
   }
 }
