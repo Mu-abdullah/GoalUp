@@ -74,4 +74,5 @@ class LangKeys {
   static const String players = 'players';
   static const String logout = 'logout';
   static const String login = 'login';
+  static const String footballAcademy = 'footballAcademy';
 }
