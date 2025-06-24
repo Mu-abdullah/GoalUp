@@ -15,7 +15,7 @@ class CoachPlayersBody extends StatelessWidget {
     return BlocBuilder<CoachPlayersCubit, CoachPlayersState>(
       builder: (context, state) {
         if (state is CoachPlayersLoading) {
-          return LoadingShimmer();
+          return LoadingShimmer(height: 0.1);
         } else if (state is CoachPlayersError) {
           return Center(
             child: AppText(state.message, translate: false, maxLines: 20),

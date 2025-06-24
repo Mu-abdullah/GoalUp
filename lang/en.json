@@ -64,6 +64,7 @@
     "nid":"National ID",
     "phone":"Phone",
     "birthDate":"Birth Date",
+    "enrollmentDate":"Enrollment Date",
 
     "####CoachScreen":"",
     "home":"Home",

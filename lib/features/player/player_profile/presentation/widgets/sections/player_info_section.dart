@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../../core/functions/time_refactor.dart';
 import '../../../../../../core/language/lang_keys.dart';
@@ -14,6 +15,9 @@ class PlayerInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var academy = context.read<PlayerProfileCubit>().academy;
+    var enrollmentDate = TimeRefactor(player.enrollmentDate!).toDateString();
+    final manyYears = TimeRefactor.calculateAge(player.enrollmentDate!);
+    final lang = context.langCode;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,11 +35,13 @@ class PlayerInfoSection extends StatelessWidget {
           icon: HugeIcons.strokeRoundedSmartPhone01,
           title: LangKeys.phone,
           value: player.contactNumber ?? 'Unknown',
+          onTab: () => context.call(phoneNumber: player.contactNumber!),
         ),
         PlayerItemInfo(
           icon: HugeIcons.strokeRoundedCalendar01,
-          title: LangKeys.birthDate,
-          value: TimeRefactor(player.enrollmentDate!).toDateString(),
+          title: LangKeys.enrollmentDate,
+          value:
+              "$enrollmentDate ( $manyYears ${lang == 'ar' ? 'سنوات' : 'Years'} )",
         ),
         PlayerItemInfo(
           icon: HugeIcons.strokeRoundedFlag02,
