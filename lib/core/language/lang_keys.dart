@@ -69,6 +69,7 @@ class LangKeys {
 
   /// [COACH Profile]
   static const String home = 'home';
+  static const String newPlayer = 'newPlayer';
   static const String profile = 'profile';
   static const String teams = 'teams';
   static const String players = 'players';

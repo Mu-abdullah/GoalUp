@@ -14,6 +14,7 @@ class HomeCountCard extends StatefulWidget {
     this.color = AppColors.blueAccent,
     this.textColor = AppColors.white,
     this.isHighlighted = false,
+    this.isTitle = false,
     this.height = 150,
     this.width,
     this.maxLines = 2,
@@ -28,6 +29,7 @@ class HomeCountCard extends StatefulWidget {
   final Color color;
   final Color textColor;
   final bool isHighlighted;
+  final bool isTitle;
   final int maxLines;
   final Function()? onTap;
 
@@ -135,6 +137,8 @@ class _HomeCardState extends State<HomeCountCard>
                         const SizedBox(height: 8),
                         AppText(
                           widget.cardTitle,
+                          isTitle: widget.isTitle,
+                          isBold: widget.isHighlighted,
                           color: widget.textColor,
                           maxLines: widget.maxLines,
                           overflow: TextOverflow.ellipsis,
