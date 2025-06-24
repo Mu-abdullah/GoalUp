@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
-import '../../../../core/language/lang_keys.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/style/custom_widgets/circle_progress.dart';
 import '../../../../core/style/custom_widgets/custom_snack_bar.dart';
 import '../../../../core/style/statics/app_statics.dart';
-import '../../../../core/style/widgets/app_button.dart';
 import '../cubits/auth_cubit/auth_cubit.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/auth_form.dart';
+import '../widgets/login_button.dart';
+import '../widgets/remmber_me.dart';
 
 class AuthBody extends StatelessWidget {
   const AuthBody({super.key});
@@ -47,15 +47,8 @@ class AuthBody extends StatelessWidget {
               children: [
                 AppLogo(),
                 AuthForm(cubit: cubit),
-                AppButton(
-                  isLoading: state is AuthLoading,
-                  onTap: () {
-                    if (cubit.formKey.currentState!.validate()) {
-                      cubit.login();
-                    }
-                  },
-                  text: LangKeys.login,
-                ),
+                RemmberMe(),
+                LoginButton(cubit: cubit),
               ],
             ),
           ),

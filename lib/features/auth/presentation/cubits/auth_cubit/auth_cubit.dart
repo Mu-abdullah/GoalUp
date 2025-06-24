@@ -39,4 +39,12 @@ class AuthCubit extends Cubit<AuthState> {
       },
     );
   }
+
+  bool isRemmber = false;
+
+  void saveMe() {
+    if (isRemmber == true) {
+      repo.remmeberMe();
+    }
+  }
 }

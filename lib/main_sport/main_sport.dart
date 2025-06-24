@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sport/core/services/shared_pref/pref_keys.dart';
 
 import '../core/app/language/language_cubit/language_cubit.dart';
 import '../core/app/no_internet/connection_controller/connection_controller.dart';
@@ -9,6 +10,7 @@ import '../core/functions/custom_scroll.dart';
 import '../core/language/app_localizations_setup.dart';
 import '../core/routes/routes.dart';
 import '../core/routes/routes_name.dart';
+import '../core/services/shared_pref/shared_pref.dart';
 import '../core/style/color/app_color.dart';
 
 class MainSport extends StatefulWidget {
@@ -109,7 +111,12 @@ class _MainSportState extends State<MainSport> {
   }
 
   String _getConnectedInitialRoute() {
-    return RoutesNames.auth;
+    var isLoggedIn = SharedPref.getData(key: PrefKeys.remember);
+    if (isLoggedIn == true) {
+      return RoutesNames.coachHome;
+    } else {
+      return RoutesNames.auth;
+    }
   }
 
   ThemeData get _appTheme => ThemeData(

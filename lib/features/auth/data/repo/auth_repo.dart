@@ -38,4 +38,8 @@ class AuthRepo {
   Future<void> saveUserData({required String value}) async {
     SharedPref.saveData(key: PrefKeys.coachId, value: value);
   }
+
+  Future<void> remmeberMe() async {
+    await SharedPref.saveData(key: PrefKeys.remember, value: true);
+  }
 }

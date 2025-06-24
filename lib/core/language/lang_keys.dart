@@ -32,6 +32,7 @@ class LangKeys {
   static const String passwordLength = 'passwordLength';
   static const String invalidLoginCredentials = 'invalidLoginCredentials';
   static const String userNotFound = 'userNotFound';
+  static const String remeberMe = 'remeberMe';
 
   ////[ADMIN SCREEN]
   static const String admin = 'admin';
