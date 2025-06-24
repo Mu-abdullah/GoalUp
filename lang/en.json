@@ -63,6 +63,7 @@
     "bio":"Bio",
     "nid":"National ID",
     "phone":"Phone",
+    "birthDate":"Birth Date",
 
     "####CoachScreen":"",
     "home":"Home",

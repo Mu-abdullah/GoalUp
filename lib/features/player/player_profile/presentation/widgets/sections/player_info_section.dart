@@ -34,7 +34,7 @@ class PlayerInfoSection extends StatelessWidget {
         ),
         PlayerItemInfo(
           icon: HugeIcons.strokeRoundedCalendar01,
-          title: LangKeys.phone,
+          title: LangKeys.birthDate,
           value: TimeRefactor(player.enrollmentDate!).toDateString(),
         ),
         PlayerItemInfo(

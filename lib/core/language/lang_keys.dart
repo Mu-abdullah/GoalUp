@@ -64,6 +64,7 @@ class LangKeys {
   static const String position = 'position';
   static const String nid = 'nid';
   static const String phone = 'phone';
+  static const String birthDate = 'birthDate';
 
   /// [COACH Profile]
   static const String home = 'home';

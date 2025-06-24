@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/style/statics/app_statics.dart';
 import '../widgets/academy_name_logo.dart';
 
 class CoachHomePageBody extends StatelessWidget {
@@ -7,6 +8,9 @@ class CoachHomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [AcademyNameLogo()]);
+    return Padding(
+      padding: AppPadding.symmetricPadding(),
+      child: Column(children: [AcademyNameLogo()]),
+    );
   }
 }
