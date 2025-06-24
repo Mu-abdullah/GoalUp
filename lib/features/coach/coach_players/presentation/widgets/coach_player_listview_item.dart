@@ -22,7 +22,11 @@ class CoachPlayerItem extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.playerProfile,
-          arguments: {'playerId': player?.id},
+          arguments: {
+            'playerId': player?.id,
+            'isAdmin': true,
+            'academy': player?.academy,
+          },
         );
       },
       child: Container(
@@ -60,8 +64,10 @@ class CoachPlayerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    player?.name ?? LangKeys.unKnown,
+                    player?.player ?? LangKeys.unKnown,
                     translate: translate,
+                    isTitle: true,
+                    isBold: true,
                   ),
 
                   AppText(
@@ -81,7 +87,7 @@ class CoachPlayerItem extends StatelessWidget {
                       ),
                       AppText(
                         '( $age ${lang == 'ar' ? 'سنوات' : 'Years'})',
-
+                        isBold: true,
                         color: AppColors.black,
                         translate: translate,
                       ),

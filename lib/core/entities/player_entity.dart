@@ -3,7 +3,6 @@ class PlayerEntity {
   final String? createdAt;
   final String? birthday;
   final String? enrollmentDate;
-  final String? academy;
   final String? name;
   final String? contactNumber;
   final String? nid;
@@ -14,7 +13,6 @@ class PlayerEntity {
   const PlayerEntity({
     this.id,
     this.createdAt,
-    this.academy,
     this.name,
     this.birthday,
     this.contactNumber,

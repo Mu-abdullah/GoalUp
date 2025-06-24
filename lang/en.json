@@ -60,6 +60,8 @@
     "nationality" : "Nationality",
     "position" : "Position",
     "bio":"Bio",
+    "nid":"National ID",
+    "phone":"Phone",
 
     "####CoachScreen":"",
     "home":"Home",

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/language/lang_keys.dart';
 
+import '../../../data/model/player_profile_model.dart';
 import 'player_stats_card.dart';
 
 class StatsGridView extends StatelessWidget {
-  const StatsGridView({super.key});
-
+  const StatsGridView({super.key, required this.player});
+  final PlayerProfileModel player;
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> stats = [
-      {'title': LangKeys.height, 'value': '120 cm', 'icon': Icons.height},
       {
         'title': LangKeys.matches,
         'value': '15',

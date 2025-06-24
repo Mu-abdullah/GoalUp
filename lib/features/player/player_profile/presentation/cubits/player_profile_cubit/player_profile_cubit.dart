@@ -1,0 +1,42 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/model/player_profile_model.dart';
+import '../../../data/repo/get_player_profile_repo.dart';
+
+part 'player_profile_state.dart';
+
+class PlayerProfileCubit extends Cubit<PlayerProfileState> {
+  GetPlayerProfileRepo repo;
+  PlayerProfileCubit(this.repo, {this.isAdmin = false, required this.academy})
+    : super(PlayerProfileInitial());
+
+  static PlayerProfileCubit get(context) => BlocProvider.of(context);
+
+  bool isAdmin;
+  bool showStats = false;
+  final String academy;
+  Future<void> getPlayerProfile(String playerId) async {
+    emit(PlayerProfileLoading());
+    final result = await repo.getPlayerProfile(playerId);
+    result.fold(
+      (error) {
+        if (!isClosed) {
+          debugPrint('Error fetching player profile: ${error.message}');
+          emit(PlayerProfileError(error.message));
+        }
+      },
+      (data) {
+        if (!isClosed) {
+          emit(PlayerProfileLoaded(data));
+        }
+      },
+    );
+  }
+
+  void toggleStats() {
+    showStats = !showStats;
+    emit(ShowStats(showStats));
+  }
+}

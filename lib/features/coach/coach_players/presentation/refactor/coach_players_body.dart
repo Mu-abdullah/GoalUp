@@ -17,7 +17,9 @@ class CoachPlayersBody extends StatelessWidget {
         if (state is CoachPlayersLoading) {
           return LoadingShimmer();
         } else if (state is CoachPlayersError) {
-          return Center(child: AppText(state.message));
+          return Center(
+            child: AppText(state.message, translate: false, maxLines: 20),
+          );
         } else if (state is CoachPlayersLoaded) {
           return CoachPlayersListView(players: state.players);
         }

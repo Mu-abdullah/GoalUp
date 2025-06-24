@@ -1,80 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/statics/app_statics.dart';
-import '../../../../../core/style/statics/strings_static.dart';
 import '../../../../../core/style/widgets/app_space.dart';
 import '../../../../../core/style/widgets/app_text.dart';
+import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import '../widgets/palyer_age.dart';
-import '../widgets/player_bio.dart';
 import '../widgets/player_image.dart';
 import '../widgets/player_name.dart';
 import '../widgets/sections/player_info_section.dart';
-import '../widgets/sections/stats_gridview_section.dart';
 
-class PlayerProfileBody extends StatefulWidget {
-  const PlayerProfileBody({super.key, required this.isAdmin});
-  final bool isAdmin;
-  @override
-  State<PlayerProfileBody> createState() => _PlayerProfileBodyState();
-}
+class PlayerProfileBody extends StatelessWidget {
+  const PlayerProfileBody({super.key});
 
-class _PlayerProfileBodyState extends State<PlayerProfileBody> {
-  bool _showStats = false;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        PlayerImageHeader(
-          isAdmin: widget.isAdmin,
-          imageUrl:
-              'https://eljjoukmoxumtwmfztks.supabase.co/storage/v1/object/public/images/Academy/Player/hamza.jpg',
-          playerName: 'حمزة احمد رجب احمد',
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              spacing: 8,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                PlayerName(name: 'حمزة احمد رجب احمد'),
-                PlayerAge(birthday: '2019-09-14'),
-                AppSpace(space: 10),
-                PlayerBio(bio: StringsStatic.bio('حمزة احمد رجب احمد')),
-                AnimatedCrossFade(
-                  duration: const Duration(milliseconds: 400),
-                  crossFadeState:
-                      _showStats
-                          ? CrossFadeState.showFirst
-                          : CrossFadeState.showSecond,
-                  firstChild: StatsGridView(),
-                  secondChild: PlayerInfoSection(),
+    return BlocBuilder<PlayerProfileCubit, PlayerProfileState>(
+      builder: (context, state) {
+        final cubit = PlayerProfileCubit.get(context);
+        if (state is PlayerProfileLoading) {
+        } else if (state is PlayerProfileLoaded) {
+          final player = state.playerProfile;
+          return CustomScrollView(
+            slivers: [
+              PlayerImageHeader(
+                isAdmin: cubit.isAdmin,
+                imageUrl: player.image,
+                playerName: player.name,
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      PlayerName(name: player.name!),
+                      PlayerAge(birthday: player.birthday!),
+                      AppSpace(space: 10),
+                      PlayerInfoSection(player: player),
+                    ],
+                  ),
                 ),
+              ),
+            ],
+          );
+        } else if (state is PlayerProfileError) {
+          return Center(
+            child: AppText(
+              state.error,
+              color: AppColors.red,
 
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  padding: AppPadding.smallPadding,
-                  decoration: BoxDecoration(
-                    color:
-                        _showStats
-                            ? AppColors.blueAccent
-                            : AppColors.black.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: GestureDetector(
-                    onTap: () => setState(() => _showStats = !_showStats),
-                    child: AppText(
-                      _showStats ? 'HIDE STATS' : 'SHOW STATS',
-                      translate: false,
-                    ),
-                  ),
-                ),
-              ],
+              translate: false,
+              maxLines: 10,
             ),
-          ),
-        ),
-      ],
+          );
+        }
+        return const Center(
+          child: CircularProgressIndicator(color: AppColors.blueAccent),
+        );
+      },
     );
   }
 }

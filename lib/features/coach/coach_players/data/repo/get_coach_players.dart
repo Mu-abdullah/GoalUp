@@ -14,11 +14,14 @@ class GetCoachPlayers {
   }) async {
     try {
       final response = await _service.fetchCollection(
-        collection: BackendPoint.players,
+        collection: BackendPoint.academysPlayers,
         filters: {
           'academy': {'eq': academyId},
         },
-        fields: ['id', 'name', 'image', 'birthday', 'position{code}'],
+        fields: [
+          '${BackendPoint.players}{id name image position{code} nationality{flag} birthday}',
+          '${BackendPoint.academy}{name}',
+        ],
         fromJson: (GetPlayersModel.fromJson),
       );
 

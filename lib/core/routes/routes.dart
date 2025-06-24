@@ -65,7 +65,13 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     /////////[player feature routes]////////////
     /////////
     case RoutesNames.playerProfile:
-      return BaseRoute(page: PlayerProfile(isAdmin: args?['isAdmin'] ?? false));
+      return BaseRoute(
+        page: PlayerProfile(
+          isAdmin: args?['isAdmin'] ?? false,
+          playerId: args?['playerId'],
+          academy: args?['academy'],
+        ),
+      );
     default:
       return BaseRoute(page: const MaterialApp());
   }

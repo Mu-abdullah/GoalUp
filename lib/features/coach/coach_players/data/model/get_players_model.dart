@@ -1,30 +1,26 @@
-import '../../../../../core/entities/player_entity.dart';
+import '../../../../../core/entities/academy_players_entity.dart';
 
-class GetPlayersModel extends PlayerEntity {
+class GetPlayersModel extends AcademyPlayersEntity {
+  final String? position;
+  final String? birthday;
+  final String? image;
+
   GetPlayersModel({
     super.id,
-    super.name,
-    super.birthday,
-    super.image,
-    super.position,
+    super.academy,
+    super.player,
+    this.position,
+    this.birthday,
+    this.image,
   });
 
   factory GetPlayersModel.fromJson(Map<String, dynamic> json) =>
       GetPlayersModel(
-        id: json['id'],
-        name: json['name'],
-        birthday: json['birthday'],
-        image: json['image'],
-        position: json['position']['code'],
+        id: json['players']['id'],
+        academy: json['academy']['name'],
+        player: json['players']['name'],
+        image: json['players']['image'],
+        birthday: json['players']['birthday'],
+        position: json['players']['position']['code'],
       );
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'birthday': birthday,
-      'image': image,
-      'position': position,
-    };
-  }
 }
