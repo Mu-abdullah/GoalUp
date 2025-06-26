@@ -33,6 +33,7 @@ class LangKeys {
   static const String invalidLoginCredentials = 'invalidLoginCredentials';
   static const String userNotFound = 'userNotFound';
   static const String remeberMe = 'remeberMe';
+  static const String imCoach = 'imCoach';
 
   ////[ADMIN SCREEN]
   static const String admin = 'admin';
@@ -55,6 +56,7 @@ class LangKeys {
   static const String newAcademy = 'newAcademy';
 
   /// [PLAYER Profile]
+  static const String name = 'name';
   static const String bio = 'bio';
   static const String goal = 'goal';
   static const String goals = 'goals';
@@ -66,7 +68,8 @@ class LangKeys {
   static const String phone = 'phone';
   static const String birthDate = 'birthDate';
   static const String enrollmentDate = 'enrollmentDate';
-  static const String  notRegistered = 'notRegistered';
+  static const String notRegistered = 'notRegistered';
+  static const String register = 'register';
 
   /// [COACH Profile]
   static const String home = 'home';

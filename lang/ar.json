@@ -31,6 +31,8 @@
     "passwordLength":"يجب أن تكون كلمة المرور 6 أحرف على الأقل",
     "invalidLoginCredentials":"بيانات تسجيل الدخول غير صحيحة",
     "userNotFound":"المستخدم غير موجود",
+    "imCoach":"انا مدرب",
+
 
     "####AdminScreen":"",
     "admin":"ادمن",
@@ -53,6 +55,7 @@
     "newAcademy":"اكاديمية جديدة",
 
     "####PlayerScreen":"",
+    "name":"الاسم",
     "matches":"المباريات",
     "height":"الطول",
     "goal":"هدف",
@@ -65,6 +68,7 @@
     "birthDate":"تاريخ الميلاد",
     "enrollmentDate":"تاريخ التسجيل",
     "notRegistered":"غير مسجل باي أكاديمية",
+    "register":"تسجيل",
 
     "####CoachScreen":"",
     "home":"الرئيسية",

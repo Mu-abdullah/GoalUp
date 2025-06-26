@@ -94,7 +94,7 @@ class UserAuthScreenBody extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => context.pushNamed(RoutesNames.auth),
                   child: AppText(
-                    LangKeys.coach,
+                    LangKeys.imCoach,
                     color: AppColors.blueAccent,
                     isBold: true,
                   ),
