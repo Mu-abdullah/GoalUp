@@ -6,6 +6,7 @@ import '../../features/admin/admin_countries/presentation/views/admin_countries.
 import '../../features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/coach/coach_home_screen/presentation/views/coach_home_screen.dart';
+import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
@@ -72,6 +73,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           academy: args?['academy'],
         ),
       );
+    case RoutesNames.newPlayer:
+      return BaseRoute(page: NewPlayerScreen());
     default:
       return BaseRoute(page: const MaterialApp());
   }
