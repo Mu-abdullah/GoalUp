@@ -10,7 +10,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthRepo repo;
   AuthCubit(this.repo) : super(AuthInitial());
-  static AuthCubit get(context) => BlocProvider.of(context);
+  static AuthCubit get(context) => BlocProvider.of<AuthCubit>(context);
 
   var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
@@ -38,13 +38,5 @@ class AuthCubit extends Cubit<AuthState> {
         }
       },
     );
-  }
-
-  bool isRemmber = false;
-
-  void saveMe() {
-    if (isRemmber == true) {
-      repo.remmeberMe();
-    }
   }
 }

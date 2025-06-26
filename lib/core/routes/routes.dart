@@ -5,6 +5,7 @@ import '../../features/admin/admin_academies/presentation/views/admin_academies.
 import '../../features/admin/admin_countries/presentation/views/admin_countries.dart';
 import '../../features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
+import '../../features/auth/presentation/views/user_auth_screen.dart';
 import '../../features/coach/coach_home_screen/presentation/views/coach_home_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
@@ -37,6 +38,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.auth:
       return BaseRoute(page: const AuthScreen());
+    case RoutesNames.userAuthScreen:
+      return BaseRoute(page: const UserAuthScreen());
 
     case RoutesNames.checkRole:
       return BaseRoute(page: CheckRole(uid: args?['uid']));
@@ -70,7 +73,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         page: PlayerProfile(
           isAdmin: args?['isAdmin'] ?? false,
           playerId: args?['playerId'],
-          academy: args?['academy'],
         ),
       );
     case RoutesNames.newPlayer:

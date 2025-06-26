@@ -10,20 +10,18 @@ class PlayerProfile extends StatelessWidget {
   const PlayerProfile({
     super.key,
     this.isAdmin = false,
-    this.playerId,
-    this.academy,
+    required this.playerId,
   });
   final bool isAdmin;
-  final String? playerId;
-  final String? academy;
+  final String playerId;
   @override
   Widget build(BuildContext context) {
     var lac = locator<GetPlayerProfileRepo>();
     return BlocProvider(
       create:
           (context) =>
-              PlayerProfileCubit(lac, isAdmin: isAdmin, academy: academy!)
-                ..getPlayerProfile(playerId!),
+              PlayerProfileCubit(lac, isAdmin: isAdmin)
+                ..getPlayerProfileById(playerId),
       child: Scaffold(body: PlayerProfileBody()),
     );
   }

@@ -25,7 +25,7 @@ class CoachPlayerItem extends StatelessWidget {
           arguments: {
             'playerId': player?.id,
             'isAdmin': true,
-            'academy': player?.academy,
+            // 'academy': player?.academy,
           },
         );
       },

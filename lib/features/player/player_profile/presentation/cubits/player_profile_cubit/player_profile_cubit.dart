@@ -9,17 +9,18 @@ part 'player_profile_state.dart';
 
 class PlayerProfileCubit extends Cubit<PlayerProfileState> {
   GetPlayerProfileRepo repo;
-  PlayerProfileCubit(this.repo, {this.isAdmin = false, required this.academy})
+  PlayerProfileCubit(this.repo, {this.isAdmin = false})
     : super(PlayerProfileInitial());
 
   static PlayerProfileCubit get(context) => BlocProvider.of(context);
 
   bool isAdmin;
   bool showStats = false;
-  final String academy;
-  Future<void> getPlayerProfile(String playerId) async {
-    emit(PlayerProfileLoading());
-    final result = await repo.getPlayerProfile(playerId);
+
+  var isAcademyPlayer = false;
+
+  Future<void> getPlayerProfileById(String playerId) async {
+    final result = await repo.init(playerId);
     result.fold(
       (error) {
         if (!isClosed) {
@@ -29,7 +30,8 @@ class PlayerProfileCubit extends Cubit<PlayerProfileState> {
       },
       (data) {
         if (!isClosed) {
-          emit(PlayerProfileLoaded(data));
+         
+          emit(PlayerProfileLoaded(data.first));
         }
       },
     );

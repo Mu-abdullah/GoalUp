@@ -115,7 +115,7 @@ class _MainSportState extends State<MainSport> {
     if (isLoggedIn == true) {
       return RoutesNames.coachHome;
     } else {
-      return RoutesNames.auth;
+      return RoutesNames.userAuthScreen;
     }
   }
 

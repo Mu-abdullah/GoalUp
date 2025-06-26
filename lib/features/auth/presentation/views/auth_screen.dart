@@ -17,7 +17,7 @@ class AuthScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthCubit(loc),
       child: Scaffold(
-        appBar: CustomAppBar(title: LangKeys.login, isBack: false),
+        appBar: CustomAppBar(title: LangKeys.login),
         body: AuthBody(),
       ),
     );

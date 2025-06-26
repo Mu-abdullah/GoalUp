@@ -16,9 +16,6 @@ class LoginButton extends StatelessWidget {
       onTap: () {
         if (cubit.formKey.currentState!.validate()) {
           cubit.login();
-          if (cubit.isRemmber == true) {
-            cubit.saveMe();
-          }
         }
       },
       text: LangKeys.login,

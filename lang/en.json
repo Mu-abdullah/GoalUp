@@ -65,6 +65,7 @@
     "phone":"Phone",
     "birthDate":"Birth Date",
     "enrollmentDate":"Enrollment Date",
+    "notRegistered":"Not registered in any academy",
 
     "####CoachScreen":"",
     "home":"Home",

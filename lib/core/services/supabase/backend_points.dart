@@ -6,4 +6,5 @@ class BackendPoint {
   static const players = 'players';
   static const academy = 'academy';
   static const academysPlayers = 'academyPlay';
+  static const users = 'users';
 }

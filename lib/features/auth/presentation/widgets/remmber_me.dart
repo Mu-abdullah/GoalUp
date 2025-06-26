@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/language/lang_keys.dart';
 import '../../../../core/style/color/app_color.dart';
 import '../../../../core/style/widgets/app_text.dart';
-import '../cubits/auth_cubit/auth_cubit.dart';
+import '../cubits/remmber_me_cubit/remmber_me_cubit.dart';
 
 class RemmberMe extends StatefulWidget {
-  const RemmberMe({super.key});
-
+  const RemmberMe({super.key, this.color = AppColors.black});
+  final Color color;
   @override
   State<RemmberMe> createState() => _RemmberMeState();
 }
@@ -16,23 +16,30 @@ class RemmberMe extends StatefulWidget {
 class _RemmberMeState extends State<RemmberMe> {
   @override
   Widget build(BuildContext context) {
-    var cubit = context.read<AuthCubit>();
-    return Row(
-      spacing: 10,
-      children: [
-        Checkbox(
-          value: cubit.isRemmber,
-          activeColor: AppColors.black,
-          shape: const CircleBorder(),
-          checkColor: AppColors.white,
-          onChanged: (v) {
-            setState(() {
-              cubit.isRemmber = v!;
-            });
-          },
-        ),
-        AppText(LangKeys.remeberMe),
-      ],
+    return BlocProvider(
+      create: (context) => RemmberMeCubit(),
+      child: BlocBuilder<RemmberMeCubit, RemmberMeState>(
+        builder: (context, state) {
+          var cubit = RemmberMeCubit.get(context);
+          return Row(
+            spacing: 10,
+            children: [
+              Checkbox(
+                value: cubit.isRemmber,
+                activeColor: widget.color,
+                shape: const CircleBorder(),
+                checkColor: AppColors.white,
+                onChanged: (v) {
+                  setState(() {
+                    cubit.isRemmber = v!;
+                  });
+                },
+              ),
+              AppText(LangKeys.remeberMe),
+            ],
+          );
+        },
+      ),
     );
   }
 }

@@ -20,3 +20,4 @@ final class AuthError extends AuthState {
   final String error;
   const AuthError(this.error);
 }
+

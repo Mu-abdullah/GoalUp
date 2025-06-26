@@ -66,6 +66,7 @@ class LangKeys {
   static const String phone = 'phone';
   static const String birthDate = 'birthDate';
   static const String enrollmentDate = 'enrollmentDate';
+  static const String  notRegistered = 'notRegistered';
 
   /// [COACH Profile]
   static const String home = 'home';
