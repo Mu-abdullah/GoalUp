@@ -18,4 +18,5 @@ class RoutesNames {
   /// [Player screens]
   static const String playerProfile = 'playerProfile';
   static const String newPlayer = 'newPlayer';
+  static const String newPlayerNidScreen = 'newPlayerNidScreen';
 }

@@ -33,7 +33,7 @@ class CoachHomePageBody extends StatelessWidget {
                   isHighlighted: true,
                   color: AppColors.black,
                   onTap: () {
-                    context.pushNamed(RoutesNames.newPlayer);
+                    context.pushNamed(RoutesNames.newPlayerNidScreen);
                   },
                 ),
               ),

@@ -7,6 +7,7 @@ import '../../features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/user_auth_screen.dart';
 import '../../features/coach/coach_home_screen/presentation/views/coach_home_screen.dart';
+import '../../features/player/new_player/presentation/views/new_player_nid_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
 import '../app/image/image_preview.dart';
@@ -76,7 +77,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ),
       );
     case RoutesNames.newPlayer:
-      return BaseRoute(page: NewPlayerScreen());
+      return BaseRoute(
+        page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
+      );
+
+    case RoutesNames.newPlayerNidScreen:
+      return BaseRoute(page: NewPlayerNidScreen());
     default:
       return BaseRoute(page: const MaterialApp());
   }

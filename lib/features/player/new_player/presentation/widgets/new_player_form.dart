@@ -32,7 +32,7 @@ class NewPlayerForm extends StatelessWidget {
             type: TextInputType.name,
           ),
           NewPlayerTextForm(
-            controller: cubit.nid,
+            controller: cubit.nidController,
             lable: LangKeys.nid,
             icon: HugeIcons.strokeRoundedCreditCard,
             type: TextInputType.number,
