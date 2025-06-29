@@ -19,7 +19,7 @@ class AcademyPlayerCount extends StatelessWidget {
       child: BlocBuilder<PlayerCountsCubit, PlayerCountsState>(
         builder: (context, state) {
           if (state is PlayerCountsLoading) {
-            return LoadingShimmer();
+            return ListLoadingShimmer();
           } else if (state is PlayerCountsLoaded) {
             return HomeCountCard(
               cardTitle: LangKeys.players,

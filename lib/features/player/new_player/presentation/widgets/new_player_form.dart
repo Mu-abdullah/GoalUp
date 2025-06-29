@@ -19,6 +19,13 @@ class NewPlayerForm extends StatelessWidget {
         spacing: 10,
         children: [
           NewPlayerTextForm(
+            controller: cubit.id,
+            lable: LangKeys.id,
+            icon: HugeIcons.strokeRoundedFootballPitch,
+            type: TextInputType.text,
+            enabled: false,
+          ),
+          NewPlayerTextForm(
             controller: cubit.academy,
             lable: LangKeys.academy,
             icon: HugeIcons.strokeRoundedFootballPitch,

@@ -17,7 +17,7 @@ class PlayerProfileBody extends StatelessWidget {
       builder: (context, state) {
         final cubit = PlayerProfileCubit.get(context);
         if (state is PlayerProfileLoading) {
-          return LoadingShimmer();
+          return ListLoadingShimmer();
         } else if (state is PlayerProfileLoaded) {
           final player = state.playerProfile;
           return SingleChildScrollView(
@@ -45,4 +45,3 @@ class PlayerProfileBody extends StatelessWidget {
     );
   }
 }
-

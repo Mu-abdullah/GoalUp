@@ -38,7 +38,7 @@ class AcademyNameLogo extends StatelessWidget {
   Widget _buildLoadingState() {
     return Container(
       decoration: _buildGlassyDecoration(),
-      child: const LoadingShimmer(itemCount: 1, height: 0.1),
+      child: const ListLoadingShimmer(itemCount: 1, height: 0.1),
     );
   }
 

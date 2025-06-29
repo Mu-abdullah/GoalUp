@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sport/features/auth/presentation/refactor/check_role.dart';
 
 import '../../features/admin/admin_academies/presentation/views/admin_academies.dart';
-import '../../features/admin/admin_countries/presentation/views/admin_countries.dart';
 import '../../features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/user_auth_screen.dart';
@@ -52,9 +51,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.adminHome:
       return BaseRoute(page: const AdminHome());
 
-    case RoutesNames.adminCountries:
-      return BaseRoute(page: const AdminCountries());
-
     case RoutesNames.adminAcademies:
       return BaseRoute(page: const AdminAcademies());
 
@@ -78,11 +74,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case RoutesNames.newPlayer:
       return BaseRoute(
-        page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
+        page: NewPlayerScreen(
+          nid: args?['nid'],
+          player: args?['player'],
+          count: args?['count'],
+        ),
       );
 
     case RoutesNames.newPlayerNidScreen:
-      return BaseRoute(page: NewPlayerNidScreen());
+      return BaseRoute(page: NewPlayerNidScreen(count: args?['count']));
     default:
       return BaseRoute(page: const MaterialApp());
   }

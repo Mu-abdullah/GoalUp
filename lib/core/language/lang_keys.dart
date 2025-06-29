@@ -57,6 +57,7 @@ class LangKeys {
   static const String newAcademy = 'newAcademy';
 
   /// [PLAYER Profile]
+  static const String id = 'id';
   static const String name = 'name';
   static const String bio = 'bio';
   static const String goal = 'goal';

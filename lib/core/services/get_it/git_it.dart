@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 
-import '../../../features/admin/admin_countries/data/repo/admin_get_countries.dart';
+import '../../../features/player/new_player/data/repo/get_countries.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/coach/coach_home_page/data/repo/home_academy_repo.dart';
@@ -24,7 +24,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => AuthRepo(locator()));
   locator.registerLazySingleton(() => CheckRoleRepo(locator()));
 
-  locator.registerLazySingleton(() => AdminGetCountries(locator()));
+  locator.registerLazySingleton(() => GetCountries(locator()));
   locator.registerLazySingleton(() => GetCoachPlayers(locator()));
   locator.registerLazySingleton(() => HomeAcademyRepo(locator()));
   locator.registerLazySingleton(() => PlayerCountRepo(locator()));

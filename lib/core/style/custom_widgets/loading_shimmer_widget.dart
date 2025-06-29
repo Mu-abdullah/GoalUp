@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sport/core/extextions/extentions.dart';
+import 'package:sport/core/style/widgets/app_text.dart';
 
+import '../../language/lang_keys.dart';
 import '../color/app_color.dart';
 import '../statics/app_statics.dart';
 import 'custom_shimmer.dart';
 
-class LoadingShimmer extends StatelessWidget {
-  const LoadingShimmer({super.key, this.itemCount = 10, this.height});
+class ListLoadingShimmer extends StatelessWidget {
+  const ListLoadingShimmer({super.key, this.itemCount = 10, this.height});
   final int itemCount;
   final double? height;
   @override
@@ -33,11 +35,11 @@ class LoadingShimmer extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      height: context.height(percent:0.02),
+                      height: context.height(percent: 0.02),
                       color: AppColors.blueAccent,
                     ),
                     Container(
-                      height: context.height(percent:0.02),
+                      height: context.height(percent: 0.02),
                       color: AppColors.scaffoldBackground,
                     ),
                   ],
@@ -46,6 +48,31 @@ class LoadingShimmer extends StatelessWidget {
             ),
           ),
       itemCount: itemCount,
+    );
+  }
+}
+
+class LoadingShimmer extends StatelessWidget {
+  const LoadingShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: AppColors.scaffoldBackground,
+        borderRadius: AppBorderRadius.smallRadius,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: 0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: CustomShimmer(child: AppText(LangKeys.loading)),
     );
   }
 }

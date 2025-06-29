@@ -4,18 +4,18 @@ import '../../../../../core/error/custom_errors.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/graph_ql/graph_ql.dart';
 import '../../../../../core/services/supabase/backend_points.dart';
-import '../model/admin_country_model.dart';
+import '../model/country_model.dart';
 
-class AdminGetCountries {
+class GetCountries {
   GraphQLService service;
-  AdminGetCountries(this.service);
+  GetCountries(this.service);
 
-  Future<Either<CustomError, List<AdminCountryModel>>> getCountries() async {
+  Future<Either<CustomError, List<CountryModel>>> getCountries() async {
     try {
       var response = await service.fetchCollection(
         collection: BackendPoint.nationality,
         fields: ['name', 'flag'],
-        fromJson: AdminCountryModel.fromJson,
+        fromJson: CountryModel.fromJson,
       );
       if (response.isEmpty) {
         return Left(CustomError(LangKeys.noDataFound));

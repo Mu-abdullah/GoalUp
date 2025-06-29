@@ -36,6 +36,7 @@ class CheckNidBody extends StatelessWidget {
               arguments: {
                 'player': state.user,
                 'nid': CheckUserNidCubit.get(context).nidController.text,
+                'count': CheckUserNidCubit.get(context).count,
               },
             );
           } else if (state is CheckUserNidLoading) {
@@ -53,6 +54,7 @@ class CheckNidBody extends StatelessWidget {
               RoutesNames.newPlayer,
               arguments: {
                 'nid': CheckUserNidCubit.get(context).nidController.text,
+                'count': CheckUserNidCubit.get(context).count,
               },
             );
           }

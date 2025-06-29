@@ -36,7 +36,7 @@ class CheckRole extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return LoadingShimmer();
+            return ListLoadingShimmer();
           },
         ),
       ),
