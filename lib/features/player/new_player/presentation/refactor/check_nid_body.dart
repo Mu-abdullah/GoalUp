@@ -32,12 +32,8 @@ class CheckNidBody extends StatelessWidget {
             Navigator.pop(context);
 
             context.pushReplacementNamed(
-              RoutesNames.newPlayer,
-              arguments: {
-                'player': state.user,
-                'nid': CheckUserNidCubit.get(context).nidController.text,
-                'count': CheckUserNidCubit.get(context).count,
-              },
+              RoutesNames.playerProfile,
+              arguments: {'playerId': state.user.id, 'isCoach': true},
             );
           } else if (state is CheckUserNidLoading) {
             showProgressIndicator(context);

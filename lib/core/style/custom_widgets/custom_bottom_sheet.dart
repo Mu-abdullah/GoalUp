@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/style/statics/app_statics.dart';
 
 import '../color/app_color.dart';
 import '../widgets/app_space.dart';
 import '../widgets/app_text.dart';
+import 'custom_icon_button.dart';
 
 Future<dynamic> customShowBottomSheet({
   required BuildContext context,
@@ -27,25 +28,22 @@ Future<dynamic> customShowBottomSheet({
         mainAxisSize: MainAxisSize.min,
         children: [
           AppSpace(),
-          Row(
-            children: [
-              Expanded(
-                child: AppText(
-                  title,
-                  translate: translated,
-                  isBold: true,
-                  isTitle: true,
-                  textAlign: TextAlign.center,
+          Padding(
+            padding: AppPadding.symmetricPadding(),
+            child: Row(
+              children: [
+                Expanded(
+                  child: AppText(
+                    title,
+                    translate: translated,
+                    isBold: true,
+                    isTitle: true,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: Icon(
-                  HugeIcons.strokeRoundedCancelSquare,
-                  color: AppColors.red,
-                ),
-              ),
-            ],
+                CustomIconButton(),
+              ],
+            ),
           ),
           widget,
         ],

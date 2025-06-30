@@ -3,6 +3,7 @@ class LangKeys {
   static const String appName = 'appName';
 
   static const String loading = 'loading';
+  static const String menu = 'menu';
   static const String noInternet = 'noInternet';
   static const String tryToConnect = 'noInternet';
   static const String changeLanguage = 'changeLanguage';

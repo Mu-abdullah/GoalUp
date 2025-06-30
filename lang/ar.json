@@ -1,6 +1,7 @@
 {   
     "appName": "",
     "loading": "جار التحميل...",
+    "menu": "القائمة",
     "noInternet": "لا يوجد اتصال بالإنترنت",
     "tryToConnect": "حاول الاتصال",
     "changeLanguage": "تغيير اللغة",

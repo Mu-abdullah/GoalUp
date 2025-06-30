@@ -1,6 +1,7 @@
 {   
     "appName": "",
     "loading": "Loading...",
+    "menu": "Menu",
     "noInternet": "No internet connection",
     "tryToConnect":  "Try to connect",
     "changeLanguage":   "Change language",

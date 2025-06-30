@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/language/lang_keys.dart';
+import 'package:sport/core/style/custom_widgets/custom_bottom_sheet.dart';
 
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_icon_button.dart';
@@ -39,7 +41,15 @@ class PlayerWidget extends StatelessWidget {
                 iconColor: AppColors.black,
                 backgroundColor: AppColors.white,
                 icon: HugeIcons.strokeRoundedMenu04,
-                onTap: () {},
+                onTap: () {
+                  customShowBottomSheet(
+                    context: context,
+                    title: LangKeys.menu,
+                    isScrollControlled: false,
+                    useSafeArea: false,
+                    widget: Column(children: []),
+                  );
+                },
               ),
               CustomIconButton(),
             ],
