@@ -42,7 +42,7 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
           GenerateId.generateDocumentId(
             context: context,
             table: BackendPoint.players,
-            format: 'yy-MM-dd',
+            format: 'yyMMdd',
             count: count + 1,
           ),
     );

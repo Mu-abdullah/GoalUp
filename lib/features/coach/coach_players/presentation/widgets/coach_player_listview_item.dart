@@ -24,7 +24,7 @@ class CoachPlayerItem extends StatelessWidget {
           RoutesNames.playerProfile,
           arguments: {
             'playerId': player?.id,
-            'isAdmin': true,
+            'isCoach': true,
             // 'academy': player?.academy,
           },
         );

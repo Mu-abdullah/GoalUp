@@ -8,29 +8,7 @@ import '../../../../../core/style/color/app_color.dart';
 import '../model/admin_section_model.dart';
 
 class AdminButtonsList {
-  static List<AdminSectionModel> modesButtonsList(BuildContext context) => [
-    AdminSectionModel(
-      title: LangKeys.coach,
-      icon: HugeIcons.strokeRoundedWhistle,
-      backgroundColor: AppColors.yellow,
-      titleColor: AppColors.black,
-      onTap: () {
-        context.pushNamed(RoutesNames.coachHome, arguments: {'isAdmin': true});
-      },
-    ),
-    AdminSectionModel(
-      title: LangKeys.player,
-      icon: HugeIcons.strokeRoundedWorkoutRun,
-      backgroundColor: AppColors.green,
-      titleColor: AppColors.white,
-      onTap: () {
-        context.pushNamed(
-          RoutesNames.playerProfile,
-          arguments: {'isAdmin': true},
-        );
-      },
-    ),
-  ];
+  static List<AdminSectionModel> modesButtonsList(BuildContext context) => [];
 
   static List<AdminSectionModel> settingsButtonsList(BuildContext context) => [
     AdminSectionModel(

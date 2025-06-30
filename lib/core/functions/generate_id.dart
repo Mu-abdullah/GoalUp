@@ -17,7 +17,7 @@ class GenerateId {
       final String? acad = academy?.substring(0, 3).toUpperCase();
       final String? user = userId?.substring(0, 3).toUpperCase();
 
-      return 'GU-EG-${tab ?? ""}-${acad ?? ""}-${user ?? ""}$date-${count ?? ''}';
+      return 'GU-EG-${tab ?? ""}-${acad ?? ""}-${user ?? ""}$date${count ?? ''}';
     } catch (e) {
       throw Exception('Failed to generate document ID: $e');
     }

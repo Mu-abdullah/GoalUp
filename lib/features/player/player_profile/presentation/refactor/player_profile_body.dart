@@ -5,8 +5,7 @@ import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/loading_shimmer_widget.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
-import '../widgets/player_image.dart';
-import '../widgets/player_info.dart';
+import '../widgets/palyer_widget.dart';
 
 class PlayerProfileBody extends StatelessWidget {
   const PlayerProfileBody({super.key});
@@ -20,14 +19,7 @@ class PlayerProfileBody extends StatelessWidget {
           return ListLoadingShimmer();
         } else if (state is PlayerProfileLoaded) {
           final player = state.playerProfile;
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                PlayerImage(player: player, cubit: cubit),
-                PlayerInfo(player: player),
-              ],
-            ),
-          );
+          return PlayerWidget(player: player, cubit: cubit);
         } else if (state is PlayerProfileError) {
           return Center(
             child: AppText(

@@ -9,12 +9,12 @@ part 'player_profile_state.dart';
 
 class PlayerProfileCubit extends Cubit<PlayerProfileState> {
   GetPlayerProfileRepo repo;
-  PlayerProfileCubit(this.repo, {this.isAdmin = false})
+  PlayerProfileCubit(this.repo, {this.isCoach = false})
     : super(PlayerProfileInitial());
 
   static PlayerProfileCubit get(context) => BlocProvider.of(context);
 
-  bool isAdmin;
+  bool isCoach;
   bool showStats = false;
 
   var isAcademyPlayer = false;
@@ -30,7 +30,6 @@ class PlayerProfileCubit extends Cubit<PlayerProfileState> {
       },
       (data) {
         if (!isClosed) {
-         
           emit(PlayerProfileLoaded(data.first));
         }
       },

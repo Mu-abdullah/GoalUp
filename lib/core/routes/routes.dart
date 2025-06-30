@@ -68,7 +68,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.playerProfile:
       return BaseRoute(
         page: PlayerProfile(
-          isAdmin: args?['isAdmin'] ?? false,
+          isCoach: args?['isCoach'] ?? false,
           playerId: args?['playerId'],
         ),
       );

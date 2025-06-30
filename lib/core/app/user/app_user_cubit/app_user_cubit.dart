@@ -17,7 +17,7 @@ class AppUserCubit extends Cubit<AppUserState> {
   String get academyId => SharedPref.getData(key: PrefKeys.academyId);
 
   Future<void> logout() async {
-    // repo.logout();
+    repo.logout();
     emit(UserLoggedOut());
   }
 }

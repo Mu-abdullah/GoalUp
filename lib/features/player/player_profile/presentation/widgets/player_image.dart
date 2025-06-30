@@ -2,11 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:sport/core/extextions/extentions.dart';
-import 'package:sport/core/language/lang_keys.dart';
 
+import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/custom_widgets/back_screen_button.dart';
 import '../../../../../core/style/statics/image_test.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/player_profile_model.dart';
@@ -20,7 +19,6 @@ class PlayerImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = context.langCode == 'ar';
     return InkWell(
       onTap: imagePreview(context),
       child: Container(
@@ -40,12 +38,6 @@ class PlayerImage extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: 30,
-              left: lang ? null : 20,
-              right: lang ? 20 : null,
-              child: BackScreenButton(),
-            ),
             Positioned(
               bottom: 0,
               left: 0,
