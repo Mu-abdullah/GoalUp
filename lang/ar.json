@@ -25,6 +25,7 @@
     "unKnown": "غير معروف",
     "remeberMe": "تذكرني",
     "next": "التالي",
+    "previous": "السابق",
 
     "####AuthScreen":"",
     "email":"البريد الإلكتروني",
@@ -72,6 +73,8 @@
     "enrollmentDate":"تاريخ التسجيل",
     "notRegistered":"غير مسجل باي أكاديمية",
     "register":"تسجيل",
+    "information":"المعلومات",
+    "ratings":"التقييمات",
 
     "####CoachScreen":"",
     "home":"الرئيسية",

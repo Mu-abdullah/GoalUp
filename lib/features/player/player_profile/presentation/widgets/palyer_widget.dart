@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/extextions/extentions.dart';
 import 'package:sport/core/language/lang_keys.dart';
 import 'package:sport/core/style/custom_widgets/custom_bottom_sheet.dart';
 
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_icon_button.dart';
+import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/player_profile_model.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import 'player_image.dart';
@@ -47,7 +50,18 @@ class PlayerWidget extends StatelessWidget {
                     title: LangKeys.menu,
                     isScrollControlled: false,
                     useSafeArea: false,
-                    widget: Column(children: []),
+                    widget: Column(
+                      children: [
+                        ListTile(
+                          leading: Icon(HugeIcons.strokeRoundedStar),
+                          title: AppText(LangKeys.ratings, isBold: true),
+                          trailing: Icon(Icons.arrow_forward_ios),
+                          onTap: () {
+                            context.pushNamed(RoutesNames.playerRatingScreen);
+                          },
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),

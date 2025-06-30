@@ -25,6 +25,7 @@
     "unKnown": "Unknown",
     "remeberMe": "Remeber me",
     "next": "Next",
+    "previous": "Previous",
 
 
     "####AuthScreen":"",
@@ -72,6 +73,8 @@
     "enrollmentDate":"Enrollment Date",
     "notRegistered":"Not registered in any academy",
     "register":"Register",
+    "information":"Information",
+    "ratings":"Ratings",
 
     "####CoachScreen":"",
     "home":"Home",

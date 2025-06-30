@@ -9,6 +9,7 @@ import '../../features/coach/coach_home_screen/presentation/views/coach_home_scr
 import '../../features/player/new_player/presentation/views/new_player_nid_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
+import '../../features/player/player_rating/presentation/view/player_rating_screen.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
 import '../app/no_internet/no_internet_screen.dart';
@@ -80,6 +81,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           count: args?['count'],
         ),
       );
+    case RoutesNames.playerRatingScreen:
+      return BaseRoute(page: PlayerRatingScreen());
 
     case RoutesNames.newPlayerNidScreen:
       return BaseRoute(page: NewPlayerNidScreen(count: args?['count']));

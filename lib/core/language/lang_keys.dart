@@ -26,6 +26,7 @@ class LangKeys {
   static const String female = 'female';
   static const String unKnown = 'unKnown';
   static const String next = 'next';
+  static const String previous = 'previous';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
@@ -73,6 +74,8 @@ class LangKeys {
   static const String enrollmentDate = 'enrollmentDate';
   static const String notRegistered = 'notRegistered';
   static const String register = 'register';
+  static const String information = 'information';
+  static const String ratings = 'ratings';
 
   /// [COACH Profile]
   static const String home = 'home';
