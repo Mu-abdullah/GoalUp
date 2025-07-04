@@ -90,4 +90,27 @@ class LangKeys {
   static const String physicalPerformance = 'physicalPerformance';
   static const String regulatoryRules = 'regulatoryRules';
   static const String personalityTraits = 'personalityTraits';
+
+  // players rules
+  static const String dribbling = 'dribbling';
+  static const String shooting = 'shooting';
+  static const String movement = 'movement';
+  static const String passing = 'passing';
+  static const String ballControl = 'ballControl';
+  static const String attacking = 'attacking';
+  static const String decisionMaking = 'decisionMaking';
+  static const String defense = 'defense';
+  static const String agility = 'agility';
+  static const String strength = 'strength';
+  static const String awarenessAndFocus = 'awarenessAndFocus';
+  static const String teamwork = 'teamwork';
+  static const String commitmentToTrainingSchedule =
+      'commitmentToTrainingSchedule';
+  static const String behaviorWithTeammatesAndCoaches =
+      'behaviorWithTeammatesAndCoaches';
+  static const String commitmentToAcademyUniform = 'commitmentToAcademyUniform';
+  static const String creativityAndInnovation = 'creativityAndInnovation';
+  static const String selfConfidence = 'selfConfidence';
+  static const String leadership = 'leadership';
+  static const String initiativeAndProactivity = 'initiativeAndProactivity';
 }

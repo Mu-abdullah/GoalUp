@@ -88,6 +88,27 @@
     "artisticPerformance":"Artistic Performance",
     "physicalPerformance":"Physical Performance",
     "regulatoryRules":"Regulatory Rules",
-    "personalityTraits":"Personality Traits"
+    "personalityTraits":"Personality Traits",
+
+    "#######PlayerRules":"",
+    "dribbling": "Dribbling",
+    "shooting": "Shooting",
+    "movement": "Movement",
+    "passing": "Passing",
+    "ballControl": "Ball Control",
+    "attacking": "Attacking",
+    "decisionMaking": "Decision Making",
+    "defense": "Defense",
+    "agility": "Agility",
+    "strength": "Strength",
+    "awarenessAndFocus": "Awareness & Focus",
+    "teamwork": "Teamwork",
+    "commitmentToTrainingSchedule": "Commitment to Training Schedule",
+    "behaviorWithTeammatesAndCoaches": "Behavior with Teammates & Coaches",
+    "commitmentToAcademyUniform": "Commitment to Academy Uniform",
+    "creativityAndInnovation": "Creativity & Innovation",
+    "selfConfidence": "Self-Confidence",
+    "leadership": "Leadership",
+    "initiativeAndProactivity": "Initiative & Proactivity"
 }
  

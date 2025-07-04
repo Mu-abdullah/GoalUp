@@ -88,7 +88,28 @@
     "artisticPerformance":"الاداء الفني",
     "physicalPerformance":"الاداء البدني",
     "regulatoryRules":"القواعد التنظيمية",
-    "personalityTraits":"السمات الشخصية"
+    "personalityTraits":"السمات الشخصية",
+
+    "#######PlayerRules":"",
+    "dribbling": "المراوغة",
+    "shooting": "التسديد",
+    "movement": "التحرك",
+    "passing": "التمرير",
+    "ballControl": "التحكم في الكرة",
+    "attacking": "الهجوم",
+    "decisionMaking": "اتخاذ القرار",
+    "defense": "الدفاع",
+    "agility": "المرونة",
+    "strength": "القوة",
+    "awarenessAndFocus": "الوعي والتركيز",
+    "teamwork": "العمل الجماعي",
+    "commitmentToTrainingSchedule": "الالتزام بجدول التدريب",
+    "behaviorWithTeammatesAndCoaches": "السلوك مع الزملاء والمدربين",
+    "commitmentToAcademyUniform": "الالتزام بزي الأكاديمية",
+    "creativityAndInnovation": "الإبداع والابتكار",
+    "selfConfidence": "الثقة بالنفس",
+    "leadership": "القيادة",
+    "initiativeAndProactivity": "المبادرة والنشاط"
  
 }
  

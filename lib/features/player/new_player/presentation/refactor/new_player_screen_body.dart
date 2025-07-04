@@ -4,6 +4,7 @@ import '../../../../../core/style/statics/app_statics.dart';
 import '../cubits/new_player_cubit/new_player_cubit.dart';
 import '../widgets/choose_national.dart';
 import '../widgets/new_player_form.dart';
+import '../widgets/new_player_image.dart';
 import '../widgets/register_button.dart';
 
 class NewPlayerScreenBody extends StatelessWidget {
@@ -19,6 +20,7 @@ class NewPlayerScreenBody extends StatelessWidget {
         child: Column(
           spacing: 10,
           children: [
+            NewPlayerImage(),
             NewPlayerForm(cubit: cubit),
             ChooseNational(cubit: cubit),
             RegisterButton(cubit: cubit),
