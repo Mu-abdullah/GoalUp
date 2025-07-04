@@ -84,7 +84,11 @@
     "players": "اللاعبين",
     "logout": "تسجيل الخروج",
     "footballAcademy": "اكاديمية كرة قدم",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "artisticPerformance":"الاداء الفني",
+    "physicalPerformance":"الاداء البدني",
+    "regulatoryRules":"القواعد التنظيمية",
+    "personalityTraits":"السمات الشخصية"
  
 }
  

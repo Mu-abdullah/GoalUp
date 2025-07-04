@@ -2,8 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../widgets/registration_forms/dr_personal_info.dart';
-import '../../widgets/registration_forms/professional_info.dart';
+import '../../widgets/registration_forms/artistic_performance.dart';
+import '../../widgets/registration_forms/personality_traits.dart';
+import '../../widgets/registration_forms/physical_performance.dart';
+import '../../widgets/registration_forms/regulatory_rules.dart';
 
 part 'player_rating_state.dart';
 
@@ -15,8 +17,10 @@ class PlayerRatingCubit extends Cubit<PlayerRatingState> {
   final PageController controller = PageController();
 
   final List<Widget> pages = [
-    DrPersonalInformation(),
-    ProfessionalInformation(),
+    ArtisticPerformance(),
+    PhysicalPerformance(),
+    RegulatoryRules(),
+    PersonalityTraits(),
   ];
 
   void goToPage(int index) {

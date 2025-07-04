@@ -86,4 +86,8 @@ class LangKeys {
   static const String logout = 'logout';
   static const String login = 'login';
   static const String footballAcademy = 'footballAcademy';
+  static const String artisticPerformance = 'artisticPerformance';
+  static const String physicalPerformance = 'physicalPerformance';
+  static const String regulatoryRules = 'regulatoryRules';
+  static const String personalityTraits = 'personalityTraits';
 }

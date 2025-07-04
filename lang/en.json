@@ -84,6 +84,10 @@
     "players": "Players",
     "logout": "Logout",
     "footballAcademy": "Football Academy",
-    "login": "Login"
+    "login": "Login",
+    "artisticPerformance":"Artistic Performance",
+    "physicalPerformance":"Physical Performance",
+    "regulatoryRules":"Regulatory Rules",
+    "personalityTraits":"Personality Traits"
 }
  

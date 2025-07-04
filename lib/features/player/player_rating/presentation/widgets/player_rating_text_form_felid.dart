@@ -4,8 +4,8 @@ import 'package:sport/core/extextions/extentions.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text_form_felid.dart';
 
-class NewClientTextFormFelid extends StatelessWidget {
-  const NewClientTextFormFelid({
+class PlayerRatingTextFormFelid extends StatelessWidget {
+  const PlayerRatingTextFormFelid({
     super.key,
     required this.controller,
     required this.label,
