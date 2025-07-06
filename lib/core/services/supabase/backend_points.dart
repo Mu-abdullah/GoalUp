@@ -8,4 +8,6 @@ class BackendPoint {
   static const academysPlayers = 'academyPlay';
   static const users = 'users';
   static const position = 'position';
+  static const category = 'category';
+  static const criteria = 'criteria';
 }

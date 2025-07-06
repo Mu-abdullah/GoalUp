@@ -26,6 +26,9 @@
     "remeberMe": "تذكرني",
     "next": "التالي",
     "previous": "السابق",
+    "imageRequired": "الصورة مطلوبة",
+    "countryAndPositionRequired": "الدولة والمركز مطلوب",
+    "playerCreatedSuccessfully": "تم انشاء اللاعب بنجاح",
 
     "####AuthScreen":"",
     "email":"البريد الإلكتروني",
@@ -87,7 +90,7 @@
     "login": "تسجيل الدخول",
     "artisticPerformance":"الاداء الفني",
     "physicalPerformance":"الاداء البدني",
-    "regulatoryRules":"القواعد التنظيمية",
+    "disciplineRules":"القواعد التنظيمية",
     "personalityTraits":"السمات الشخصية",
 
     "#######PlayerRules":"",

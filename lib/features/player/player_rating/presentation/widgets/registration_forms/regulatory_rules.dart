@@ -13,7 +13,7 @@ class RegulatoryRules extends StatelessWidget {
     return SingleChildScrollView(
       padding: AppPadding.symmetricPadding(),
       child: AdminSections(
-        title: LangKeys.regulatoryRules,
+        title: LangKeys.disciplineRules,
         icon: HugeIcons.strokeRoundedWork,
         child: Column(
           spacing: 16,

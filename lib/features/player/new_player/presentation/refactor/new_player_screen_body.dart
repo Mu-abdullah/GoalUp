@@ -23,7 +23,7 @@ class NewPlayerScreenBody extends StatelessWidget {
             NewPlayerImage(),
             NewPlayerForm(cubit: cubit),
             ChooseNational(cubit: cubit),
-            RegisterButton(cubit: cubit),
+            RegisterButton(newPlayerCubit: cubit),
           ],
         ),
       ),

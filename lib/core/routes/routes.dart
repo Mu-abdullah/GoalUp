@@ -75,17 +75,13 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case RoutesNames.newPlayer:
       return BaseRoute(
-        page: NewPlayerScreen(
-          nid: args?['nid'],
-          player: args?['player'],
-          count: args?['count'],
-        ),
+        page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
       );
     case RoutesNames.playerRatingScreen:
       return BaseRoute(page: PlayerRatingScreen());
 
     case RoutesNames.newPlayerNidScreen:
-      return BaseRoute(page: NewPlayerNidScreen(count: args?['count']));
+      return BaseRoute(page: NewPlayerNidScreen());
     default:
       return BaseRoute(page: const MaterialApp());
   }

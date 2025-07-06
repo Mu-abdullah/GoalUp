@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import '../../../features/player/new_player/data/repo/create_player_repo.dart';
 import '../../../features/player/new_player/data/repo/get_countries.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
@@ -32,6 +33,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetPlayerProfileRepo(locator()));
   locator.registerLazySingleton(() => CheckNidRepo(locator()));
   locator.registerLazySingleton(() => GetPositions(locator()));
+  locator.registerLazySingleton(() => CreatePlayerRepo(locator()));
 }
 
 void _registerServices() {

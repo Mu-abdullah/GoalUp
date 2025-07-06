@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
-import 'package:sport/features/coach/coach_home_page/presentation/cubits/player_counts_cubit/player_counts_cubit.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
@@ -34,12 +33,7 @@ class CoachHomePageBody extends StatelessWidget {
                   isHighlighted: true,
                   color: AppColors.black,
                   onTap: () {
-                    context.pushNamed(
-                      RoutesNames.newPlayerNidScreen,
-                      arguments: {
-                        'count': PlayerCountsCubit.get(context).count,
-                      },
-                    );
+                    context.pushNamed(RoutesNames.newPlayerNidScreen);
                   },
                 ),
               ),

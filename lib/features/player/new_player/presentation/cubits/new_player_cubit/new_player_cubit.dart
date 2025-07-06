@@ -10,20 +10,13 @@ import '../../../data/model/new_player_model.dart';
 part 'new_player_state.dart';
 
 class NewPlayerCubit extends Cubit<NewPlayerState> {
-  NewPlayerCubit(
-    BuildContext context, {
-    this.nid,
-    this.player,
-    required this.count,
-  }) : super(NewPlayerInitial()) {
+  NewPlayerCubit(BuildContext context, {this.nid, this.player})
+    : super(NewPlayerInitial()) {
     init(context);
   }
   static NewPlayerCubit get(context) => BlocProvider.of(context);
   final NewPlayerModel? player;
   final String? nid;
-  final int count;
-
-  late String? national;
 
   var formKey = GlobalKey<FormState>();
   var id = TextEditingController();
@@ -33,8 +26,9 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
   var academy = TextEditingController();
   var birth = TextEditingController();
   var enroll = TextEditingController();
+  String? position;
+  String? nationality;
 
-  /// [nationality, position, ]
   init(BuildContext context) {
     id = TextEditingController(
       text:
@@ -42,8 +36,7 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
           GenerateId.generateDocumentId(
             context: context,
             table: BackendPoint.players,
-            format: 'yyMMdd',
-            count: count + 1,
+            format: 'yyMMddHHmmss',
           ),
     );
     academy = TextEditingController(text: AppUserCubit.get(context).academyId);

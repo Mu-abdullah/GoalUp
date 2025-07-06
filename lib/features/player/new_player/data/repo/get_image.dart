@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../../../../core/services/supabase/backend_points.dart';
 
 final supabase = Supabase.instance.client;
 // class ImageService {
@@ -95,11 +98,7 @@ class ImageService {
     }
   }
 
-  Future<String?> uploadPhotoFromAndroid({
-    required File? image,
-    required String category,
-    required String section,
-  }) async {
+  Future<String?> uploadPhotoFromAndroid({required File? image}) async {
     try {
       if (image == null) {
         return null;
@@ -108,12 +107,14 @@ class ImageService {
       final file = File(image.path);
 
       final path =
-          'reve/$category/$section/${DateTime.now().millisecondsSinceEpoch}.jpg';
+          'GoulUp/players/${DateTime.now().millisecondsSinceEpoch}.jpg';
 
-      await supabase.storage.from('images').upload(path, file);
+      await supabase.storage.from(BackendPoint.imageBucket).upload(path, file);
 
-      final urlResponse = supabase.storage.from('images').getPublicUrl(path);
-
+      final urlResponse = supabase.storage
+          .from(BackendPoint.imageBucket)
+          .getPublicUrl(path);
+      debugPrint("URL:=============> $urlResponse");
       return urlResponse;
     } catch (e) {
       return null;

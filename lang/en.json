@@ -26,6 +26,9 @@
     "remeberMe": "Remeber me",
     "next": "Next",
     "previous": "Previous",
+    "imageRequired": "Image is required",
+    "countryAndPositionRequired": "Country and position are required",
+    "playerCreatedSuccessfully": "Player created successfully",
 
 
     "####AuthScreen":"",

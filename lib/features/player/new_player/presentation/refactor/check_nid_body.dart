@@ -50,7 +50,6 @@ class CheckNidBody extends StatelessWidget {
               RoutesNames.newPlayer,
               arguments: {
                 'nid': CheckUserNidCubit.get(context).nidController.text,
-                'count': CheckUserNidCubit.get(context).count,
               },
             );
           }

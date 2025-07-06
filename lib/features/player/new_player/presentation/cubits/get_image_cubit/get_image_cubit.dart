@@ -15,9 +15,10 @@ class GetImageCubit extends Cubit<GetImageState> {
   ImageService imageService = ImageService();
 
   File? image;
-  Uint8List? pickedBytes;
-
   final ImagePicker picker = ImagePicker();
+  String? imagePath;
+  String? imageUrl;
+  Uint8List? pickedBytes;
 
   Future<void> pickImage() async {
     emit(GetImageLoading());
@@ -30,6 +31,35 @@ class GetImageCubit extends Cubit<GetImageState> {
       emit(GetImageLoaded());
     } catch (e) {
       emit(GetImageError(e.toString()));
+    }
+  }
+
+  Future<String?> uploadPhoto() async {
+    emit(UploadImageLoading());
+
+    if (image == null) {
+      emit(UploadImageFailed(error: "No image selected"));
+      return null;
+    }
+
+    try {
+      final uploadTask = await imageService.uploadPhotoFromAndroid(
+        image: image,
+      );
+
+      if (uploadTask != null) {
+        imageUrl = uploadTask;
+        emit(UploadImageSuccess());
+        debugPrint('uploaded image: $imageUrl');
+        return imageUrl;
+      } else {
+        emit(UploadImageFailed(error: "Failed to upload image"));
+        return null;
+      }
+    } catch (e) {
+      debugPrint('Error uploading image: $e');
+      emit(UploadImageFailed(error: e.toString()));
+      return null;
     }
   }
 }

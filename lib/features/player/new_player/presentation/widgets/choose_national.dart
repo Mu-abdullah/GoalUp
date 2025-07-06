@@ -33,7 +33,8 @@ class ChooseNational extends StatelessWidget {
                           "${country.flag} ${country.name}",
                   onChanged: (v) {
                     if (v != null) {
-                      cubit.national = v.name!;
+                      cubit.nationality = v.name!;
+                      debugPrint('nationality ${cubit.nationality}');
                     }
                   },
                   hint: LangKeys.country,
@@ -57,7 +58,8 @@ class ChooseNational extends StatelessWidget {
                   getDisplayText: (PositionModel country) => country.code!,
                   onChanged: (v) {
                     if (v != null) {
-                      cubit.national = v.name!;
+                      cubit.position = v.code!;
+                      debugPrint('position ${cubit.position}');
                     }
                   },
                   hint: LangKeys.position,

@@ -17,3 +17,12 @@ final class GetImageError extends GetImageState {
 }
 
 final class GetImageLoading extends GetImageState {}
+
+final class UploadImageLoading extends GetImageState {}
+
+final class UploadImageSuccess extends GetImageState {}
+
+final class UploadImageFailed extends GetImageState {
+  final String error;
+  const UploadImageFailed({required this.error});
+}

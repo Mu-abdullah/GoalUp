@@ -13,7 +13,7 @@ class ArtisticPerformance extends StatelessWidget {
     return SingleChildScrollView(
       padding: AppPadding.symmetricPadding(),
       child: AdminSections(
-        title: LangKeys.artisticPerformance,
+        title: LangKeys.technicalPerformance,
         icon: HugeIcons.strokeRoundedUserAccount,
         child: Column(spacing: 16, children: [
            

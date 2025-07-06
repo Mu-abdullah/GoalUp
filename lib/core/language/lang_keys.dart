@@ -27,6 +27,9 @@ class LangKeys {
   static const String unKnown = 'unKnown';
   static const String next = 'next';
   static const String previous = 'previous';
+  static const String imageRequired = 'imageRequired';
+  static const String countryAndPositionRequired = 'countryAndPositionRequired';
+  static const String playerCreatedSuccessfully = 'playerCreatedSuccessfully';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
@@ -86,12 +89,13 @@ class LangKeys {
   static const String logout = 'logout';
   static const String login = 'login';
   static const String footballAcademy = 'footballAcademy';
-  static const String artisticPerformance = 'artisticPerformance';
-  static const String physicalPerformance = 'physicalPerformance';
-  static const String regulatoryRules = 'regulatoryRules';
-  static const String personalityTraits = 'personalityTraits';
+  static const String technicalPerformance = 'Technical Performance';
+  static const String physicalPerformance = 'Physical Performance';
+  static const String disciplineRules = 'Discipline Rules';
+  static const String personalityTraits = 'Personal Traits';
 
   // players rules
+
   static const String dribbling = 'dribbling';
   static const String shooting = 'shooting';
   static const String movement = 'movement';

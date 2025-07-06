@@ -40,6 +40,7 @@ class PlayerWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              CustomIconButton(),
               CustomIconButton(
                 iconColor: AppColors.black,
                 backgroundColor: AppColors.white,
@@ -65,7 +66,6 @@ class PlayerWidget extends StatelessWidget {
                   );
                 },
               ),
-              CustomIconButton(),
             ],
           ),
         ),

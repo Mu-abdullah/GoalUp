@@ -10,11 +10,10 @@ part 'check_user_nid_state.dart';
 
 class CheckUserNidCubit extends Cubit<CheckUserNidState> {
   CheckNidRepo repo;
-  CheckUserNidCubit(this.repo, {required this.count})
-    : super(CheckUserNidInitial());
+  CheckUserNidCubit(this.repo) : super(CheckUserNidInitial());
 
   static CheckUserNidCubit get(context) => BlocProvider.of(context);
-  final int count;
+
   var formKey = GlobalKey<FormState>();
   var nidController = TextEditingController();
 
