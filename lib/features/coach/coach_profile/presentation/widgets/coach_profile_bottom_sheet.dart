@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:sport/core/style/statics/app_statics.dart';
-import 'package:sport/core/style/widgets/app_button.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/custom_widgets/custom_snack_bar.dart';
+import '../../../../../core/style/statics/app_statics.dart';
+import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/coach_model.dart';
 
@@ -38,12 +39,24 @@ class CoachProfileBottomSheet extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: AppButton(onTap: () {}, text: LangKeys.done),
+                child: AppButton(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  text: LangKeys.done,
+                ),
               ),
               Expanded(
                 flex: 1,
                 child: AppButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+                    CustomSnackbar.showTopSnackBar(
+                      context,
+                      message: LangKeys.comingSoon,
+                      isError: true,
+                    );
+                  },
                   text: LangKeys.edit,
                   icon: HugeIcons.strokeRoundedEdit01,
                   backGroungColor: AppColors.yellow,

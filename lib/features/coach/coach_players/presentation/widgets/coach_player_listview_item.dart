@@ -5,6 +5,7 @@ import '../../../../../core/functions/time_refactor.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/statics/image_test.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/get_players_model.dart';
 
@@ -18,6 +19,7 @@ class CoachPlayerItem extends StatelessWidget {
     final lang = context.langCode;
     final age = TimeRefactor.calculateAge(player!.birthday!);
     bool translate = player == null;
+    var image = player?.image == null || player?.image == '';
     return InkWell(
       onTap: () {
         context.pushNamed(
@@ -53,7 +55,10 @@ class CoachPlayerItem extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColors.black, width: 2),
                 image: DecorationImage(
-                  image: NetworkImage(player?.image ?? ''),
+                  image:
+                      image
+                          ? AssetImage(AppImages.player)
+                          : NetworkImage(player?.image ?? ''),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -73,6 +78,7 @@ class CoachPlayerItem extends StatelessWidget {
                   AppText(
                     player?.position ?? 'Position not specified',
                     translate: translate,
+                    isBold: true,
                   ),
                   Row(
                     spacing: 8,
