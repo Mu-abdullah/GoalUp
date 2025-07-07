@@ -94,6 +94,9 @@
     "physicalPerformance":"Physical Performance",
     "regulatoryRules":"Regulatory Rules",
     "personalityTraits":"Personality Traits",
+    "noQualifications":"No Qualifications Registered",
+    "coachDetails":"Coach Details",
+    "edit":"Edit",
 
     "#######PlayerRules":"",
     "dribbling": "Dribbling",

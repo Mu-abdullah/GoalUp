@@ -94,6 +94,9 @@
     "physicalPerformance":"الاداء البدني",
     "disciplineRules":"القواعد التنظيمية",
     "personalityTraits":"السمات الشخصية",
+    "noQualifications":"لا يوجد شهادات مسجلة",
+    "coachDetails":"تفاصيل المدرب",
+    "edit":"تعديل",
 
     "#######PlayerRules":"",
     "dribbling": "المراوغة",

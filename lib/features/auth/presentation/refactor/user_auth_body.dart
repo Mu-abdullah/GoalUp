@@ -53,7 +53,7 @@ class UserAuthScreenBody extends StatelessWidget {
       builder: (context, state) {
         var cubit = UserAuthCubit.get(context);
         return Padding(
-          padding: AppPadding.symmetricPadding(),
+          padding: AppPadding.symmetric(),
           child: Stack(
             children: [
               Positioned.fill(

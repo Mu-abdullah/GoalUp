@@ -27,7 +27,7 @@ class AdminHomeCustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isArabic = context.langCode == 'ar';
     return Padding(
-      padding: AppPadding.symmetricPadding(
+      padding: AppPadding.symmetric(
         horizontal: horizontal ?? 0,
         vertical: vertical ?? 0,
       ),

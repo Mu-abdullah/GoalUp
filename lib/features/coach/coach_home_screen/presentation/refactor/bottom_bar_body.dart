@@ -40,7 +40,7 @@ class BottomBarBody extends StatelessWidget {
     return [
       titles.length - 1 == index
           ? Padding(
-            padding: AppPadding.symmetricPadding(vertical: 0),
+            padding: AppPadding.symmetric(vertical: 0),
             child: AppButton(
               onTap: () {
                 AppUserCubit.get(context).logout().then((onValue) {

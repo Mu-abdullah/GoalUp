@@ -18,7 +18,7 @@ class CheckNidBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.symmetricPadding(),
+      padding: AppPadding.symmetric(),
       child: BlocConsumer<CheckUserNidCubit, CheckUserNidState>(
         listener: (context, state) {
           if (state is CheckUserNidError) {

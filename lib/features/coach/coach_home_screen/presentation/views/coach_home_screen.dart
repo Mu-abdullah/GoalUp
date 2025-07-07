@@ -9,6 +9,8 @@ import '../../../coach_home_page/presentation/cubits/home_academy_cubit/home_aca
 import '../../../coach_home_page/presentation/cubits/player_counts_cubit/player_counts_cubit.dart';
 import '../../../coach_players/data/repo/get_coach_players.dart';
 import '../../../coach_players/presentation/cubits/coach_players_cubit/coach_players_cubit.dart';
+import '../../../coach_profile/data/repo/get_coach_info_repo.dart';
+import '../../../coach_profile/presentation/cubits/coach_profile_cubit/coach_profile_cubit.dart';
 import '../cubits/bottom_bar_cubit/bottom_bar_cubit.dart';
 import '../refactor/bottom_bar_body.dart';
 
@@ -20,6 +22,7 @@ class CoachHomeScreen extends StatelessWidget {
     var players = locator<GetCoachPlayers>();
     var academy = locator<HomeAcademyRepo>();
     var count = locator<PlayerCountRepo>();
+    final coach = locator<GetCoachInfoRepo>();
     var academyId = context.read<AppUserCubit>().academyId;
     return MultiBlocProvider(
       providers: [
@@ -34,8 +37,10 @@ class CoachHomeScreen extends StatelessWidget {
                     ..getCoachPlayers(academyId: academyId),
         ),
         BlocProvider(
-          create: (context) => PlayerCountsCubit(count)..getPlayerCount(academyId),
+          create:
+              (context) => PlayerCountsCubit(count)..getPlayerCount(academyId),
         ),
+        BlocProvider(create: (context) => CoachProfileCubit(coach)..getInfo()),
       ],
       child: BottomBarBody(),
     );

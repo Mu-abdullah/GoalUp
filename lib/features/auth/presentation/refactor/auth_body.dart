@@ -10,7 +10,6 @@ import '../cubits/auth_cubit/auth_cubit.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/auth_form.dart';
 import '../widgets/login_button.dart';
-import '../widgets/remmber_me.dart';
 
 class AuthBody extends StatelessWidget {
   const AuthBody({super.key});
@@ -43,13 +42,13 @@ class AuthBody extends StatelessWidget {
         var cubit = AuthCubit.get(context);
         return SingleChildScrollView(
           child: Padding(
-            padding: AppPadding.symmetricPadding(),
+            padding: AppPadding.symmetric(),
             child: Column(
               spacing: 10,
               children: [
                 AppLogo(),
                 AuthForm(cubit: cubit),
-                RemmberMe(),
+                // RemmberMe(),
                 LoginButton(cubit: cubit),
               ],
             ),

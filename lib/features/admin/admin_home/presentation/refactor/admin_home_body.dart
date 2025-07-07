@@ -11,7 +11,7 @@ class AdminHomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.symmetricPadding(),
+      padding: AppPadding.symmetric(),
       child: SingleChildScrollView(
         child: Column(
           spacing: 16,

@@ -8,6 +8,7 @@ class CoachEntity {
   final String? uid;
   final String? email;
   final String? academy;
+  final String? image;
 
   CoachEntity({
     this.id,
@@ -19,5 +20,6 @@ class CoachEntity {
     this.uid,
     this.email,
     this.academy,
+    this.image,
   });
 }

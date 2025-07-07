@@ -22,7 +22,7 @@ class PageIndicatorButtons extends StatelessWidget {
         final currentPage = state.currentPage;
 
         return Padding(
-          padding: AppPadding.symmetricPadding(vertical: 16),
+          padding: AppPadding.symmetric(vertical: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -87,7 +87,7 @@ class _NavigationButton extends StatelessWidget {
           onTap: isEnabled ? onPressed : null,
           borderRadius: BorderRadius.circular(30),
           child: Container(
-            padding: AppPadding.symmetricPadding(vertical: 10),
+            padding: AppPadding.symmetric(vertical: 10),
             constraints: const BoxConstraints(minWidth: 120),
             child: Row(
               spacing: 12,

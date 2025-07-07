@@ -11,7 +11,7 @@ class ArtisticPerformance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: AppPadding.symmetricPadding(),
+      padding: AppPadding.symmetric(),
       child: AdminSections(
         title: LangKeys.technicalPerformance,
         icon: HugeIcons.strokeRoundedUserAccount,

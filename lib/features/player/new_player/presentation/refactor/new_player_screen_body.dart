@@ -16,7 +16,7 @@ class NewPlayerScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: AppPadding.symmetricPadding(),
+        padding: AppPadding.symmetric(),
         child: Column(
           spacing: 10,
           children: [

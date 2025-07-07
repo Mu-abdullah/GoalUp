@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../error/custom_errors.dart';
 import '../supabase/supabase_init.dart';
@@ -10,7 +11,7 @@ class GraphQLService {
   final String _graphqlUrl = '${SupabaseInit.supabaseUrl}/graphql/v1';
   final String _apiKey = SupabaseInit.supabaseAnonKey;
   String? userToken;
-
+ final supabase = Supabase.instance.client;
   /// Constructs a [GraphQLService] instance with an optional [Dio] client for dependency injection.
   GraphQLService({Dio? dio}) : _dio = dio ?? Dio() {
     _configureDio();

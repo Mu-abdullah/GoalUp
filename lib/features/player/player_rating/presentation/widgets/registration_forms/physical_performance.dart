@@ -11,7 +11,7 @@ class PhysicalPerformance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: AppPadding.symmetricPadding(),
+      padding: AppPadding.symmetric(),
       child: AdminSections(
         title: LangKeys.physicalPerformance,
         icon: HugeIcons.strokeRoundedWork,

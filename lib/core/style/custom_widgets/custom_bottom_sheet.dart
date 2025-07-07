@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sport/core/style/statics/app_statics.dart';
 
 import '../color/app_color.dart';
+import '../statics/app_statics.dart';
 import '../widgets/app_space.dart';
 import '../widgets/app_text.dart';
 import 'custom_icon_button.dart';
@@ -29,7 +29,7 @@ Future<dynamic> customShowBottomSheet({
         children: [
           AppSpace(),
           Padding(
-            padding: AppPadding.symmetricPadding(),
+            padding: AppPadding.symmetric(),
             child: Row(
               children: [
                 Expanded(
@@ -38,14 +38,15 @@ Future<dynamic> customShowBottomSheet({
                     translate: translated,
                     isBold: true,
                     isTitle: true,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
                 ),
                 CustomIconButton(),
               ],
             ),
           ),
-          widget,
+          // FIX: Add Flexible to prevent infinite height
+          Flexible(child: widget),
         ],
       );
     },

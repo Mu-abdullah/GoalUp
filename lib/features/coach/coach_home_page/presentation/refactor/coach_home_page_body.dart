@@ -16,7 +16,7 @@ class CoachHomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.symmetricPadding(),
+      padding: AppPadding.symmetric(),
       child: Column(
         spacing: 20,
         children: [

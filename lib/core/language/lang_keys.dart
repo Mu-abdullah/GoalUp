@@ -95,6 +95,9 @@ class LangKeys {
   static const String physicalPerformance = 'Physical Performance';
   static const String disciplineRules = 'Discipline Rules';
   static const String personalityTraits = 'Personal Traits';
+  static const String noQualifications = 'noQualifications';
+  static const String coachDetails = 'coachDetails';
+  static const String edit = 'edit';
 
   // players rules
 

@@ -13,10 +13,7 @@ class AppPadding {
   static EdgeInsets mediumPadding = const EdgeInsets.all(16);
   static EdgeInsets largePadding = const EdgeInsets.all(24);
 
-  static EdgeInsets symmetricPadding({
-    double horizontal = 16,
-    double vertical = 8,
-  }) {
+  static EdgeInsets symmetric({double horizontal = 16, double vertical = 8}) {
     return EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical);
   }
 

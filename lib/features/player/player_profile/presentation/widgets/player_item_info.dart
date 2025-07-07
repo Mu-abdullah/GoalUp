@@ -21,7 +21,7 @@ class PlayerItemInfo extends StatelessWidget {
     return InkWell(
       onTap: onTab,
       child: Padding(
-        padding: AppPadding.symmetricPadding(horizontal: 0, vertical: 6),
+        padding: AppPadding.symmetric(horizontal: 0, vertical: 6),
         child: Row(
           children: [
             Container(

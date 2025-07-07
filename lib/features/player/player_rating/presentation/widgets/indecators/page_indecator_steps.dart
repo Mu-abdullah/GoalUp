@@ -20,7 +20,7 @@ class PageIndicatorSteps extends StatelessWidget {
         final currentPage = state.currentPage;
 
         return Padding(
-          padding: AppPadding.symmetricPadding(vertical: 16),
+          padding: AppPadding.symmetric(vertical: 16),
           child: _AnimatedStepProgress(
             currentStep: currentPage,
             totalSteps: totalPages,

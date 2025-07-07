@@ -53,26 +53,28 @@ class ListLoadingShimmer extends StatelessWidget {
 }
 
 class LoadingShimmer extends StatelessWidget {
-  const LoadingShimmer({super.key});
-
+  const LoadingShimmer({super.key, this.height = 50});
+  final double? height;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 50,
-      decoration: BoxDecoration(
-        color: AppColors.scaffoldBackground,
-        borderRadius: AppBorderRadius.smallRadius,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
+    return CustomShimmer(
+      child: Container(
+        width: double.infinity,
+        height: height,
+        decoration: BoxDecoration(
+          color: AppColors.scaffoldBackground,
+          borderRadius: AppBorderRadius.smallRadius,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withValues(alpha: 0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: CustomShimmer(child: AppText(LangKeys.loading)),
       ),
-      child: CustomShimmer(child: AppText(LangKeys.loading)),
     );
   }
 }
