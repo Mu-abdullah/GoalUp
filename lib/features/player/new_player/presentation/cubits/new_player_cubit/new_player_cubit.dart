@@ -1,3 +1,4 @@
+import 'package:arabic_roman_conv/arabic_roman_conv.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,12 +21,23 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
 
   var formKey = GlobalKey<FormState>();
   var id = TextEditingController();
-  var name = TextEditingController();
+  var firstName = TextEditingController();
+  var lastName = TextEditingController();
   var phone = TextEditingController();
   var nidController = TextEditingController();
   var academy = TextEditingController();
   var birth = TextEditingController();
   var enroll = TextEditingController();
+
+   String? romanFirstName;
+   String? romanLastName;
+  final ArabicRomanConv romanizationService = ArabicRomanConv();
+  String? romanized(String text) {
+    var tex = romanizationService.romanized(text);
+    emit(Romanized());
+    return tex;
+  }
+
   String? position;
   String? nationality;
 
@@ -34,13 +46,12 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
       text:
           player?.id ??
           GenerateId.generateDocumentId(
-            context: context,
             table: BackendPoint.players,
             format: 'yyMMddHHmmss',
           ),
     );
     academy = TextEditingController(text: AppUserCubit.get(context).academyId);
-    name = TextEditingController(text: player?.name ?? '');
+    firstName = TextEditingController(text: player?.name ?? '');
     phone = TextEditingController(text: player?.contactNumber ?? '');
     nidController = TextEditingController(text: player?.nid ?? nid);
     birth = TextEditingController(text: player?.birthday ?? '');

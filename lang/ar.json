@@ -1,5 +1,5 @@
 {   
-    "appName": "",
+    "appName": "GoulUp",
     "loading": "جار التحميل...",
     "menu": "القائمة",
     "noInternet": "لا يوجد اتصال بالإنترنت",
@@ -63,6 +63,8 @@
     "####PlayerScreen":"",
     "id":"الرقم التعريفي",
     "name":"الاسم",
+    "firstName":"الاسم الاول",
+    "lastName":"الاسم الاخير",
     "matches":"المباريات",
     "height":"الطول",
     "goal":"هدف",

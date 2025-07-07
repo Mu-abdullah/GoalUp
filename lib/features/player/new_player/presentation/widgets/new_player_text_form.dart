@@ -14,6 +14,7 @@ class NewPlayerTextForm extends StatelessWidget {
     this.type = TextInputType.text,
     this.enabled = true,
     this.onTap,
+    this.onChange,
   });
 
   final TextEditingController controller;
@@ -23,6 +24,7 @@ class NewPlayerTextForm extends StatelessWidget {
   final TextInputType type;
   final bool enabled;
   final void Function()? onTap;
+  final VoidCallback? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +46,8 @@ class NewPlayerTextForm extends StatelessWidget {
           },
 
       onChange: (p) {
+        onChange?.call();
         if (type == TextInputType.number) {
-          // digets only
           controller.text = controller.text.replaceAll(RegExp(r'[^0-9]'), '');
         }
       },

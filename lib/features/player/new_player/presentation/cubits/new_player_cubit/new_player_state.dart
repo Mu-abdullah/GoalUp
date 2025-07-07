@@ -8,3 +8,4 @@ sealed class NewPlayerState extends Equatable {
 }
 
 final class NewPlayerInitial extends NewPlayerState {}
+final class Romanized extends NewPlayerState {}

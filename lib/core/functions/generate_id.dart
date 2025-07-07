@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class GenerateId {
   static String generateDocumentId({
-    required BuildContext context,
     String? academy,
     String? userId,
     String? table,

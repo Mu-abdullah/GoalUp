@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sport/features/auth/presentation/refactor/check_role.dart';
 
 import '../../features/admin/admin_academies/presentation/views/admin_academies.dart';
 import '../../features/admin/admin_home/presentation/views/admin_home.dart';
+import '../../features/auth/presentation/refactor/check_role.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/user_auth_screen.dart';
 import '../../features/coach/coach_home_screen/presentation/views/coach_home_screen.dart';
@@ -77,6 +77,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(
         page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
       );
+
     case RoutesNames.playerRatingScreen:
       return BaseRoute(page: PlayerRatingScreen());
 

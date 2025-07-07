@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  arabic_roman_conv:
+    dependency: "direct main"
+    description:
+      name: arabic_roman_conv
+      sha256: "62fcd2d25510600ec85d0ba03d72caaf39decc83935c5646823deafad5faa188"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0-dev.2"
   archive:
     dependency: transitive
     description:

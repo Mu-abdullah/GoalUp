@@ -1,5 +1,5 @@
 {   
-    "appName": "",
+    "appName": "GoulUp",
     "loading": "Loading...",
     "menu": "Menu",
     "noInternet": "No internet connection",
@@ -63,6 +63,8 @@
     "####PlayerScreen":"",
     "id":"ID",
     "name":"Name",
+    "firstName":"First Name",
+    "lastName":"Last Name",
     "matches":"Matches",
     "height":"Height",
     "goal":"Goal",

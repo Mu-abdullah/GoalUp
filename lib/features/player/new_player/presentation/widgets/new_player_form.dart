@@ -32,11 +32,34 @@ class NewPlayerForm extends StatelessWidget {
             type: TextInputType.text,
             enabled: false,
           ),
-          NewPlayerTextForm(
-            controller: cubit.name,
-            lable: LangKeys.name,
-            icon: HugeIcons.strokeRoundedUser,
-            type: TextInputType.name,
+          Row(
+            spacing: 10,
+            children: [
+              Expanded(
+                child: NewPlayerTextForm(
+                  controller: cubit.firstName,
+                  lable: LangKeys.firstName,
+                  icon: HugeIcons.strokeRoundedUser,
+                  type: TextInputType.name,
+                  onChange: () {
+                    cubit.romanFirstName = cubit.romanized(
+                      cubit.firstName.text,
+                    );
+                  },
+                ),
+              ),
+              Expanded(
+                child: NewPlayerTextForm(
+                  controller: cubit.lastName,
+                  lable: LangKeys.lastName,
+                  icon: HugeIcons.strokeRoundedUser,
+                  type: TextInputType.name,
+                  onChange: () {
+                    cubit.romanLastName = cubit.romanized(cubit.lastName.text);
+                  },
+                ),
+              ),
+            ],
           ),
           NewPlayerTextForm(
             controller: cubit.nidController,

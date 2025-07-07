@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  arabic_roman_conv: ^0.1.0-dev.2
   bloc: ^9.0.0
   bottom_picker: ^3.2.1
   connectivity_plus: ^6.1.4
