@@ -49,11 +49,12 @@ class _SearchTextFieldBottomSheetState
               icon: HugeIcons.strokeRoundedSearch02,
               onTap: () {
                 if (formKey.currentState!.validate()) {
+                  Navigator.pop(context);
+                  FocusManager.instance.primaryFocus?.unfocus();
                   context.pushNamed(
                     RoutesNames.searchScreen,
                     arguments: {'search': controller.text},
                   );
-                  Navigator.pop(context);
                 }
               },
             ),
