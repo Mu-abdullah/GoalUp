@@ -14,6 +14,7 @@ class LangKeys {
   static const String passwordError = 'passwordError';
   static const String passwordShort = 'passwordError';
   static const String cancel = 'cancel';
+  static const String clear = 'clear';
   static const String english = 'english';
   static const String arabic = 'arabic';
   static const String noDataFound = 'noDataFound';

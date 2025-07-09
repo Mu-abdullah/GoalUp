@@ -12,6 +12,7 @@
     "passwordError": "Password is not valid",
     "passwordShort": "Password is too short",
     "cancel":   "Cancel",
+    "clear":   "Clear",
     "english":  "English",
     "arabic": "Arabic",
     "somethingWentWrong":"Something went wrong",

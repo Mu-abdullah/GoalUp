@@ -7,10 +7,11 @@ import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/app_text_form_felid.dart';
+import '../../../coach_players/data/model/get_players_model.dart';
 
 class SearchTextFieldBottomSheet extends StatefulWidget {
-  const SearchTextFieldBottomSheet({super.key});
-
+  const SearchTextFieldBottomSheet({super.key, required this.players});
+  final List<GetPlayersModel> players;
   @override
   State<SearchTextFieldBottomSheet> createState() =>
       _SearchTextFieldBottomSheetState();
@@ -53,7 +54,10 @@ class _SearchTextFieldBottomSheetState
                   FocusManager.instance.primaryFocus?.unfocus();
                   context.pushNamed(
                     RoutesNames.searchScreen,
-                    arguments: {'search': controller.text},
+                    arguments: {
+                      'search': controller.text,
+                      'players': widget.players,
+                    },
                   );
                 }
               },
