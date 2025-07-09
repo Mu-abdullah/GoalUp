@@ -9,6 +9,8 @@ class CoachPlayersListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       itemCount: players.length,
       itemBuilder: (context, index) {
         final player = players[index];
