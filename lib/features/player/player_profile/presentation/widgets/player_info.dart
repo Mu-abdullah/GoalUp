@@ -6,7 +6,7 @@ import '../../../../../core/functions/time_refactor.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../data/model/player_profile_model.dart';
-import 'palyer_age.dart';
+import 'player_age.dart';
 import 'player_item_info.dart';
 
 class PlayerInfo extends StatelessWidget {

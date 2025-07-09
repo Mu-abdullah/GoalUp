@@ -5,7 +5,7 @@ import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/loading_shimmer_widget.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
-import '../widgets/palyer_widget.dart';
+import '../widgets/player_widget.dart';
 
 class PlayerProfileBody extends StatelessWidget {
   const PlayerProfileBody({super.key});
