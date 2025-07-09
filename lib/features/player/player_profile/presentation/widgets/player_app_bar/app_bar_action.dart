@@ -63,26 +63,31 @@ class AppBarActions extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          context.pop();
+                          Navigator.of(context).pop(); // Close dialog only
                         },
                         child: AppText(LangKeys.cancel),
                       ),
                       TextButton(
                         onPressed: () {
                           cubit.cancelRegistration(player.academyplayerId);
+                          Navigator.of(context).pop(); // Close dialog only
                         },
-                        child: AppText(LangKeys.done, color: AppColors.red),
+                        child: AppText(LangKeys.done, color: AppColors.grey),
                       ),
                     ],
                   );
-                  context.pop();
-                  // show the dialog
+
+                  // Show dialog and handle bottom sheet closure AFTER dialog dismisses
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) {
-                      return alert;
-                    },
-                  );
+                    builder: (BuildContext context) => alert,
+                  ).then((_) {
+                    // This runs when dialog closes
+                    if (!context.mounted) return;
+                    {
+                      Navigator.of(context).pop();
+                    } // Close bottom sheet
+                  });
                 },
                 color: AppColors.red,
               );
