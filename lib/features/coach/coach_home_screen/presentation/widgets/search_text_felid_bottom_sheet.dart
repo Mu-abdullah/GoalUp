@@ -3,6 +3,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/app_text_form_felid.dart';
@@ -48,6 +49,10 @@ class _SearchTextFieldBottomSheetState
               icon: HugeIcons.strokeRoundedSearch02,
               onTap: () {
                 if (formKey.currentState!.validate()) {
+                  context.pushNamed(
+                    RoutesNames.searchScreen,
+                    arguments: {'search': controller.text},
+                  );
                   Navigator.pop(context);
                 }
               },

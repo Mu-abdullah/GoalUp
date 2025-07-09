@@ -6,6 +6,7 @@ import '../../features/auth/presentation/refactor/check_role.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/user_auth_screen.dart';
 import '../../features/coach/coach_home_screen/presentation/views/coach_home_screen.dart';
+import '../../features/coach/search_screen/presentation/views/search_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_nid_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
@@ -62,6 +63,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       // Assuming you have a coach home screen, you can add it here.
       return BaseRoute(
         page: CoachHomeScreen(isAdmin: args?['isAdmin'] ?? false),
+      ); // Placeholder for coach home
+    case RoutesNames.searchScreen:
+      // Assuming you have a coach home screen, you can add it here.
+      return BaseRoute(
+        page: SearchScreen(search: args?['search'] ?? ''),
       ); // Placeholder for coach home
     /////////
     /////////[player feature routes]////////////

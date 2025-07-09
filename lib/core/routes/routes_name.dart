@@ -14,6 +14,7 @@ class RoutesNames {
 
   /// [Coach screens]
   static const String coachHome = 'coachHome';
+  static const String searchScreen = 'searchScreen';
 
   /// [Player screens]
   static const String playerProfile = 'playerProfile';
