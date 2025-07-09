@@ -4,6 +4,7 @@
     "menu": "Menu",
     "noInternet": "No internet connection",
     "tryToConnect":  "Try to connect",
+    "internetRestored":  "Internet restored",
     "changeLanguage":   "Change language",
     "chooseDate":   "Choose date",
     "requiredValue":   "Required",
@@ -81,6 +82,8 @@
     "register":"Register",
     "information":"Information",
     "ratings":"Ratings",
+    "cancelRegistration":"Cancel Registration",
+    "areYouSure":"Are you sure?",
 
     "####CoachScreen":"",
     "home":"Home",

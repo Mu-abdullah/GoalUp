@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
+import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
@@ -18,17 +19,21 @@ class BottomBarBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BottomBarCubit, BottomBarState>(
-      builder: (context, bottomBarState) {
-        final cubit = BottomBarCubit.get(context);
-        return Scaffold(
-          appBar: CustomAppBar(
-            title: cubit.titles[cubit.currentIndex],
-            isBack: cubit.isAdmin,
-            actions: actions(context, cubit.titles, cubit.currentIndex),
-          ),
-          bottomNavigationBar: CustomBottomNavigationBar(cubit: cubit),
-          body: SafeArea(child: cubit.pages()[cubit.currentIndex]),
+    return BlocBuilder<AppUserCubit, AppUserState>(
+      builder: (context, state) {
+        return BlocBuilder<BottomBarCubit, BottomBarState>(
+          builder: (context, bottomBarState) {
+            final cubit = BottomBarCubit.get(context);
+            return Scaffold(
+              appBar: CustomAppBar(
+                title: cubit.titles[cubit.currentIndex],
+                isBack: cubit.isAdmin,
+                actions: actions(context, cubit.titles, cubit.currentIndex),
+              ),
+              bottomNavigationBar: CustomBottomNavigationBar(cubit: cubit),
+              body: SafeArea(child: cubit.pages()[cubit.currentIndex]),
+            );
+          },
         );
       },
     );

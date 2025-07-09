@@ -2,6 +2,7 @@ import '../../../../../core/entities/player_entity.dart';
 
 class PlayerProfileModel extends PlayerEntity {
   final String? academy;
+  final String? academyplayerId;
   const PlayerProfileModel({
     super.id,
     super.name,
@@ -13,6 +14,7 @@ class PlayerProfileModel extends PlayerEntity {
     super.image,
     super.position,
     this.academy,
+    this.academyplayerId,
   });
   factory PlayerProfileModel.fromJson(Map<String, dynamic> json) {
     return PlayerProfileModel(
@@ -30,7 +32,8 @@ class PlayerProfileModel extends PlayerEntity {
   }
   factory PlayerProfileModel.fromAnotherTableJson(Map<String, dynamic> json) {
     return PlayerProfileModel(
-      id: json['id'],
+      academyplayerId: json['id'],
+      id: json['players']['id'],
       name: json['players']['name'],
       birthday: json['players']['birthday'],
       contactNumber: json['players']['contact_number'],

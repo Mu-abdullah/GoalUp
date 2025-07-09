@@ -5,7 +5,8 @@ class LangKeys {
   static const String loading = 'loading';
   static const String menu = 'menu';
   static const String noInternet = 'noInternet';
-  static const String tryToConnect = 'noInternet';
+  static const String tryToConnect = 'tryToConnect';
+  static const String internetRestored = 'internetRestored';
   static const String changeLanguage = 'changeLanguage';
   static const String chooseDate = 'chooseDate';
   static const String requiredValue = 'requiredValue';
@@ -82,6 +83,8 @@ class LangKeys {
   static const String register = 'register';
   static const String information = 'information';
   static const String ratings = 'ratings';
+  static const String cancelRegistration = 'cancelRegistration';
+  static const String areYouSure = 'areYouSure';
 
   /// [COACH Profile]
   static const String home = 'home';

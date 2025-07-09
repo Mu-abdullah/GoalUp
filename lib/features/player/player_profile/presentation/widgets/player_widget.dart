@@ -4,7 +4,7 @@ import '../../data/model/player_profile_model.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import 'player_image.dart';
 import 'player_info.dart';
-import 'player_profile_app_bar.dart';
+import 'player_app_bar/player_profile_app_bar.dart';
 
 class PlayerWidget extends StatelessWidget {
   const PlayerWidget({super.key, required this.player, required this.cubit});
@@ -26,9 +26,13 @@ class PlayerWidget extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: 30, left: 20, right: 20, child: PlayerProfileAppBar()),
+        Positioned(
+          top: 30,
+          left: 20,
+          right: 20,
+          child: PlayerProfileAppBar(player: player),
+        ),
       ],
     );
   }
 }
-

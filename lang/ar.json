@@ -4,6 +4,7 @@
     "menu": "القائمة",
     "noInternet": "لا يوجد اتصال بالإنترنت",
     "tryToConnect": "حاول الاتصال",
+    "internetRestored": "تم استعادة الاتصال",
     "changeLanguage": "تغيير اللغة",
     "chooseDate": "اختر التاريخ",
     "requiredValue": "مطلوب",
@@ -30,6 +31,7 @@
     "imageRequired": "الصورة مطلوبة",
     "countryAndPositionRequired": "الدولة والمركز مطلوب",
     "playerCreatedSuccessfully": "تم انشاء اللاعب بنجاح",
+    
 
     "####AuthScreen":"",
     "email":"البريد الإلكتروني",
@@ -81,6 +83,8 @@
     "register":"تسجيل",
     "information":"المعلومات",
     "ratings":"التقييمات",
+    "cancelRegistration":"الغاء التسجيل",
+    "areYouSure": "هل انت متاكد؟",
 
     "####CoachScreen":"",
     "home":"الرئيسية",

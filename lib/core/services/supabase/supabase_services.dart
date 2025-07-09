@@ -24,6 +24,6 @@ abstract class SupabaseServices {
 
   Future<void> delete({
     required String table,
-    required int id,
+    required String id,
   });
 }

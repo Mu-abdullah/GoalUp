@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sport/core/language/lang_keys.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/app/language/language_cubit/language_cubit.dart';
 import '../core/app/no_internet/connection_controller/connection_controller.dart';
-import '../core/app/no_internet/no_internet_screen.dart';
 import '../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../core/functions/custom_scroll.dart';
 import '../core/language/app_localizations_setup.dart';
 import '../core/routes/routes.dart';
 import '../core/routes/routes_name.dart';
 import '../core/style/color/app_color.dart';
+import '../core/style/widgets/app_text.dart';
 
 class MainSport extends StatefulWidget {
   const MainSport({super.key});
+
   static void updateAppLocale(BuildContext context, Locale locale) {
     final state = context.findAncestorStateOfType<_MainSportState>();
     state?._updateLocale(locale);
@@ -25,7 +27,12 @@ class MainSport extends StatefulWidget {
 
 class _MainSportState extends State<MainSport> {
   Locale _locale = const Locale('ar');
-
+  bool? _wasConnected;
+  bool _isConnected = true;
+  final GlobalKey<ScaffoldMessengerState> _scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>?
+  _snackBarController;
   void _updateLocale(Locale locale) {
     if (_locale != locale && mounted) {
       setState(() {
@@ -38,33 +45,62 @@ class _MainSportState extends State<MainSport> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder<bool>(
       valueListenable: ConnectionController.instance.isConnected,
-      builder:
-          (_, isConnected, __) =>
-              isConnected ? _buildConnectedApp() : _buildDisconnectedApp(),
+      builder: (_, isConnected, __) {
+        if (_wasConnected != null && _wasConnected != isConnected) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!isConnected) {
+              _snackBarController = _scaffoldMessengerKey.currentState
+                  ?.showSnackBar(
+                    SnackBar(
+                      content: AppText(
+                        LangKeys.noInternet,
+                        isTitle: true,
+                        isBold: true,
+                      ),
+                      backgroundColor: Colors.red,
+                      duration: const Duration(days: 1),
+                    ),
+                  );
+            } else {
+              _snackBarController?.close();
+              _scaffoldMessengerKey.currentState?.showSnackBar(
+                SnackBar(
+                  content: AppText(
+                    LangKeys.internetRestored,
+                    isTitle: true,
+                    isBold: true,
+                  ),
+                  backgroundColor: Colors.green,
+                  duration: const Duration(seconds: 3),
+                ),
+              );
+            }
+          });
+        }
+
+        _wasConnected = isConnected;
+        _isConnected = isConnected;
+
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => LanguageCubit()),
+            BlocProvider(create: (_) => AppUserCubit()),
+          ],
+          child: IgnorePointer(
+            ignoring: !isConnected,
+            child: BlocBuilder<LanguageCubit, String>(
+              builder: (context, language) {
+                _syncLocaleWithLanguage(language);
+                return _buildMaterialApp(
+                  initialRoute: _getConnectedInitialRoute(),
+                  builder: _appBuilder,
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
-  }
-
-  Widget _buildConnectedApp() {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => LanguageCubit()),
-
-        BlocProvider(create: (_) => AppUserCubit()),
-      ],
-      child: BlocBuilder<LanguageCubit, String>(
-        builder: (context, language) {
-          _syncLocaleWithLanguage(language);
-          return _buildMaterialApp(
-            initialRoute: RoutesNames.auth,
-            builder: _appBuilder,
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildDisconnectedApp() {
-    return _buildMaterialApp(home: const NoInternetScreen());
   }
 
   MaterialApp _buildMaterialApp({
@@ -73,7 +109,7 @@ class _MainSportState extends State<MainSport> {
     Widget Function(BuildContext, Widget?)? builder,
   }) {
     return MaterialApp(
-      scaffoldMessengerKey: GlobalKey<ScaffoldMessengerState>(),
+      scaffoldMessengerKey: _scaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
       locale: _locale,
       scrollBehavior: MyCustomScrollBehavior(),
@@ -83,7 +119,7 @@ class _MainSportState extends State<MainSport> {
       theme: _appTheme,
       builder: builder ?? (_, child) => child!,
       onGenerateRoute: onGenerateRoute,
-      initialRoute: _getConnectedInitialRoute(),
+      initialRoute: initialRoute,
       home: home,
     );
   }
@@ -91,12 +127,23 @@ class _MainSportState extends State<MainSport> {
   Widget _appBuilder(BuildContext context, Widget? child) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        body: Builder(
-          builder: (context) {
-            ConnectionController.instance.init();
-            return child!;
-          },
+      child: ColorFiltered(
+        colorFilter:
+            _isConnected
+                ? const ColorFilter.mode(Colors.transparent, BlendMode.multiply)
+                : const ColorFilter.matrix(<double>[
+                  0.2126, 0.7152, 0.0722, 0, 0, // R
+                  0.2126, 0.7152, 0.0722, 0, 0, // G
+                  0.2126, 0.7152, 0.0722, 0, 0, // B
+                  0, 0, 0, 1, 0, // A
+                ]),
+        child: Scaffold(
+          body: Builder(
+            builder: (context) {
+              ConnectionController.instance.init();
+              return child!;
+            },
+          ),
         ),
       ),
     );
@@ -110,19 +157,12 @@ class _MainSportState extends State<MainSport> {
   }
 
   String _getConnectedInitialRoute() {
-    // var isLoggedIn = SharedPref.getData(key: PrefKeys.remember);
-
-    var isUser = Supabase.instance.client.auth.currentUser != null;
-    if (isUser == true) {
-      return RoutesNames.coachHome;
-    } else {
-      return RoutesNames.userAuthScreen;
-    }
+    final user = Supabase.instance.client.auth.currentUser;
+    return user != null ? RoutesNames.coachHome : RoutesNames.userAuthScreen;
   }
 
   ThemeData get _appTheme => ThemeData(
     primarySwatch: Colors.blue,
-
     scaffoldBackgroundColor: AppColors.white,
   );
 }

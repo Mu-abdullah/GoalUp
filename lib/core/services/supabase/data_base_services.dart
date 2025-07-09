@@ -40,7 +40,7 @@ abstract class DataService {
     required Map<String, dynamic> data,
   });
 
-  Future<void> delete({required String table, required int id});
+  Future<void> delete({required String table, required String id});
 }
 
 class SupabaseDataService implements DataService {
@@ -158,7 +158,7 @@ class SupabaseDataService implements DataService {
   }
 
   @override
-  Future<void> delete({required String table, required int id}) {
+  Future<void> delete({required String table, required String id}) {
     try {
       var response = supabaseService.delete(table: table, id: id);
       return response;

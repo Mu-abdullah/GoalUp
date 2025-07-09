@@ -90,7 +90,7 @@ class SupabaseServicesRepo implements SupabaseServices {
   }
 
   @override
-  Future<void> delete({required String table, required int id}) async {
+  Future<void> delete({required String table, required String id}) async {
     try {
       var response = await supabase.from(table).delete().eq('id', id);
       return response;

@@ -52,7 +52,7 @@ class GetPlayerProfileRepo {
           'player': {'eq': playerId},
         },
         fields: [
-          '${BackendPoint.players}{id name birthday contact_number nid enrollment_date nationality{flag} image position{code}}',
+          'id ${BackendPoint.players}{id name birthday contact_number nid enrollment_date nationality{flag} image position{code}}',
           '${BackendPoint.academy}{name}',
         ],
         fromJson: (PlayerProfileModel.fromAnotherTableJson),

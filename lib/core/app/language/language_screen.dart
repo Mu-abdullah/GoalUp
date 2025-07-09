@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
-import '../../../main_sport/main_sport.dart';
 import '../../language/lang_keys.dart';
 import '../../style/color/app_color.dart';
 import '../../style/statics/app_statics.dart';
@@ -146,8 +145,8 @@ class LanguageScreen extends StatelessWidget {
 
   void _handleLanguageChange(BuildContext context, String languageCode) {
     context.read<LanguageCubit>().changeLanguage(languageCode);
-    final newLocale = Locale(languageCode);
-    MainSport.updateAppLocale(context, newLocale);
+    // final newLocale = Locale(languageCode);
+    // MainSport.updateAppLocale(context, newLocale);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

@@ -10,6 +10,7 @@ import '../../../features/coach/coach_home_page/data/repo/player_count_repo.dart
 import '../../../features/coach/coach_players/data/repo/get_coach_players.dart';
 import '../../../features/player/new_player/data/repo/check_nid_repo.dart';
 import '../../../features/player/new_player/data/repo/get_positions.dart';
+import '../../../features/player/player_profile/data/repo/cancer_registration_repo.dart';
 import '../../../features/player/player_profile/data/repo/get_player_profile_repo.dart';
 import '../graph_ql/graph_ql.dart';
 import '../supabase/auth_service/auth_services.dart';
@@ -36,6 +37,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetPositions(locator()));
   locator.registerLazySingleton(() => CreatePlayerRepo(locator()));
   locator.registerLazySingleton(() => GetCoachInfoRepo(locator()));
+  locator.registerLazySingleton(() => CancerRegistrationRepo(locator()));
 }
 
 void _registerServices() {
