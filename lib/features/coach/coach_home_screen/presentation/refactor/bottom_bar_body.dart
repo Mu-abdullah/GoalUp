@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/language/lang_keys.dart';
+import 'package:sport/core/style/custom_widgets/custom_bottom_sheet.dart';
 
+import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
+import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/statics/image_test.dart';
 import '../cubits/bottom_bar_cubit/bottom_bar_cubit.dart';
 import '../widgets/bottom_bar/custom_bottom_navigation_bar.dart';
+import '../widgets/search_text_felid_bottom_sheet.dart';
 
 class BottomBarBody extends StatelessWidget {
   const BottomBarBody({super.key});
@@ -30,6 +36,26 @@ class BottomBarBody extends StatelessWidget {
   }
 
   List<Widget> actions(BuildContext context, List<String> titles, int index) {
-    return [Image.asset(AppImages.logo)];
+    return [
+      index == 2
+          ? Padding(
+            padding: AppPadding.symmetric(vertical: 0),
+            child: IconButton(
+              onPressed: () {
+                customShowBottomSheet(
+                  context: context,
+                  widget: SearchTextFieldBottomSheet(),
+                  title: LangKeys.search,
+                  isScrollControlled: false,
+                );
+              },
+              icon: Icon(
+                HugeIcons.strokeRoundedSearch02,
+                color: AppColors.black,
+              ),
+            ),
+          )
+          : Image.asset(AppImages.logo),
+    ];
   }
 }

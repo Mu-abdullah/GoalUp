@@ -98,6 +98,7 @@ class LangKeys {
   static const String noQualifications = 'noQualifications';
   static const String coachDetails = 'coachDetails';
   static const String edit = 'edit';
+  static const String search = 'search';
 
   // players rules
 
