@@ -31,7 +31,11 @@ class CustomPlayerProfile extends StatelessWidget
                 title: LangKeys.menu,
                 isScrollControlled: false,
                 useSafeArea: false,
-                widget: AppBarActions(player: player.player!),
+                widget: AppBarActions(
+                  player: player.player!,
+                  onRefresh:
+                      () => player.getPlayerProfileById(player.player!.id!),
+                ),
               );
             },
           ),

@@ -36,9 +36,4 @@ class PlayerProfileCubit extends Cubit<PlayerProfileState> {
       },
     );
   }
-
-  void toggleStats() {
-    showStats = !showStats;
-    emit(ShowStats(showStats));
-  }
 }

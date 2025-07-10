@@ -28,12 +28,3 @@ final class PlayerProfileError extends PlayerProfileState {
   @override
   List<Object> get props => [error];
 }
-
-final class ShowStats extends PlayerProfileState {
-  final bool showStats;
-
-  const ShowStats(this.showStats);
-
-  @override
-  List<Object> get props => [showStats];
-}

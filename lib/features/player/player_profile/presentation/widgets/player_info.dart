@@ -30,6 +30,7 @@ class PlayerInfo extends StatelessWidget {
           PlayerAge(birthday: player.birthday!),
           buildRowTexts(
             rightText: player.academy ?? LangKeys.notRegistered,
+            translate: player.academy == null,
             leftText: player.position!,
             isTitle: false,
           ),
@@ -43,7 +44,11 @@ class PlayerInfo extends StatelessWidget {
     String? rightText,
     double? fontSize,
     bool isTitle = true,
+    bool leftTitle = true,
+    bool leftBold = true,
     bool isBold = true,
+    bool translate = false,
+    bool leftTranslate = false,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +56,7 @@ class PlayerInfo extends StatelessWidget {
         Expanded(
           child: AppText(
             rightText ?? "",
-            translate: false,
+            translate: translate,
             isTitle: isTitle,
             isBold: isBold,
             fontSize: fontSize,
@@ -60,9 +65,9 @@ class PlayerInfo extends StatelessWidget {
         ),
         AppText(
           leftText ?? "",
-          translate: false,
-          isTitle: isTitle,
-          isBold: isBold,
+          translate: leftTranslate,
+          isTitle: leftTitle,
+          isBold: leftBold,
         ),
       ],
     );

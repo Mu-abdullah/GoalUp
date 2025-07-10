@@ -9,14 +9,23 @@ sealed class CancelRegistrationState extends Equatable {
 
 final class CancelRegistrationInitial extends CancelRegistrationState {}
 
-final class CancelRegistrationLoading extends CancelRegistrationState {}
+class CancelRegistrationLoading extends CancelRegistrationState {}
 
-final class CancelRegistrationDone extends CancelRegistrationState {
-  final bool isDone;
-  const CancelRegistrationDone(this.isDone);
-}
+class CancelRegistrationDone extends CancelRegistrationState {}
 
-final class CancelRegistrationError extends CancelRegistrationState {
+class CancelRegistrationError extends CancelRegistrationState {
   final String error;
   const CancelRegistrationError(this.error);
+}
+
+class AddToHistoryLoading extends CancelRegistrationState {}
+
+class AddToHistoryDone extends CancelRegistrationState {
+  final AddHistoryModel history;
+  const AddToHistoryDone(this.history);
+}
+
+class AddToHistoryError extends CancelRegistrationState {
+  final String error;
+  const AddToHistoryError(this.error);
 }

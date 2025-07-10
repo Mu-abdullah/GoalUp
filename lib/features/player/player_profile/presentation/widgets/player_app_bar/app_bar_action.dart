@@ -7,17 +7,22 @@ import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/get_it/git_it.dart';
 import '../../../data/model/player_profile_model.dart';
-import '../../../data/repo/cancer_registration_repo.dart';
+import '../../../data/repo/cancel_registration_repo.dart';
 import '../../cubits/cancel_registration_cubit/cancel_registration_cubit.dart';
 import 'app_bar_action_button.dart';
 import 'unregistration_button.dart';
 
 class AppBarActions extends StatelessWidget {
-  const AppBarActions({super.key, required this.player});
+  const AppBarActions({
+    super.key,
+    required this.player,
+    required this.onRefresh,
+  });
   final PlayerProfileModel player;
+  final VoidCallback onRefresh;
   @override
   Widget build(BuildContext context) {
-    final lac = locator<CancerRegistrationRepo>();
+    final lac = locator<CancelRegistrationRepo>();
     return BlocProvider(
       create: (context) => CancelRegistrationCubit(lac),
       child: ListView(
@@ -40,7 +45,7 @@ class AppBarActions extends StatelessWidget {
           ),
 
           ///[LAST BUTTON IN BOTTOM SHEET]
-          CancelRegistrationButton(player: player),
+          CancelRegistrationButton(player: player, refresh: onRefresh),
         ],
       ),
     );

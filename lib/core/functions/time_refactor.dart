@@ -6,7 +6,7 @@ class TimeRefactor {
   TimeRefactor(this.timestamp);
 
   // Convert timestamp to date format: yyyy/MM/dd
-  String toDateString({String format = 'yyyy/MM/dd', String lang = 'en'}) {
+  String toDateString({String format = 'yyyy-MM-dd', String lang = 'en'}) {
     try {
       final dateTime = DateTime.parse(timestamp);
       return DateFormat(format, lang).format(dateTime);
@@ -28,13 +28,13 @@ class TimeRefactor {
   String timeString({String lang = 'en'}) {
     try {
       final dateTime = DateTime.parse(timestamp);
-      return DateFormat('hh:mm a\nyyyy/MM/dd', lang).format(dateTime);
+      return DateFormat('hh:mm a\nyyyy-MM-dd', lang).format(dateTime);
     } catch (e) {
       return 'Invalid timestamp';
     }
   }
 
-  static String currentDateString({String format = 'yyyy/MM/dd'}) {
+  static String currentDateString({String format = 'yyyy-MM-dd'}) {
     final now = DateTime.now();
     return DateFormat(format).format(now);
   }
