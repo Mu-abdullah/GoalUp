@@ -23,7 +23,6 @@ class CheckNidRepo {
           'nid',
           'birthday',
           'created_at',
-          'enrollment_date',
           'position{code}',
           'nationality{name}',
           'image',
