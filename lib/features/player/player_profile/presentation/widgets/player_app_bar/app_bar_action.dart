@@ -70,7 +70,7 @@ class AppBarActions extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           cubit.cancelRegistration(player.academyplayerId);
-                          Navigator.of(context).pop(); // Close dialog only
+                          Navigator.of(context).pop();
                         },
                         child: AppText(LangKeys.done, color: AppColors.grey),
                       ),

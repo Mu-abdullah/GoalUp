@@ -1,38 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
-import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
-import '../../../../../../core/style/custom_widgets/custom_icon_button.dart';
-import '../../../data/model/player_profile_model.dart';
+import '../../../../../../core/style/statics/app_statics.dart';
+import '../../cubits/player_profile_cubit/player_profile_cubit.dart';
 import 'app_bar_action.dart';
 
-class PlayerProfileAppBar extends StatelessWidget {
-  const PlayerProfileAppBar({super.key, required this.player});
-  final PlayerProfileModel player;
+class CustomPlayerProfile extends StatelessWidget
+    implements PreferredSizeWidget {
+  const CustomPlayerProfile({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CustomIconButton(),
-        CustomIconButton(
-          iconColor: AppColors.black,
-          backgroundColor: AppColors.white,
-          icon: HugeIcons.strokeRoundedMenu04,
-          onTap: () {
-            debugPrint(player.id);
-            customShowBottomSheet(
-              context: context,
-              title: LangKeys.menu,
-              isScrollControlled: false,
-              useSafeArea: false,
-              widget: AppBarActions(player: player),
-            );
-          },
+    var player = context.watch<PlayerProfileCubit>();
+    return CustomAppBar(
+      title: player.player?.name ?? LangKeys.loading,
+      translate: player.player == null,
+      
+      actions: [
+        Padding(
+          padding: AppPadding.symmetric(horizontal: 16, vertical: 0),
+          child: InkWell(
+            child: Icon(HugeIcons.strokeRoundedMenu01),
+            onTap: () {
+              debugPrint(player.player!.id);
+              customShowBottomSheet(
+                context: context,
+                title: LangKeys.menu,
+                isScrollControlled: false,
+                useSafeArea: false,
+                widget: AppBarActions(player: player.player!),
+              );
+            },
+          ),
         ),
       ],
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(Statics.appBarHeight);
 }

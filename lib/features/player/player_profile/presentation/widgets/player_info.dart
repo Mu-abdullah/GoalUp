@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
-import 'package:sport/core/extextions/extentions.dart';
 
-import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/statics/app_statics.dart';
+import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/player_profile_model.dart';
 import 'player_age.dart';
-import 'player_item_info.dart';
 
 class PlayerInfo extends StatelessWidget {
   const PlayerInfo({super.key, required this.player});
@@ -15,31 +12,40 @@ class PlayerInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: AppPadding.symmetric(),
+    return SizedBox(
+      height: Statics.defaultSize * 1.5,
+      width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          buildRowTexts(player.name!, player.nationality!),
           PlayerAge(birthday: player.birthday!),
-          PlayerItemInfo(
-            icon: HugeIcons.strokeRoundedShirt01,
-            title: LangKeys.position,
-            value: player.position!,
-          ),
-          PlayerItemInfo(
-            icon: HugeIcons.strokeRoundedCreditCard,
-            title: LangKeys.nid,
-            value: player.nid!,
-          ),
-
-          
-          PlayerItemInfo(
-            icon: HugeIcons.strokeRoundedSmartPhone01,
-            title: LangKeys.phone,
-            value: player.contactNumber!,
-            onTab: () => context.call(phoneNumber: player.contactNumber!),
-          ),
+          buildRowTexts(player.academy!, player.position!, isTitle: false),
         ],
       ),
+    );
+  }
+
+  Widget buildRowTexts(
+    String leftText,
+    String rightText, {
+    bool isTitle = true,
+    bool isBold = true,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
+          child: AppText(
+            leftText,
+            translate: false,
+            isTitle: isTitle,
+            isBold: isBold,
+          ),
+        ),
+        AppText(rightText, translate: false, isTitle: isTitle, isBold: isBold),
+      ],
     );
   }
 }
