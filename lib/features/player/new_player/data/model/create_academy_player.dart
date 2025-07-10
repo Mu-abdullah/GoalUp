@@ -6,6 +6,7 @@ class CreateAcademyPlayer extends AcademyPlayersEntity {
     required super.academy,
     required super.player,
     required super.createdAt,
+    required super.enrollmentDate
   });
 
   factory CreateAcademyPlayer.fromJson(Map<String, dynamic> json) =>
@@ -14,6 +15,7 @@ class CreateAcademyPlayer extends AcademyPlayersEntity {
         academy: json['academy'],
         player: json['player'],
         createdAt: json['created_at'],
+        enrollmentDate: json['enrollment_date'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -21,5 +23,6 @@ class CreateAcademyPlayer extends AcademyPlayersEntity {
     'academy': academy,
     'player': player,
     'created_at': createdAt,
+    'enrollment_date': enrollmentDate
   };
 }

@@ -3,6 +3,7 @@ class AcademyPlayersEntity {
   final String? createdAt;
   final String? academy;
   final String? player;
+  final String? enrollmentDate;
 
-  AcademyPlayersEntity({this.id, this.createdAt, this.academy, this.player});
+  AcademyPlayersEntity({this.enrollmentDate, this.id, this.createdAt, this.academy, this.player});
 }

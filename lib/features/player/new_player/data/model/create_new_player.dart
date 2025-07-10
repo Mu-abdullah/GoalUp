@@ -8,8 +8,7 @@ class CreateNewPlayer extends PlayerEntity {
     required super.nid,
     required super.birthday,
     required super.createdAt,
-    required super.enrollmentDate,
-    required super.position,
+     required super.position,
     required super.nationality,
     required super.image,
   });
@@ -22,8 +21,7 @@ class CreateNewPlayer extends PlayerEntity {
         nid: json['nid'],
         birthday: json['birthday'],
         createdAt: json['created_at'],
-        enrollmentDate: json['enrollment_date'],
-        position: json['position'],
+         position: json['position'],
         nationality: json['nationality'],
         image: json['image'],
       );
@@ -35,7 +33,6 @@ class CreateNewPlayer extends PlayerEntity {
     'nid': nid,
     'birthday': birthday,
     'created_at': DateTime.now().toString(),
-    'enrollment_date': enrollmentDate,
     'position': position,
     'nationality': nationality,
     'image': image,

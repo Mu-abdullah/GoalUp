@@ -52,8 +52,8 @@ class GetPlayerProfileRepo {
           'player': {'eq': playerId},
         },
         fields: [
-          'id ${BackendPoint.players}{id name birthday contact_number nid enrollment_date nationality{flag} image position{code}}',
-          '${BackendPoint.academy}{name}',
+          'id ${BackendPoint.players}{id name birthday contact_number nid nationality{flag} image position{code}}',
+          '${BackendPoint.academy}{name} enrollment_date',
         ],
         fromJson: (PlayerProfileModel.fromAnotherTableJson),
         limit: 1,
@@ -79,7 +79,6 @@ class GetPlayerProfileRepo {
           'birthday',
           'contact_number',
           'nid',
-          'enrollment_date',
           'nationality{flag}',
           'image',
           'position{code}',

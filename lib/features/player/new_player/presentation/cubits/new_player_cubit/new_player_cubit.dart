@@ -55,6 +55,6 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
     phone = TextEditingController(text: player?.contactNumber ?? '');
     nidController = TextEditingController(text: player?.nid ?? nid);
     birth = TextEditingController(text: player?.birthday ?? '');
-    enroll = TextEditingController(text: player?.enrollmentDate ?? '');
+    
   }
 }

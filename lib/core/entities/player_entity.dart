@@ -2,8 +2,7 @@ class PlayerEntity {
   final String? id;
   final String? createdAt;
   final String? birthday;
-  final String? enrollmentDate;
-  final String? name;
+   final String? name;
   final String? contactNumber;
   final String? nid;
   final String? nationality;
@@ -17,8 +16,7 @@ class PlayerEntity {
     this.birthday,
     this.contactNumber,
     this.nid,
-    this.enrollmentDate,
-    this.nationality,
+     this.nationality,
     this.image,
     this.position,
   });

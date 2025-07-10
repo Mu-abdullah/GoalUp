@@ -3,18 +3,20 @@ import '../../../../../core/entities/player_entity.dart';
 class PlayerProfileModel extends PlayerEntity {
   final String? academy;
   final String? academyplayerId;
+  final String? enrollmentDate;
   const PlayerProfileModel({
     super.id,
     super.name,
     super.birthday,
     super.contactNumber,
     super.nid,
-    super.enrollmentDate,
+
     super.nationality,
     super.image,
     super.position,
     this.academy,
     this.academyplayerId,
+    this.enrollmentDate,
   });
   factory PlayerProfileModel.fromJson(Map<String, dynamic> json) {
     return PlayerProfileModel(
@@ -23,7 +25,6 @@ class PlayerProfileModel extends PlayerEntity {
       birthday: json['birthday'],
       contactNumber: json['contact_number'],
       nid: json['nid'],
-      enrollmentDate: json['enrollment_date'],
       nationality: json['nationality']['flag'],
       image: json['image'] ?? '',
       position: json['position']['code'],
@@ -38,7 +39,7 @@ class PlayerProfileModel extends PlayerEntity {
       birthday: json['players']['birthday'],
       contactNumber: json['players']['contact_number'],
       nid: json['players']['nid'],
-      enrollmentDate: json['players']['enrollment_date'],
+      enrollmentDate: json['enrollment_date'],
       nationality: json['players']['nationality']['flag'],
       image: json['players']['image'],
       position: json['players']['position']['code'],
@@ -53,7 +54,6 @@ class PlayerProfileModel extends PlayerEntity {
     'birthday': birthday,
     'contact_number': contactNumber,
     'nid': nid,
-    'enrollment_date': enrollmentDate,
     'nationality': nationality,
     'image': image,
     'position': position,

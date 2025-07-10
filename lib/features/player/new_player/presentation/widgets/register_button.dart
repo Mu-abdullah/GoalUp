@@ -119,7 +119,7 @@ class RegisterButton extends StatelessWidget {
         nid: playerCubit.nid,
         birthday: playerCubit.birth.text,
         createdAt: nowStr,
-        enrollmentDate: playerCubit.enroll.text,
+        
         position: playerCubit.position!,
         nationality: playerCubit.nationality!,
         image: imageUrl,
@@ -133,6 +133,7 @@ class RegisterButton extends StatelessWidget {
         academy: appCubit.academyId,
         player: playerId,
         createdAt: nowStr,
+        enrollmentDate: playerCubit.enroll.text,
       );
 
       final user = CreateUser(

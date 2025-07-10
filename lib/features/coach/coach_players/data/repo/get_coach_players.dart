@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:sport/core/services/supabase/backend_points.dart';
 
 import '../../../../../core/error/custom_errors.dart';
 import '../../../../../core/services/graph_ql/graph_ql.dart';
+import '../../../../../core/services/supabase/backend_points.dart';
 import '../model/get_players_model.dart';
 
 class GetCoachPlayers {
@@ -20,7 +20,7 @@ class GetCoachPlayers {
         },
         fields: [
           '${BackendPoint.players}{id name image position{code} nationality{flag} birthday}',
-          '${BackendPoint.academy}{name}',
+          '${BackendPoint.academy}{name} enrollment_date',
         ],
         fromJson: (GetPlayersModel.fromJson),
       );
