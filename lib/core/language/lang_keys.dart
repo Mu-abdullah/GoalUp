@@ -85,6 +85,7 @@ class LangKeys {
   static const String ratings = 'ratings';
   static const String cancelRegistration = 'cancelRegistration';
   static const String areYouSure = 'areYouSure';
+  static const String callPlayer = 'callPlayer';
 
   /// [COACH Profile]
   static const String home = 'home';

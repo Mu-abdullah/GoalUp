@@ -17,9 +17,8 @@ class CustomPlayerProfile extends StatelessWidget
   Widget build(BuildContext context) {
     var player = context.watch<PlayerProfileCubit>();
     return CustomAppBar(
-      title: player.player?.name ?? LangKeys.loading,
-      translate: player.player == null,
-      
+      title: "",
+      translate: false,
       actions: [
         Padding(
           padding: AppPadding.symmetric(horizontal: 16, vertical: 0),
