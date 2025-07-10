@@ -11,18 +11,16 @@ class PlayerProfile extends StatelessWidget {
     super.key,
     this.isCoach = false,
     required this.playerId,
-    required this.enrollmentDate,
-  });
+   });
   final bool isCoach;
   final String playerId;
-  final String enrollmentDate;
-  @override
+   @override
   Widget build(BuildContext context) {
     var lac = locator<GetPlayerProfileRepo>();
     return BlocProvider(
       create:
           (context) =>
-              PlayerProfileCubit(lac, isCoach: isCoach, enrollmentDate)
+              PlayerProfileCubit(lac, isCoach: isCoach,  )
                 ..getPlayerProfileById(playerId),
       child: Scaffold(body: PlayerProfileBody()),
     );

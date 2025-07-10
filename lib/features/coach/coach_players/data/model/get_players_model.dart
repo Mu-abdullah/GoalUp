@@ -9,7 +9,6 @@ class GetPlayersModel extends AcademyPlayersEntity {
     super.id,
     super.academy,
     super.player,
-    super.enrollmentDate,
     this.position,
     this.birthday,
     this.image,
@@ -23,6 +22,5 @@ class GetPlayersModel extends AcademyPlayersEntity {
         image: json['players']['image'],
         birthday: json['players']['birthday'],
         position: json['players']['position']['code'],
-        enrollmentDate: json['enrollment_date'],
       );
 }

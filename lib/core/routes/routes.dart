@@ -81,7 +81,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         page: PlayerProfile(
           isCoach: args?['isCoach'] ?? false,
           playerId: args?['playerId'] ?? '',
-          enrollmentDate: args?['enrollmentDate'] ?? '',
         ),
       );
     case RoutesNames.newPlayer:

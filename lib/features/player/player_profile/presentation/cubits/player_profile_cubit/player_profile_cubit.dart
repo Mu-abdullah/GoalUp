@@ -9,14 +9,13 @@ part 'player_profile_state.dart';
 
 class PlayerProfileCubit extends Cubit<PlayerProfileState> {
   GetPlayerProfileRepo repo;
-  PlayerProfileCubit(this.repo, this.enrollmentDate, {this.isCoach = false})
+  PlayerProfileCubit(this.repo,  {this.isCoach = false})
     : super(PlayerProfileInitial());
 
   static PlayerProfileCubit get(context) => BlocProvider.of(context);
 
   bool isCoach;
   bool showStats = false;
-  final String enrollmentDate;
   var isAcademyPlayer = false;
 
   Future<void> getPlayerProfileById(String playerId) async {

@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:sport/core/error/custom_errors.dart';
-import 'package:sport/core/services/graph_ql/graph_ql.dart';
-import 'package:sport/core/services/supabase/backend_points.dart';
+ 
 
+import '../../../../../core/error/custom_errors.dart';
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/services/graph_ql/graph_ql.dart';
+import '../../../../../core/services/supabase/backend_points.dart';
 import '../model/new_player_model.dart';
 
 class CheckNidRepo {

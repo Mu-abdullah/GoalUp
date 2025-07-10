@@ -20,7 +20,7 @@ class GetCoachPlayers {
         },
         fields: [
           '${BackendPoint.players}{id name image position{code} nationality{flag} birthday}',
-          '${BackendPoint.academy}{name} enrollment_date',
+          '${BackendPoint.academy}{name}',
         ],
         fromJson: (GetPlayersModel.fromJson),
       );
