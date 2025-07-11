@@ -26,6 +26,9 @@ class AppBarActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final acdemyid = AppUserCubit.get(context).academyId;
     final lac = locator<CancelRegistrationRepo>();
+
+    final isCoach = player.academyId == acdemyid;
+
     return BlocProvider(
       create: (context) => CancelRegistrationCubit(lac),
       child: ListView(
@@ -39,16 +42,18 @@ class AppBarActions extends StatelessWidget {
             },
           ),
 
-          AppBarActionButton(
-            leading: HugeIcons.strokeRoundedCall,
-            title: LangKeys.callPlayer,
-            onTap: () {
-              context.call(phoneNumber: player.contactNumber!);
-            },
-          ),
+          player.academyId == null || player.academyId != acdemyid
+              ? Container()
+              : AppBarActionButton(
+                leading: HugeIcons.strokeRoundedCall,
+                title: LangKeys.callPlayer,
+                onTap: () {
+                  context.call(phoneNumber: player.contactNumber!);
+                },
+              ),
 
           ///[LAST BUTTON IN BOTTOM SHEET]
-          player.academyId == acdemyid
+          isCoach
               ? CancelRegistrationButton(player: player, refresh: onRefresh)
               : player.academyId == null
               ? AppBarActionButton(
