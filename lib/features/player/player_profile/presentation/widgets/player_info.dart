@@ -14,20 +14,14 @@ class PlayerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Statics.defaultSize * 1.6,
+      height: Statics.defaultSize * 1.5,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           buildRowTexts(rightText: player.name!, fontSize: 21),
-          buildRowTexts(
-            rightText: player.nid!,
-            leftText: player.nationality!,
-            isTitle: false,
-            isBold: false,
-          ),
-          PlayerAge(birthday: player.birthday!),
+          PlayerAge(birthday: player.birthday!, flag: player.nationality!),
           buildRowTexts(
             rightText: player.academy ?? LangKeys.notRegistered,
             translate: player.academy == null,
