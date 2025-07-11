@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/custom_widgets/loading_shimmer_widget.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/player_profile_model.dart';
 import '../../cubits/player_history_cubit/player_history_cubit.dart';
@@ -24,9 +24,7 @@ class PlayerHistory extends StatelessWidget {
         } else if (state is PlayerHistoryError) {
           return AppText(state.error);
         } else if (state is PlayerHistoryLoading) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.blueAccent),
-          );
+          return ListLoadingShimmer(itemCount: 5);
         }
         return const SizedBox();
       },

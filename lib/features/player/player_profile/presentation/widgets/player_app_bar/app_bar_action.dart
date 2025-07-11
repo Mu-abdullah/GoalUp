@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
+import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/get_it/git_it.dart';
+import '../../../../../../core/style/color/app_color.dart';
 import '../../../data/model/player_profile_model.dart';
 import '../../../data/repo/cancel_registration_repo.dart';
 import '../../cubits/cancel_registration_cubit/cancel_registration_cubit.dart';
@@ -22,6 +24,7 @@ class AppBarActions extends StatelessWidget {
   final VoidCallback onRefresh;
   @override
   Widget build(BuildContext context) {
+    final acdemyid = AppUserCubit.get(context).academyId;
     final lac = locator<CancelRegistrationRepo>();
     return BlocProvider(
       create: (context) => CancelRegistrationCubit(lac),
@@ -45,7 +48,16 @@ class AppBarActions extends StatelessWidget {
           ),
 
           ///[LAST BUTTON IN BOTTOM SHEET]
-          CancelRegistrationButton(player: player, refresh: onRefresh),
+          player.academyId == acdemyid
+              ? CancelRegistrationButton(player: player, refresh: onRefresh)
+              : player.academyId == null
+              ? AppBarActionButton(
+                leading: HugeIcons.strokeRoundedAddToList,
+                title: LangKeys.register,
+                color: AppColors.green,
+                onTap: () {},
+              )
+              : Container(),
         ],
       ),
     );

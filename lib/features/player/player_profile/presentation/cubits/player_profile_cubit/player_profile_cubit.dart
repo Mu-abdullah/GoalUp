@@ -19,6 +19,7 @@ class PlayerProfileCubit extends Cubit<PlayerProfileState> {
   var isAcademyPlayer = false;
   PlayerProfileModel? player;
   Future<void> getPlayerProfileById(String playerId) async {
+    emit(PlayerProfileLoading());
     final result = await repo.init(playerId);
     result.fold(
       (error) {

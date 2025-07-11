@@ -20,7 +20,10 @@ class PlayerImage extends StatelessWidget {
         height: Statics.defaultSize * 1.5,
         width: Statics.defaultSize * 1.5,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.black, width: 2),
+          border: Border.all(
+            color: player.academyId == null ? AppColors.red : AppColors.green,
+            width: player.academyId == null ? 3 : 2,
+          ),
           image: DecorationImage(
             image:
                 player.image == null
