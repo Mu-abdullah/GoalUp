@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sport/core/language/lang_keys.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/app/language/language_cubit/language_cubit.dart';
@@ -8,6 +7,7 @@ import '../core/app/no_internet/connection_controller/connection_controller.dart
 import '../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../core/functions/custom_scroll.dart';
 import '../core/language/app_localizations_setup.dart';
+import '../core/language/lang_keys.dart';
 import '../core/routes/routes.dart';
 import '../core/routes/routes_name.dart';
 import '../core/style/color/app_color.dart';
@@ -48,20 +48,7 @@ class _MainSportState extends State<MainSport> {
       builder: (_, isConnected, __) {
         if (_wasConnected != null && _wasConnected != isConnected) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (!isConnected) {
-              _snackBarController = _scaffoldMessengerKey.currentState
-                  ?.showSnackBar(
-                    SnackBar(
-                      content: AppText(
-                        LangKeys.noInternet,
-                        isTitle: true,
-                        isBold: true,
-                      ),
-                      backgroundColor: Colors.red,
-                      duration: const Duration(days: 1),
-                    ),
-                  );
-            } else {
+            if (isConnected) {
               _snackBarController?.close();
               _scaffoldMessengerKey.currentState?.showSnackBar(
                 SnackBar(
@@ -69,6 +56,7 @@ class _MainSportState extends State<MainSport> {
                     LangKeys.internetRestored,
                     isTitle: true,
                     isBold: true,
+                    color: AppColors.white,
                   ),
                   backgroundColor: Colors.green,
                   duration: const Duration(seconds: 3),
@@ -127,24 +115,26 @@ class _MainSportState extends State<MainSport> {
   Widget _appBuilder(BuildContext context, Widget? child) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: ColorFiltered(
-        colorFilter:
-            _isConnected
-                ? const ColorFilter.mode(Colors.transparent, BlendMode.multiply)
-                : const ColorFilter.matrix(<double>[
-                  0.2126, 0.7152, 0.0722, 0, 0, // R
-                  0.2126, 0.7152, 0.0722, 0, 0, // G
-                  0.2126, 0.7152, 0.0722, 0, 0, // B
-                  0, 0, 0, 1, 0, // A
-                ]),
-        child: Scaffold(
-          body: Builder(
-            builder: (context) {
-              ConnectionController.instance.init();
-              return child!;
-            },
-          ),
-        ),
+      child: Stack(
+        children: [
+          // Main content
+          child!,
+
+          // Disconnected overlay
+          if (!_isConnected)
+            Positioned.fill(
+              child: Container(
+                color: Colors.black54,
+                child: Center(
+                  child: AppText(
+                    LangKeys.noInternet,
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

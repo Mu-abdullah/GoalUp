@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../core/functions/time_refactor.dart';
@@ -15,16 +16,18 @@ class PlayerAge extends StatelessWidget {
     return Row(
       spacing: 8,
       children: [
-        const Icon(Icons.cake, size: 16, color: Colors.amber),
+        Icon(
+          HugeIcons.strokeRoundedBirthdayCake,
+          size: 16,
+          color: Colors.amber,
+        ),
         AppText(
           TimeRefactor(birthday).toDateString(format: 'dd MMM, y', lang: lang),
-          fontSize: 16,
           color: AppColors.grey,
           translate: false,
         ),
         AppText(
-          '( $age ${lang == 'ar' ? 'سنوات' : 'Years'})',
-          fontSize: 16,
+          '( $age ${lang == 'ar' ? 'سنة' : 'Years'})',
           color: AppColors.black,
           translate: false,
         ),
