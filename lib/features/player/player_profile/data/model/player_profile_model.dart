@@ -2,6 +2,7 @@ import '../../../../../core/entities/player_entity.dart';
 
 class PlayerProfileModel extends PlayerEntity {
   final String? academy;
+  final String? academyLogo;
   final String? academyplayerId;
   final String? enrollmentDate;
   const PlayerProfileModel({
@@ -15,6 +16,7 @@ class PlayerProfileModel extends PlayerEntity {
     super.image,
     super.position,
     this.academy,
+    this.academyLogo,
     this.academyplayerId,
     this.enrollmentDate,
   });
@@ -44,6 +46,7 @@ class PlayerProfileModel extends PlayerEntity {
       image: json['players']['image'],
       position: json['players']['position']['code'],
       academy: json['academy']['name'] ?? '',
+      academyLogo: json['academy']['logo'] ?? '',
     );
   }
 

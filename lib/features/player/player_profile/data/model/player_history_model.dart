@@ -4,7 +4,6 @@ class PlayerHistoryModel extends PlayerHistoryEntity {
   PlayerHistoryModel({
     super.id,
     super.playerId,
-    super.createdAt,
     super.academyLogo,
     super.academyName,
     super.from,
@@ -15,7 +14,6 @@ class PlayerHistoryModel extends PlayerHistoryEntity {
       PlayerHistoryModel(
         id: json['id'],
         playerId: json['player_id'],
-        createdAt: json['created_at'],
         academyLogo: json['academy']['logo'],
         academyName: json['academy']['name'],
         from: json['from'],
@@ -25,7 +23,6 @@ class PlayerHistoryModel extends PlayerHistoryEntity {
   Map<String, dynamic> toJson() => {
     'id': id,
     'player_id': playerId,
-    'created_at': createdAt,
     'academy_logo': academyLogo,
     'academy_name': academyName,
     'from': from,

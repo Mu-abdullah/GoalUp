@@ -26,7 +26,7 @@ class AuthForm extends StatelessWidget {
             prefix: Icon(HugeIcons.strokeRoundedMail02),
             validate: (c) {
               if (c == null || c.isEmpty) {
-                return LangKeys.requiredValue;
+                return context.translate(LangKeys.requiredValue);
               } else if (!RegExp(
                 r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
               ).hasMatch(c)) {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sport/core/extextions/extentions.dart';
-import 'package:sport/core/style/statics/app_statics.dart';
 
 import '../../../../../core/routes/routes_name.dart';
+import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/statics/image_test.dart';
 import '../../data/model/player_profile_model.dart';
 
@@ -19,6 +20,7 @@ class PlayerImage extends StatelessWidget {
         height: Statics.defaultSize * 1.5,
         width: Statics.defaultSize * 1.5,
         decoration: BoxDecoration(
+          border: Border.all(color: AppColors.black, width: 2),
           image: DecorationImage(
             image:
                 player.image == null

@@ -168,12 +168,7 @@ class AcademyNameLogo extends StatelessWidget {
           children: [
             Icon(Icons.error_outline_rounded, color: AppColors.red, size: 32),
             const SizedBox(height: 8),
-            AppText(
-              message,
-              translate: false,
-              color: AppColors.red,
-              fontSize: 14,
-            ),
+            AppText(message, color: AppColors.red, fontSize: 14),
           ],
         ),
       ),

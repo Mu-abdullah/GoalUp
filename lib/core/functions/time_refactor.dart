@@ -59,4 +59,25 @@ class TimeRefactor {
     }
     return age;
   }
+
+  static (int years, int months) calculatePeriod(String from, String to) {
+    final start = DateTime.parse(from);
+    final end = DateTime.parse(to);
+
+    int years = end.year - start.year;
+    int months = end.month - start.month;
+
+    // لو اليوم في "end" أصغر من "start"، نخصم شهر
+    if (end.day < start.day) {
+      months -= 1;
+    }
+
+    // لو عدد الشهور بالسالب، نخصم سنة ونعدّل الشهور
+    if (months < 0) {
+      years -= 1;
+      months += 12;
+    }
+
+    return (years, months);
+  }
 }

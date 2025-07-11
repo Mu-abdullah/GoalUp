@@ -32,7 +32,7 @@ class AcademyPlayerCount extends StatelessWidget {
             );
           } else if (state is PlayerCountsError) {
             return Center(
-              child: AppText(state.error, translate: false, maxLines: 20),
+              child: AppText(state.error, maxLines: 20),
             );
           }
           return HomeCountCard(
