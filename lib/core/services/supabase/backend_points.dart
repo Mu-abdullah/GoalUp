@@ -11,4 +11,5 @@ class BackendPoint {
   static const category = 'category';
   static const criteria = 'criteria';
   static const playerHistory = 'playerHistory';
+  static const evaluations = 'evaluations';
 }

@@ -9,4 +9,6 @@ class CategoryModel extends CategoryEntity {
       name: json['name'] as String,
     );
   }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{'id': id, 'name': name};
 }

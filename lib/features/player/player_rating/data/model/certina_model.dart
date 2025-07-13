@@ -18,4 +18,12 @@ class CriteriaModel extends CriteriaEntity {
       max: json['max'],
     );
   }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+    'id': id,
+    'name': name,
+    'average': average,
+    'max': max,
+    'category': category,
+  };
 }

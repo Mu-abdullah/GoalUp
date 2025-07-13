@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/services/get_it/git_it.dart';
 import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
+import '../../data/repo/save_certina_repo.dart';
 import '../cubits/get_category_cubit/get_category_cubit.dart';
-import '../cubits/player_rating_cubit/player_rating_cubit.dart';
+import '../cubits/save_evaluations_cubit/save_evaluations_cubit.dart';
 import '../refactor/player_rating_screen_body.dart';
 
 class PlayerRatingScreen extends StatelessWidget {
@@ -12,23 +14,15 @@ class PlayerRatingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = locator<SaveEvaluationsRepo>();
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => PlayerRatingCubit()),
-        BlocProvider(create: (context) => GetCategoryCubit()..init()),
+        BlocProvider(create: (context) => GetCategoryCubit()),
+        BlocProvider(create: (context) => SaveEvaluationsCubit(loc)),
       ],
-      child: BlocListener<PlayerRatingCubit, PlayerRatingState>(
-        listener: (context, state) {
-          PlayerRatingCubit.get(context).controller.animateToPage(
-            state.currentPage,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-          );
-        },
-        child: Scaffold(
-          appBar: CustomAppBar(title: LangKeys.ratings),
-          body: const PlayerRatingScreenBody(),
-        ),
+      child: Scaffold(
+        appBar: CustomAppBar(title: LangKeys.ratings),
+        body: const CategoryCriteriaScreen(),
       ),
     );
   }

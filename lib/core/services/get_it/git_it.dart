@@ -13,6 +13,7 @@ import '../../../features/player/new_player/data/repo/get_positions.dart';
 import '../../../features/player/player_profile/data/repo/cancel_registration_repo.dart';
 import '../../../features/player/player_profile/data/repo/get_player_profile_repo.dart';
 import '../../../features/player/player_profile/data/repo/player_history_repo.dart';
+import '../../../features/player/player_rating/data/repo/save_certina_repo.dart';
 import '../graph_ql/graph_ql.dart';
 import '../supabase/auth_service/auth_services.dart';
 import '../supabase/data_base_services.dart';
@@ -40,6 +41,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetCoachInfoRepo(locator()));
   locator.registerLazySingleton(() => CancelRegistrationRepo(locator()));
   locator.registerLazySingleton(() => PlayerHistoryRepo(locator()));
+  locator.registerLazySingleton(() => SaveEvaluationsRepo(locator()));
 }
 
 void _registerServices() {

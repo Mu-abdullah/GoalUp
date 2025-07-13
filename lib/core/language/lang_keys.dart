@@ -27,6 +27,8 @@ class LangKeys {
   static const String male = 'male';
   static const String female = 'female';
   static const String unKnown = 'unKnown';
+  static const String confirm = 'confirm';
+  static const String addSuccessfully = 'addSuccessfully';
   static const String next = 'next';
   static const String previous = 'previous';
   static const String imageRequired = 'imageRequired';
@@ -129,4 +131,6 @@ class LangKeys {
   static const String selfConfidence = 'selfConfidence';
   static const String leadership = 'leadership';
   static const String initiativeAndProactivity = 'initiativeAndProactivity';
+  static const String valueShouldBeLessThan = 'valueShouldBeLessThan';
+  
 }

@@ -1,36 +1,23 @@
 part of 'get_category_cubit.dart';
 
-sealed class GetCategoryState extends Equatable {
-  const GetCategoryState();
+abstract class GetCategoryState {}
 
-  @override
-  List<Object> get props => [];
-}
+class GetCategoryInitial extends GetCategoryState {}
 
-final class GetCategoryInitial extends GetCategoryState {}
+class GetCategoryLoading extends GetCategoryState {}
 
-final class GetCategoryLoading extends GetCategoryState {}
-
-final class GetCategoryLoaded extends GetCategoryState {
+class GetCategoryLoaded extends GetCategoryState {
   final List<CategoryModel> categories;
+  final List<CriteriaModel> criteria;
 
-  const GetCategoryLoaded(this.categories);
+  GetCategoryLoaded({required this.categories, required this.criteria});
+
+  List<CriteriaModel> getCriteriaForCategory(String categoryId) {
+    return criteria.where((c) => c.category == categoryId).toList();
+  }
 }
 
-final class GetCategoryError extends GetCategoryState {
-  final String error;
-
-  const GetCategoryError(this.error);
-}
-
-final class GetCertinaLoading extends GetCategoryState {}
-
-final class GetCertinaLoaded extends GetCategoryState {
-  final List<CriteriaModel> certinaModel;
-  const GetCertinaLoaded(this.certinaModel);
-}
-
-final class GetCertinaError extends GetCategoryState {
+class GetCategoryError extends GetCategoryState {
   final String message;
-  const GetCertinaError(this.message);
+  GetCategoryError(this.message);
 }
