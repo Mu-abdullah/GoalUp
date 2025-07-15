@@ -192,7 +192,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                                   playerScore: int.parse(score),
                                 );
 
-                                cubit.addEvaluations(evaluation.toJson()).then((
+                                await cubit.addEvaluations(evaluation.toJson()).then((
                                   onValue,
                                 ) {
                                   if (context.mounted) {
