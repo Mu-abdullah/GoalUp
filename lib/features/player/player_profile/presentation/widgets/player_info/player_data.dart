@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/model/player_profile_model.dart';
+import '../../../data/model/player_profile_model.dart';
 import 'player_image.dart';
 import 'player_info.dart';
 

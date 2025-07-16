@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
-import '../../../../../core/functions/time_refactor.dart';
-import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/widgets/app_text.dart';
+import '../../../../../../core/functions/time_refactor.dart';
+import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/widgets/app_text.dart';
 
 class PlayerAge extends StatelessWidget {
   const PlayerAge({super.key, required this.birthday, required this.flag});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/language/lang_keys.dart';
-import '../../../../../core/style/statics/app_statics.dart';
-import '../../../../../core/style/widgets/app_text.dart';
-import '../../data/model/player_profile_model.dart';
+import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/style/statics/app_statics.dart';
+import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../data/model/player_profile_model.dart';
 import 'player_age.dart';
 
 class PlayerInfo extends StatelessWidget {

@@ -64,12 +64,9 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
       final criteria = state.getCriteriaForCategory(category.id!);
       _controllersMap[category.id!] = [];
       _formKeysMap[category.id!] = [];
-      // ignore: unused_local_variable
-      for (var criterion in criteria) {
-        final controller = TextEditingController();
-        final formKey = GlobalKey<FormState>();
-        _controllersMap[category.id]!.add(controller);
-        _formKeysMap[category.id]!.add(formKey);
+      for (var _ in criteria) {
+        _controllersMap[category.id!]!.add(TextEditingController());
+        _formKeysMap[category.id!]!.add(GlobalKey<FormState>());
       }
     }
   }
@@ -85,7 +82,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
       },
       builder: (context, state) {
         if (state is GetCategoryInitial || state is GetCategoryLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (state is GetCategoryError) {
@@ -120,7 +117,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
               ),
               BlocBuilder<SaveEvaluationsCubit, SaveEvaluationsState>(
                 builder: (context, s) {
-                  var cubit = SaveEvaluationsCubit.get(context);
+                  final cubit = SaveEvaluationsCubit.get(context);
                   return Padding(
                     padding: AppPadding.symmetric(),
                     child: Row(
@@ -128,11 +125,14 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                       children: [
                         Expanded(
                           child: AppButton(
-                            isDisabled: _currentPage == 0,
+                            isLoading: s is SaveEvaluationsLoading,
+                            isDisabled:
+                                _currentPage == 0 ||
+                                s is SaveEvaluationsLoading,
                             text: LangKeys.previous,
                             onTap: () {
                               _pageController.previousPage(
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                               );
                             },
@@ -140,92 +140,30 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                         ),
                         Expanded(
                           child: AppButton(
+                            isLoading: s is SaveEvaluationsLoading,
                             text:
                                 _currentPage == state.categories.length - 1
                                     ? LangKeys.confirm
                                     : LangKeys.next,
-                            onTap: () async {
-                              // Get current category data
-                              final currentCategory =
-                                  state.categories[_currentPage];
-                              final criteria = state.getCriteriaForCategory(
-                                currentCategory.id!,
-                              );
-                              final controllers =
-                                  _controllersMap[currentCategory.id] ?? [];
-                              final formKeys =
-                                  _formKeysMap[currentCategory.id] ?? [];
-
-                              // Validate current page
-                              bool isValid = true;
-                              for (final formKey in formKeys) {
-                                if (formKey.currentState?.validate() != true) {
-                                  isValid = false;
-                                }
-                              }
-
-                              if (!isValid) {
-                                CustomSnackbar.showTopSnackBar(
-                                  context,
-                                  message: LangKeys.requiredValue,
-                                  isError: true,
-                                );
-                                return;
-                              }
-
-                              // Save current page data
-                              for (int i = 0; i < criteria.length; i++) {
-                                final criterion = criteria[i];
-                                final controller = controllers[i];
-                                final score = controller.text.trim();
-
-                                final evaluation = EvaluationsModel(
-                                  id: GenerateId.generateDocumentId(
-                                    academy: appUser.academyId,
-                                    table: BackendPoint.evaluations,
-                                    count: i, // Use index for uniqueness
-                                  ),
-                                  createdAt: DateTime.now().toIso8601String(),
-                                  criteria: criterion.id,
-                                  player:
-                                      "EG-AL-EGA-001", // Replace with actual player ID
-                                  playerScore: int.parse(score),
-                                );
-
-                                cubit.addEvaluations(evaluation.toJson()).then((
-                                  onValue,
-                                ) {
-                                  if (context.mounted) {
-                                    CustomSnackbar.showTopSnackBar(
-                                      context,
-                                      message: LangKeys.addSuccessfully,
-                                      isError: false,
-                                    );
-                                  }
-                                });
-                              }
-
-                              // Navigate to next page or finish
-                              if (_currentPage < state.categories.length - 1) {
-                                _pageController.nextPage(
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.easeInOut,
-                                );
-                              } else {
-                                // All pages completed
-                                CustomSnackbar.showTopSnackBar(
-                                  context,
-                                  message: LangKeys.addSuccessfully,
-                                  isError: false,
-                                );
-                                // Optionally navigate back
-                                // Navigator.pop(context);
-                              }
-                            },
                             backGroungColor:
                                 _currentPage == state.categories.length - 1
                                     ? AppColors.green
                                     : AppColors.black,
+                            onTap: () async {
+                              if (_currentPage == state.categories.length - 1) {
+                                await _submitEvaluations(
+                                  context: context,
+                                  state: state,
+                                  appUser: appUser,
+                                  cubit: cubit,
+                                );
+                              } else {
+                                _pageController.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut,
+                                );
+                              }
+                            },
                           ),
                         ),
                       ],
@@ -248,27 +186,26 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
     List<TextEditingController> controllers,
   ) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(category.name!, fontSize: 24, fontWeight: FontWeight.bold),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: criteria.length,
             itemBuilder: (context, index) {
               final criterion = criteria[index];
               final formKey = _formKeysMap[category.id]?[index];
               return Padding(
-                padding: EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Form(
                   key: formKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: AppTextFormField(
                     label: criterion.name!,
-
                     controller: controllers[index],
                     type: TextInputType.number,
                     validate: (v) {
@@ -287,5 +224,60 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _submitEvaluations({
+    required BuildContext context,
+    required GetCategoryLoaded state,
+    required AppUserCubit appUser,
+    required SaveEvaluationsCubit cubit,
+  }) async {
+    final List<Map<String, dynamic>> allEvaluations = [];
+
+    try {
+      for (final category in state.categories) {
+        final criteria = state.getCriteriaForCategory(category.id!);
+        final controllers = _controllersMap[category.id] ?? [];
+
+        for (int i = 0; i < criteria.length; i++) {
+          final controller = controllers[i];
+          final criterion = criteria[i];
+          final score =
+              controller.text.trim() == '' ? '0' : controller.text.trim();
+
+          final evaluation = EvaluationsModel(
+            id: GenerateId.generateDocumentId(
+              academy: appUser.academyId,
+              table: BackendPoint.evaluations,
+              count: allEvaluations.length + 1,
+            ),
+            createdAt: DateTime.now().toString(),
+            criteria: criterion.id,
+            player: cubit.playerId,
+            playerScore: int.parse(score),
+          );
+
+          allEvaluations.add(evaluation.toJson());
+        }
+      }
+
+      await cubit.addEvaluations(allEvaluations);
+
+      if (context.mounted) {
+        CustomSnackbar.showTopSnackBar(
+          context,
+          message: LangKeys.addSuccessfully,
+        );
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        CustomSnackbar.showTopSnackBar(
+          context,
+          message: e.toString(),
+          isError: true,
+        );
+      }
+    }
   }
 }

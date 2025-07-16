@@ -11,6 +11,8 @@ final class SaveEvaluationsInitial extends SaveEvaluationsState {}
 
 final class SaveEvaluationsLoading extends SaveEvaluationsState {}
 
+final class SaveEvaluationsDone extends SaveEvaluationsState {}
+
 final class SaveEvaluationsError extends SaveEvaluationsState {
   final String message;
 

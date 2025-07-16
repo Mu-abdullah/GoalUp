@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
-import '../../../../../core/routes/routes_name.dart';
-import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/statics/app_statics.dart';
-import '../../../../../core/style/statics/image_test.dart';
-import '../../data/model/player_profile_model.dart';
+import '../../../../../../core/routes/routes_name.dart';
+import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/statics/app_statics.dart';
+import '../../../../../../core/style/statics/image_test.dart';
+import '../../../data/model/player_profile_model.dart';
 
 class PlayerImage extends StatelessWidget {
   const PlayerImage({super.key, required this.player});

@@ -38,7 +38,10 @@ class AppBarActions extends StatelessWidget {
             leading: HugeIcons.strokeRoundedStar,
             title: LangKeys.ratings,
             onTap: () {
-              context.pushNamed(RoutesNames.playerRatingScreen);
+              context.pushNamed(
+                RoutesNames.playerRatingScreen,
+                arguments: {'playerId': player.id},
+              );
             },
           ),
 

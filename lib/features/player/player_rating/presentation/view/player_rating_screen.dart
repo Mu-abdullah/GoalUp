@@ -10,15 +10,15 @@ import '../cubits/save_evaluations_cubit/save_evaluations_cubit.dart';
 import '../refactor/player_rating_screen_body.dart';
 
 class PlayerRatingScreen extends StatelessWidget {
-  const PlayerRatingScreen({super.key});
-
+  const PlayerRatingScreen({super.key, required this.playerId});
+  final String playerId;
   @override
   Widget build(BuildContext context) {
     final loc = locator<SaveEvaluationsRepo>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GetCategoryCubit()),
-        BlocProvider(create: (context) => SaveEvaluationsCubit(loc)),
+        BlocProvider(create: (context) => SaveEvaluationsCubit(loc, playerId)),
       ],
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.ratings),
