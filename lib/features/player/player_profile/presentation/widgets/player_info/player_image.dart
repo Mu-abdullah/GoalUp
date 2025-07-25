@@ -33,6 +33,25 @@ class PlayerImage extends StatelessWidget {
           ),
           shape: BoxShape.circle,
         ),
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  color:
+                      player.academyId == null
+                          ? AppColors.red
+                          : AppColors.green,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
