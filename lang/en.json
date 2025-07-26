@@ -2,6 +2,7 @@
     "appName": "GoalUp",
     "loading": "Loading...",
     "menu": "Menu",
+    "showAll": "Show All",
     "noInternet": "No internet connection",
     "tryToConnect":  "Try to connect",
     "internetRestored":  "Internet restored",
@@ -33,6 +34,7 @@
     "imageRequired": "Image is required",
     "countryAndPositionRequired": "Country and position are required",
     "playerCreatedSuccessfully": "Player created successfully",
+    "mustBeNumber": "Must be a number",
 
 
     "####AuthScreen":"",
@@ -82,12 +84,15 @@
     "enrollmentDate":"Enrollment Date",
     "notRegistered":"Not registered in any academy",
     "register":"Register",
+    "youcantRegisteredPlayer":"You can't register this player",
     "information":"Information",
     "ratings":"Ratings",
     "cancelRegistration":"Cancel Registration",
     "areYouSure":"Are you sure?",
     "callPlayer":"Call Player",
     "untilNow":"Until Now",
+    "total":"Total",
+    "playerRatingSummary":"Player Rating Summary",
 
     "####CoachScreen":"",
     "home":"Home",

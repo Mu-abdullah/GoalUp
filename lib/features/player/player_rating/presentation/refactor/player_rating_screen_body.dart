@@ -209,12 +209,26 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                     controller: controllers[index],
                     type: TextInputType.number,
                     validate: (v) {
-                      if (v!.isEmpty) {
+                      if (v == null || v.trim().isEmpty) {
                         return context.translate(LangKeys.requiredValue);
-                      } else if (int.parse(criterion.max!) < int.parse(v)) {
+                      } else if (int.tryParse(v.trim()) == null) {
+                        return context.translate(LangKeys.mustBeNumber);
+                      } else if (int.parse(v.trim()) >
+                          int.parse(criterion.max!)) {
                         return "${context.translate(LangKeys.valueShouldBeLessThan)} ${criterion.max}";
                       }
                       return null;
+                    },
+                    onChange: (v) {
+                      final input = v.trim();
+                      if (int.tryParse(input) == null) {
+                        CustomSnackbar.showTopSnackBar(
+                          context,
+                          message: LangKeys.mustBeNumber,
+                          isError: true,
+                        );
+                        controllers[index].clear();
+                      }
                     },
                   ),
                 ),

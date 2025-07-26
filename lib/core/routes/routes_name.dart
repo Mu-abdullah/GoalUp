@@ -21,4 +21,5 @@ class RoutesNames {
   static const String newPlayer = 'newPlayer';
   static const String newPlayerNidScreen = 'newPlayerNidScreen';
   static const String playerRatingScreen = 'playerRatingScreen';
+  static const String groupRatingScreen = 'groupRatingScreen';
 }

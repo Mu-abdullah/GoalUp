@@ -11,6 +11,7 @@ import '../../features/coach/coach_players/presentation/refactor/search_screen.d
 import '../../features/player/new_player/presentation/views/new_player_nid_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
+import '../../features/player/player_profile/presentation/widgets/player_rating_group/group_details_page.dart';
 import '../../features/player/player_rating/presentation/view/player_rating_screen.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
@@ -89,9 +90,19 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
 
     case RoutesNames.playerRatingScreen:
-      return BaseRoute(page: PlayerRatingScreen(
-        playerId: args?['playerId'],
-      ));
+      return BaseRoute(
+        page: PlayerRatingScreen(
+          playerId: args?['playerId'],
+          playerName: args?['playerName'] ?? '',
+        ),
+      );
+    case RoutesNames.groupRatingScreen:
+      return BaseRoute(
+        page: GroupDetailsPage(
+          ratings: args?['ratings'] ?? [],
+          categoryName: args?['categoryName'] ?? '',
+        ),
+      );
 
     case RoutesNames.newPlayerNidScreen:
       return BaseRoute(page: NewPlayerNidScreen());

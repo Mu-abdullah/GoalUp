@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../data/repo/save_certina_repo.dart';
@@ -10,8 +9,13 @@ import '../cubits/save_evaluations_cubit/save_evaluations_cubit.dart';
 import '../refactor/player_rating_screen_body.dart';
 
 class PlayerRatingScreen extends StatelessWidget {
-  const PlayerRatingScreen({super.key, required this.playerId});
+  const PlayerRatingScreen({
+    super.key,
+    required this.playerId,
+    required this.playerName,
+  });
   final String playerId;
+  final String playerName;
   @override
   Widget build(BuildContext context) {
     final loc = locator<SaveEvaluationsRepo>();
@@ -21,7 +25,7 @@ class PlayerRatingScreen extends StatelessWidget {
         BlocProvider(create: (context) => SaveEvaluationsCubit(loc, playerId)),
       ],
       child: Scaffold(
-        appBar: CustomAppBar(title: LangKeys.ratings),
+        appBar: CustomAppBar(title: playerName, translate: false),
         body: const CategoryCriteriaScreen(),
       ),
     );

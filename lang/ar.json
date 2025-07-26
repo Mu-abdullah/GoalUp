@@ -2,6 +2,7 @@
     "appName": "GoalUp",
     "loading": "جار التحميل...",
     "menu": "القائمة",
+    "showAll": "عرض الكل",
     "noInternet": "لا يوجد اتصال بالإنترنت",
     "tryToConnect": "حاول الاتصال",
     "internetRestored": "تم استعادة الاتصال",
@@ -33,6 +34,7 @@
     "imageRequired": "الصورة مطلوبة",
     "countryAndPositionRequired": "الدولة والمركز مطلوب",
     "playerCreatedSuccessfully": "تم انشاء اللاعب بنجاح",
+    "mustBeNumber": "يجب أن يكون رقمًا",
     
 
     "####AuthScreen":"",
@@ -83,12 +85,15 @@
     "enrollmentDate":"تاريخ التسجيل",
     "notRegistered":"غير مسجل باي أكاديمية",
     "register":"تسجيل",
+    "youcantRegisteredPlayer":"لا يمكنك تسجيل هذا اللاعب",
     "information":"المعلومات",
     "ratings":"التقييمات",
     "cancelRegistration":"الغاء التسجيل",
     "areYouSure": "هل انت متاكد؟",
     "callPlayer": "اتصل باللاعب",
     "untilNow": "حتى الان",
+    "total": "المجموع",
+    "playerRatingSummary": "ملخص تقييم اللاعب",
 
     "####CoachScreen":"",
     "home":"الرئيسية",

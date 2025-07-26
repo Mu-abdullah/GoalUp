@@ -4,6 +4,7 @@ class LangKeys {
 
   static const String loading = 'loading';
   static const String menu = 'menu';
+  static const String showAll = 'showAll';
   static const String noInternet = 'noInternet';
   static const String tryToConnect = 'tryToConnect';
   static const String internetRestored = 'internetRestored';
@@ -34,6 +35,7 @@ class LangKeys {
   static const String imageRequired = 'imageRequired';
   static const String countryAndPositionRequired = 'countryAndPositionRequired';
   static const String playerCreatedSuccessfully = 'playerCreatedSuccessfully';
+  static const String mustBeNumber = 'mustBeNumber';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
@@ -83,12 +85,15 @@ class LangKeys {
   static const String enrollmentDate = 'enrollmentDate';
   static const String notRegistered = 'notRegistered';
   static const String register = 'register';
+  static const String youcantRegisteredPlayer = 'youcantRegisteredPlayer';
   static const String information = 'information';
   static const String ratings = 'ratings';
   static const String cancelRegistration = 'cancelRegistration';
   static const String areYouSure = 'areYouSure';
   static const String callPlayer = 'callPlayer';
   static const String untilNow = 'untilNow';
+  static const String total = 'total';
+  static const String playerRatingSummary = 'playerRatingSummary';
 
   /// [COACH Profile]
   static const String home = 'home';
