@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sport/features/player/player_profile/presentation/cubits/get_player_rating_cubit/get_player_rating_cubit.dart';
 
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../data/repo/get_player_profile_repo.dart';
-import '../../data/repo/get_player_rating_repo.dart';
 import '../../data/repo/player_history_repo.dart';
+import '../cubits/get_player_rating_cubit/get_player_rating_cubit.dart';
 import '../cubits/player_history_cubit/player_history_cubit.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import '../refactor/player_profile_body.dart';
@@ -23,7 +22,7 @@ class PlayerProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     var lac = locator<GetPlayerProfileRepo>();
     var history = locator<PlayerHistoryRepo>();
-    var rating = locator<GetPlayerRatingRepo>();
+    // var rating = locator<GetPlayerRatingRepo>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -39,8 +38,7 @@ class PlayerProfile extends StatelessWidget {
         ),
         BlocProvider(
           create:
-              (context) =>
-                  GetPlayerRatingCubit(rating)..getPlayerRating(playerId),
+              (context) => GetPlayerRatingCubit()..getPlayerRating(playerId),
         ),
       ],
       child: Scaffold(appBar: PlayerProfileAppBar(), body: PlayerProfileBody()),

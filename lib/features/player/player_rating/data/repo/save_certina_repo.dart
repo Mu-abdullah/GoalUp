@@ -14,7 +14,7 @@ class SaveEvaluationsRepo {
     required Map<String, dynamic> data,
   }) async {
     return await service.addData<EvaluationsModel>(
-      table: BackendPoint.evaluations,
+      table: BackendPoint.rating,
       data: data,
       fromJson: EvaluationsModel.fromJson,
     );

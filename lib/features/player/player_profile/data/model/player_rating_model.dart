@@ -4,6 +4,7 @@ class PlayerRatingModel extends EvaluationsEntity {
   final String? category;
   final String? categoryId;
   final String? criteriaId;
+  final int? maxScore;
 
   PlayerRatingModel({
     required super.id,
@@ -11,9 +12,11 @@ class PlayerRatingModel extends EvaluationsEntity {
     required super.criteria,
     required super.player,
     required super.playerScore,
+    required super.evaluationDay,
     this.category,
     this.categoryId,
     this.criteriaId,
+    this.maxScore,
   });
 
   factory PlayerRatingModel.fromJson(Map<String, dynamic> json) {
@@ -30,6 +33,12 @@ class PlayerRatingModel extends EvaluationsEntity {
       category: category['name']?.toString(),
       categoryId: category['id']?.toString(),
       criteriaId: criteria['id']?.toString(),
+      evaluationDay: json['evaluation_day']?.toString() ?? '',
+      maxScore:
+          criteria['max'] != null
+              ? int.tryParse(criteria['max'].toString())
+              : null,
     );
   }
+  
 }

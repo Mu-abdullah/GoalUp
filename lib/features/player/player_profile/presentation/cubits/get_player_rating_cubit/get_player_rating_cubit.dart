@@ -9,8 +9,9 @@ import '../../../data/repo/get_player_rating_repo.dart';
 part 'get_player_rating_state.dart';
 
 class GetPlayerRatingCubit extends Cubit<GetPlayerRatingState> {
-  GetPlayerRatingRepo repo;
-  GetPlayerRatingCubit(this.repo) : super(GetPlayerRatingInitial());
+  final GetPlayerRatingRepo repo = GetPlayerRatingRepo();
+
+  GetPlayerRatingCubit() : super(GetPlayerRatingInitial());
 
   Future<void> getPlayerRating(String playerId) async {
     emit(GetPlayerRatingLoading());
@@ -26,9 +27,9 @@ class GetPlayerRatingCubit extends Cubit<GetPlayerRatingState> {
           }
         }
       },
-      (data) {
+      (groupedData) {
         if (!isClosed) {
-          emit(GetPlayerRatingSuccess(data));
+          emit(GetPlayerRatingSuccess(groupedData));
         }
       },
     );

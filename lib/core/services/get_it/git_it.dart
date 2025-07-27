@@ -12,7 +12,6 @@ import '../../../features/player/new_player/data/repo/check_nid_repo.dart';
 import '../../../features/player/new_player/data/repo/get_positions.dart';
 import '../../../features/player/player_profile/data/repo/cancel_registration_repo.dart';
 import '../../../features/player/player_profile/data/repo/get_player_profile_repo.dart';
-import '../../../features/player/player_profile/data/repo/get_player_rating_repo.dart';
 import '../../../features/player/player_profile/data/repo/player_history_repo.dart';
 import '../../../features/player/player_rating/data/repo/save_certina_repo.dart';
 import '../graph_ql/graph_ql.dart';
@@ -43,7 +42,6 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => CancelRegistrationRepo(locator()));
   locator.registerLazySingleton(() => PlayerHistoryRepo(locator()));
   locator.registerLazySingleton(() => SaveEvaluationsRepo(locator()));
-  locator.registerLazySingleton(() => GetPlayerRatingRepo(locator()));
 }
 
 void _registerServices() {

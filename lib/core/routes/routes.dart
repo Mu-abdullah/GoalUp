@@ -103,7 +103,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           categoryName: args?['categoryName'] ?? '',
         ),
       );
-
     case RoutesNames.newPlayerNidScreen:
       return BaseRoute(page: NewPlayerNidScreen());
     default:

@@ -11,7 +11,8 @@ class GraphQLService {
   final String _graphqlUrl = '${SupabaseInit.supabaseUrl}/graphql/v1';
   final String _apiKey = SupabaseInit.supabaseAnonKey;
   String? userToken;
- final supabase = Supabase.instance.client;
+  final supabase = Supabase.instance.client;
+
   /// Constructs a [GraphQLService] instance with an optional [Dio] client for dependency injection.
   GraphQLService({Dio? dio}) : _dio = dio ?? Dio() {
     _configureDio();
@@ -128,7 +129,7 @@ class GraphQLService {
         limit: limit,
         offset: offset,
       );
-
+      debugPrint('Generated GraphQL Query: $query');
       final response = await _dio.post(
         '',
         data: {

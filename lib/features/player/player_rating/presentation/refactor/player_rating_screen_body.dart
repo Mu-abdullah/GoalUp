@@ -228,6 +228,17 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                           isError: true,
                         );
                         controllers[index].clear();
+                      } else {
+                        if (int.parse(input) > int.parse(criterion.max!)) {
+                          CustomSnackbar.showTopSnackBar(
+                            context,
+                            message:
+                                "${context.translate(LangKeys.valueShouldBeLessThan)} ${criterion.max}",
+                            isError: true,
+                            translate: false,
+                          );
+                          controllers[index].clear();
+                        }
                       }
                     },
                   ),
@@ -262,10 +273,16 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
           final evaluation = EvaluationsModel(
             id: GenerateId.generateDocumentId(
               academy: appUser.academyId,
-              table: BackendPoint.evaluations,
+              table: BackendPoint.rating,
               count: allEvaluations.length + 1,
             ),
             createdAt: DateTime.now().toString(),
+            evaluationDay:
+                DateTime.now()
+                    // .subtract(const Duration(days: 30))
+                    .toIso8601String()
+                    .split('T')
+                    .first,
             criteria: criterion.id,
             player: cubit.playerId,
             playerScore: int.parse(score),

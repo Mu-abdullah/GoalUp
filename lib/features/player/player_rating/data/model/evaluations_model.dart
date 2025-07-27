@@ -7,6 +7,7 @@ class EvaluationsModel extends EvaluationsEntity {
     required super.criteria,
     required super.player,
     required super.playerScore,
+    required super.evaluationDay,
   });
 
   factory EvaluationsModel.fromJson(Map<String, dynamic> json) =>
@@ -16,6 +17,7 @@ class EvaluationsModel extends EvaluationsEntity {
         criteria: json['criteria'],
         player: json['player'],
         playerScore: json['player_score'],
+        evaluationDay: json['evaluation_day'] ?? '',
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -24,5 +26,6 @@ class EvaluationsModel extends EvaluationsEntity {
     'criteria': criteria,
     'player': player,
     'player_score': playerScore,
+    'evaluation_day': evaluationDay,
   };
 }
