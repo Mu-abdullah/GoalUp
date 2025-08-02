@@ -28,7 +28,7 @@ class RegisterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageCubit = GetImageCubit.get(context);
     final appCubit = AppUserCubit.get(context);
-    final appName = context.translate(LangKeys.appName);
+    final appName = context.tr(LangKeys.appName);
 
     return BlocConsumer<CreatePlayerCubit, CreatePlayerState>(
       listener: (context, state) {
@@ -119,7 +119,7 @@ class RegisterButton extends StatelessWidget {
         nid: playerCubit.nid,
         birthday: playerCubit.birth.text,
         createdAt: nowStr,
-        
+
         position: playerCubit.position!,
         nationality: playerCubit.nationality!,
         image: imageUrl,

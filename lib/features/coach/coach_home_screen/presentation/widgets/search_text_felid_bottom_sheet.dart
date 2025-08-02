@@ -40,7 +40,7 @@ class _SearchTextFieldBottomSheetState
               hint: LangKeys.name,
               validate: (value) {
                 if (value!.isEmpty) {
-                  return context.translate(LangKeys.requiredValue);
+                  return context.tr(LangKeys.requiredValue);
                 }
                 return null;
               },

@@ -37,7 +37,7 @@ extension ContextExt on BuildContext {
   void pop() => Navigator.of(this).pop();
 
   // translations
-  String translate(String langkey) {
+  String tr(String langkey) {
     return AppLocalizations.of(this)!.translate(langkey).toString();
   }
 

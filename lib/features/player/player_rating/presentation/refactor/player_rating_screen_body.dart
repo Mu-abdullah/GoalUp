@@ -210,12 +210,12 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                     type: TextInputType.number,
                     validate: (v) {
                       if (v == null || v.trim().isEmpty) {
-                        return context.translate(LangKeys.requiredValue);
+                        return context.tr(LangKeys.requiredValue);
                       } else if (int.tryParse(v.trim()) == null) {
-                        return context.translate(LangKeys.mustBeNumber);
+                        return context.tr(LangKeys.mustBeNumber);
                       } else if (int.parse(v.trim()) >
                           int.parse(criterion.max!)) {
-                        return "${context.translate(LangKeys.valueShouldBeLessThan)} ${criterion.max}";
+                        return "${context.tr(LangKeys.valueShouldBeLessThan)} ${criterion.max}";
                       }
                       return null;
                     },
@@ -233,7 +233,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                           CustomSnackbar.showTopSnackBar(
                             context,
                             message:
-                                "${context.translate(LangKeys.valueShouldBeLessThan)} ${criterion.max}",
+                                "${context.tr(LangKeys.valueShouldBeLessThan)} ${criterion.max}",
                             isError: true,
                             translate: false,
                           );

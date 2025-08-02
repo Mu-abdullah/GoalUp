@@ -40,5 +40,10 @@ class PlayerRatingModel extends EvaluationsEntity {
               : null,
     );
   }
-  
+
+  // get average score for the player
+  double get averageScore {
+    if (maxScore == null || maxScore == 0) return 0.0;
+    return (playerScore ?? 0) / maxScore!;
+  }
 }

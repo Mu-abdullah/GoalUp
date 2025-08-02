@@ -99,10 +99,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   InputDecoration _decoration(BuildContext context) {
     return InputDecoration(
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      hintText: widget.hint == null ? "" : context.translate(widget.hint!),
+      hintText: widget.hint == null ? "" : context.tr(widget.hint!),
       hintStyle: _fontFamily(false, context),
       errorStyle: _fontFamily(true, context),
-      labelText: widget.label == null ? "" : context.translate(widget.label!),
+      labelText: widget.label == null ? "" : context.tr(widget.label!),
       suffix: _suffix(),
       labelStyle: _fontFamily(false, context),
       prefixIcon: widget.prefix,

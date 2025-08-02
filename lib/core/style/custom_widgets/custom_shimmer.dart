@@ -6,9 +6,7 @@ import '../../language/lang_keys.dart';
 import '../widgets/app_text.dart';
 
 class ShimmerLoadingText extends StatelessWidget {
-  const ShimmerLoadingText({
-    super.key,
-  });
+  const ShimmerLoadingText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class ShimmerLoadingText extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: CustomShimmer(
         child: AppText(
-          context.translate(LangKeys.loading),
+          context.tr(LangKeys.loading),
           maxLines: 20,
           textAlign: TextAlign.center,
           height: 2,

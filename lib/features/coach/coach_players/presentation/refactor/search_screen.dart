@@ -93,7 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    '${context.translate(LangKeys.player)} (${_filteredPlayers.length})',
+                    '${context.tr(LangKeys.player)} (${_filteredPlayers.length})',
                     fontSize: 14,
                     translate: false,
                     color: Colors.grey,

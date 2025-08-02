@@ -33,7 +33,7 @@ class NoInternetScreen extends StatelessWidget {
                   if (context.mounted) {
                     CustomSnackbar.showTopSnackBar(
                       context,
-                      message: context.translate(LangKeys.noInternet),
+                      message: context.tr(LangKeys.noInternet),
                       backgroundColor: Colors.green,
                       icon: HugeIcons.strokeRoundedConnect,
                     );
@@ -42,7 +42,7 @@ class NoInternetScreen extends StatelessWidget {
                   if (context.mounted) {
                     CustomSnackbar.showTopSnackBar(
                       context,
-                      message: context.translate(LangKeys.noInternet),
+                      message: context.tr(LangKeys.noInternet),
                       backgroundColor: AppColors.red,
                       icon: HugeIcons.strokeRoundedWifiError01,
                     );

@@ -29,7 +29,7 @@ class PlayerRatingGroup extends StatelessWidget {
         } else if (state is GetPlayerRatingFailure) {
           return Center(
             child: AppText(
-              '${context.translate(LangKeys.somethingWentWrong)} ${state.error}',
+              '${context.tr(LangKeys.somethingWentWrong)} ${state.error}',
               translate: false,
             ),
           );

@@ -152,13 +152,13 @@ class LanguageScreen extends StatelessWidget {
       SnackBar(
         backgroundColor: AppColors.black,
         content: AppText(
-          '${context.translate(LangKeys.changeLanguage)} '
-          '${context.translate(LangKeys.english)}',
+          '${context.tr(LangKeys.changeLanguage)} '
+          '${context.tr(LangKeys.english)}',
           color: AppColors.white,
           translate: false,
         ),
         action: SnackBarAction(
-          label: context.translate(LangKeys.cancel),
+          label: context.tr(LangKeys.cancel),
           textColor: AppColors.white,
           onPressed: () {
             // Handle undo logic

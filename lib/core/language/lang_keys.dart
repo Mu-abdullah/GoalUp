@@ -137,5 +137,5 @@ class LangKeys {
   static const String leadership = 'leadership';
   static const String initiativeAndProactivity = 'initiativeAndProactivity';
   static const String valueShouldBeLessThan = 'valueShouldBeLessThan';
-  
+  static const String ratingAverage = 'ratingAverage';
 }

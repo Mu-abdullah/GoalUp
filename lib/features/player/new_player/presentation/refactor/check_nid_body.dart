@@ -70,7 +70,7 @@ class CheckNidBody extends StatelessWidget {
                   type: TextInputType.number,
                   validate: (value) {
                     if (value == null || value.isEmpty) {
-                      return context.translate(LangKeys.requiredValue);
+                      return context.tr(LangKeys.requiredValue);
                     }
                     return null;
                   },

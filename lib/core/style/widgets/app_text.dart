@@ -45,7 +45,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayText = translate ? context.translate(text) : text;
+    final displayText = translate ? context.tr(text) : text;
     return Text(
       isUpperCase ? displayText.toUpperCase() : displayText,
       style: customTextStyle(

@@ -40,7 +40,7 @@ class NewPlayerTextForm extends StatelessWidget {
           validate ??
           (c) {
             if (c == null || c.isEmpty) {
-              return context.translate(LangKeys.requiredValue);
+              return context.tr(LangKeys.requiredValue);
             }
             return null;
           },
