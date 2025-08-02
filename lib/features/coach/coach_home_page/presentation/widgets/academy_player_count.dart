@@ -27,13 +27,11 @@ class AcademyPlayerCount extends StatelessWidget {
               isHighlighted: true,
               cardCount: state.playerCountList.length.toString(),
               onTap: () {
-                BottomBarCubit.get(context).onTabTapped(2);
+                BottomBarCubit.get(context).onTabTapped(1);
               },
             );
           } else if (state is PlayerCountsError) {
-            return Center(
-              child: AppText(state.error, maxLines: 20),
-            );
+            return Center(child: AppText(state.error, maxLines: 20));
           }
           return HomeCountCard(
             cardTitle: LangKeys.players,
