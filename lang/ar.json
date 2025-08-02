@@ -123,6 +123,7 @@
     "Decision Making": "اتخاذ القرار",
     "Defense": "الدفاع",
     "Agility": "المرونة",
+    "Sensory Perception": "الإدراك الحسي",
     "Strength": "القوة",
     "Awareness & Focus": "الوعي والتركيز",
     "Teamwork": "العمل الجماعي",
@@ -134,7 +135,8 @@
     "Leadership": "القيادة",
     "Initiative & Proactivity": "المبادرة والنشاط",
     "valueShouldBeLessThan": "قيمة يجب ان تكون اقل من أو تساوي",
-    "ratingAverage": "متوسط التقييم"
+    "ratingAverage": "متوسط التقييم",
+    "ratingNotes": "في حالة عدم تسجيل تقييمات، سيتم حساب التقييم بصفر\nاقصى قيمة للتقييم هي 5."
  
 }
  

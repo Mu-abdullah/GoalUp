@@ -3,6 +3,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:intl/intl.dart';
 import 'package:sport/core/extextions/extentions.dart';
 import 'package:sport/core/style/color/app_color.dart';
+import 'package:sport/core/style/widgets/custom_divider.dart';
 
 import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/language/lang_keys.dart';
@@ -63,7 +64,7 @@ class GroupDetailsPage extends StatelessWidget {
               maintainState: true,
               key: PageStorageKey<String>('expansion_$date'),
               title: AppText(
-                date,
+                "$date ${RatingWidgetsBuilder._sumScores(dateRatings)} / ${RatingWidgetsBuilder._sumMax(dateRatings)}",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 translate: false,
@@ -176,7 +177,7 @@ class RatingWidgetsBuilder {
     return ListTile(
       title: AppText(category),
       subtitle: AppText(
-        '${context.tr(LangKeys.ratingAverage)} $average',
+        '${context.tr(LangKeys.ratingAverage)} : $average',
         translate: false,
         isBold: true,
         color: AppColors.grey,
@@ -215,6 +216,7 @@ class RatingWidgetsBuilder {
                 ),
               ),
             ),
+            CustomDivider(),
             ListTile(
               title: AppText(LangKeys.total),
               trailing: AppText(

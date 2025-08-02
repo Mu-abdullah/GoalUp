@@ -122,6 +122,7 @@
     "Decision Making": "Decision Making",
     "Defense": "Defense",
     "Agility": "Agility",
+    "Sensory Perception": "Sensory Perception",
     "Strength": "Strength",
     "Awareness & Focus": "Awareness & Focus",
     "Teamwork": "Teamwork",
@@ -133,6 +134,7 @@
     "Leadership": "Leadership",
     "Initiative & Proactivity": "Initiative & Proactivity",
     "valueShouldBeLessThan": "Value should be less than or equal to",
-    "ratingAverage": "Rating Average"
+    "ratingAverage": "Rating Average",
+    "ratingNotes": "If no ratings are recorded, the rating will be calculated as zero\nThe maximum rating value is 5."
 }
  

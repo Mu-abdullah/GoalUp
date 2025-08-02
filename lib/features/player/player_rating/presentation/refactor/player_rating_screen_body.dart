@@ -91,6 +91,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
 
         if (state is GetCategoryLoaded) {
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GlobalPageIndicator(
                 currentPage: _currentPage,
@@ -113,6 +114,15 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
 
                     return _buildCategoryPage(category, criteria, controllers);
                   },
+                ),
+              ),
+              Padding(
+                padding: AppPadding.symmetric(vertical: 0),
+                child: AppText(
+                  LangKeys.ratingNotes,
+                  maxLines: 5,
+                  color: AppColors.red,
+                  textAlign: TextAlign.start,
                 ),
               ),
               BlocBuilder<SaveEvaluationsCubit, SaveEvaluationsState>(
@@ -138,6 +148,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                             },
                           ),
                         ),
+
                         Expanded(
                           child: AppButton(
                             isLoading: s is SaveEvaluationsLoading,
