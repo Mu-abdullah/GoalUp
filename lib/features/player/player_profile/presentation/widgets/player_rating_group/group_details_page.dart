@@ -1,30 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:intl/intl.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
+import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../data/model/player_profile_model.dart';
 import '../../../data/model/player_rating_model.dart';
 
 class GroupDetailsPage extends StatelessWidget {
   final String categoryName;
   final List<PlayerRatingModel> ratings;
-
+  final PlayerProfileModel player;
   const GroupDetailsPage({
     super.key,
     required this.categoryName,
     required this.ratings,
+    required this.player,
   });
 
   @override
   Widget build(BuildContext context) {
     final groupedByDate = _groupRatingsByDate(context);
     final sortedEntries = _sortGroupedByDate(groupedByDate, context);
-
+    final isCoach = player.academyId == AppUserCubit.get(context).academyId;
     return Scaffold(
-      appBar: CustomAppBar(title: categoryName),
+      appBar: CustomAppBar(
+        title: categoryName,
+        actions: [
+          isCoach
+              ? IconButton(
+                icon: Icon(HugeIcons.strokeRoundedAddCircle),
+                onPressed: () {
+                  context.pushNamed(
+                    RoutesNames.playerRatingScreen,
+                    arguments: {
+                      'playerId': player.id,
+                      'playerName': player.name,
+                    },
+                  );
+                },
+              )
+              : const SizedBox(),
+        ],
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.all(12),
         itemCount: sortedEntries.length,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
@@ -6,6 +7,7 @@ import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/player_rating_model.dart';
+import '../../cubits/player_profile_cubit/player_profile_cubit.dart';
 
 class GroupSummaryPage extends StatelessWidget {
   final List<PlayerRatingModel> ratings;
@@ -35,6 +37,7 @@ class GroupSummaryPage extends StatelessWidget {
                   arguments: {
                     'ratings': ratings,
                     'categoryName': LangKeys.playerRatingSummary,
+                    'player': context.read<PlayerProfileCubit>().player,
                   },
                 );
               },

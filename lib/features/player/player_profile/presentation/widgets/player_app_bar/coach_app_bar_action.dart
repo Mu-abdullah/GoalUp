@@ -4,7 +4,6 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
-import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/get_it/git_it.dart';
 import '../../../data/model/player_profile_model.dart';
 import '../../../data/repo/cancel_registration_repo.dart';
@@ -31,19 +30,18 @@ class CoachAppBarActions extends StatelessWidget {
       child: ListView(
         shrinkWrap: true,
         children: [
-          AppBarActionButton(
-            leading: HugeIcons.strokeRoundedStar,
-            title: LangKeys.ratings,
-            onTap: () {
-              context.pushNamed(
-                RoutesNames.playerRatingScreen,
-                arguments: {
-                  'playerId': player.id, 
-                  'playerName': player.name},
-              );
-            },
-          ),
-
+          // AppBarActionButton(
+          //   leading: HugeIcons.strokeRoundedStar,
+          //   title: LangKeys.ratings,
+          //   onTap: () {
+          //     context.pushNamed(
+          //       RoutesNames.playerRatingScreen,
+          //       arguments: {
+          //         'playerId': player.id,
+          //         'playerName': player.name},
+          //     );
+          //   },
+          // ),
           AppBarActionButton(
             leading: HugeIcons.strokeRoundedCall,
             title: LangKeys.callPlayer,

@@ -10,6 +10,7 @@ import '../../features/coach/coach_players/data/model/get_players_model.dart';
 import '../../features/coach/coach_players/presentation/refactor/search_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_nid_screen.dart';
 import '../../features/player/new_player/presentation/views/new_player_screen.dart';
+import '../../features/player/player_profile/data/model/player_profile_model.dart';
 import '../../features/player/player_profile/presentation/views/player_profile.dart';
 import '../../features/player/player_profile/presentation/widgets/player_rating_group/group_details_page.dart';
 import '../../features/player/player_rating/presentation/view/player_rating_screen.dart';
@@ -101,6 +102,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         page: GroupDetailsPage(
           ratings: args?['ratings'] ?? [],
           categoryName: args?['categoryName'] ?? '',
+          player: args?['player'] ?? PlayerProfileModel(),
         ),
       );
     case RoutesNames.newPlayerNidScreen:
