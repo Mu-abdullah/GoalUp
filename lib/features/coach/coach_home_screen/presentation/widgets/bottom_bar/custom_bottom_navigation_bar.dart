@@ -36,20 +36,20 @@ class CustomBottomNavigationBar extends StatelessWidget {
             isSelected: cubit.currentIndex == 0,
             onTap: () => cubit.onTabTapped(0),
           ),
+          // BottomBarItem(
+          //   icon: HugeIcons.strokeRoundedUserGroup03,
+          //   isSelected: cubit.currentIndex == 1,
+          //   onTap: () => cubit.onTabTapped(1),
+          // ),
           BottomBarItem(
-            icon: HugeIcons.strokeRoundedUserGroup03,
+            icon: HugeIcons.strokeRoundedWorkoutRun,
             isSelected: cubit.currentIndex == 1,
             onTap: () => cubit.onTabTapped(1),
           ),
           BottomBarItem(
-            icon: HugeIcons.strokeRoundedWorkoutRun,
+            icon: HugeIcons.strokeRoundedUser,
             isSelected: cubit.currentIndex == 2,
             onTap: () => cubit.onTabTapped(2),
-          ),
-          BottomBarItem(
-            icon: HugeIcons.strokeRoundedUser,
-            isSelected: cubit.currentIndex == 3,
-            onTap: () => cubit.onTabTapped(3),
           ),
         ],
       ),
