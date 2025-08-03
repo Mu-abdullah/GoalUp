@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:sport/core/app/user/app_user_cubit/app_user_cubit.dart';
 import 'package:sport/core/extextions/extentions.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/player_rating_model.dart';
 import '../../cubits/get_player_rating_cubit/get_player_rating_cubit.dart';
+import '../../cubits/player_profile_cubit/player_profile_cubit.dart';
 import 'player_rating_group_summary.dart';
 
 class PlayerRatingGroup extends StatelessWidget {
@@ -25,7 +29,28 @@ class PlayerRatingGroup extends StatelessWidget {
             ],
           );
         } else if (state is GetPlayerRatingLoadingIsEmpty) {
-          return const Center(child: AppText(LangKeys.noDataFound));
+          return Column(
+            children: [
+              AppText(LangKeys.noRatingsFound),
+              PlayerProfileCubit.get(context).player?.academyId ==
+                      AppUserCubit.get(context).academyId
+                  ? TextButton(
+                    onPressed: () {},
+                    child: Row(
+                      spacing: 5,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AppText(LangKeys.addRating),
+                        Icon(
+                          HugeIcons.strokeRoundedAddCircle,
+                          color: AppColors.black,
+                        ),
+                      ],
+                    ),
+                  )
+                  : const SizedBox.shrink(),
+            ],
+          );
         } else if (state is GetPlayerRatingFailure) {
           return Center(
             child: AppText(

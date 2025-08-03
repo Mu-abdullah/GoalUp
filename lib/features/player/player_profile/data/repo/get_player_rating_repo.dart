@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../../core/error/custom_errors.dart';
+import '../../../../../core/language/lang_keys.dart';
 import '../model/player_rating_model.dart';
 
 class GetPlayerRatingRepo {
@@ -26,7 +27,7 @@ class GetPlayerRatingRepo {
           data.map((json) => PlayerRatingModel.fromJson(json)).toList();
 
       if (result.isEmpty) {
-        return Left(CustomError('لا توجد تقييمات'));
+        return Left(CustomError(LangKeys.noDataFound));
       }
 
       return Right(result);

@@ -59,7 +59,7 @@ class CoachProfileBottomSheet extends StatelessWidget {
                   },
                   text: LangKeys.edit,
                   icon: HugeIcons.strokeRoundedEdit01,
-                  backGroungColor: AppColors.yellow,
+                  backGroundColor: AppColors.yellow,
                   iconColor: AppColors.black,
                   txtColor: AppColors.black,
                 ),

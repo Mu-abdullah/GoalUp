@@ -156,7 +156,7 @@ class _CategoryCriteriaScreenState extends State<CategoryCriteriaScreen> {
                                 _currentPage == state.categories.length - 1
                                     ? LangKeys.confirm
                                     : LangKeys.next,
-                            backGroungColor:
+                            backGroundColor:
                                 _currentPage == state.categories.length - 1
                                     ? AppColors.green
                                     : AppColors.black,

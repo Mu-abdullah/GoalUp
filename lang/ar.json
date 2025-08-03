@@ -35,7 +35,8 @@
     "countryAndPositionRequired": "الدولة والمركز مطلوب",
     "playerCreatedSuccessfully": "تم انشاء اللاعب بنجاح",
     "mustBeNumber": "يجب أن يكون رقمًا",
-    
+    "changeImage": "تغيير الصورة",
+    "addImage": "إضافة صورة",
 
     "####AuthScreen":"",
     "email":"البريد الإلكتروني",
@@ -136,7 +137,8 @@
     "Initiative & Proactivity": "المبادرة والنشاط",
     "valueShouldBeLessThan": "قيمة يجب ان تكون اقل من أو تساوي",
     "ratingAverage": "متوسط التقييم",
-    "ratingNotes": "في حالة عدم تسجيل تقييمات، سيتم حساب التقييم بصفر\nاقصى قيمة للتقييم هي 5."
- 
+    "ratingNotes": "في حالة عدم تسجيل تقييمات، سيتم حساب التقييم بصفر\nاقصى قيمة للتقييم هي 5.",
+    "noRatingsFound": "لا توجد تقييمات",
+    "addRating": "إضافة تقييم"
 }
  

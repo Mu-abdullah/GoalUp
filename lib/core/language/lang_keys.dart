@@ -36,6 +36,8 @@ class LangKeys {
   static const String countryAndPositionRequired = 'countryAndPositionRequired';
   static const String playerCreatedSuccessfully = 'playerCreatedSuccessfully';
   static const String mustBeNumber = 'mustBeNumber';
+  static const String changeImage = 'changeImage';
+  static const String addImage = 'addImage';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
@@ -139,4 +141,6 @@ class LangKeys {
   static const String valueShouldBeLessThan = 'valueShouldBeLessThan';
   static const String ratingAverage = 'ratingAverage';
   static const String ratingNotes = 'ratingNotes';
+  static const String noRatingsFound = 'noRatingsFound';
+  static const String addRating = 'addRating';
 }

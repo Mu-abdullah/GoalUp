@@ -35,7 +35,8 @@
     "countryAndPositionRequired": "Country and position are required",
     "playerCreatedSuccessfully": "Player created successfully",
     "mustBeNumber": "Must be a number",
-
+    "changeImage": "Change image",
+    "addImage": "Add image",
 
     "####AuthScreen":"",
     "email":"Email",
@@ -135,6 +136,8 @@
     "Initiative & Proactivity": "Initiative & Proactivity",
     "valueShouldBeLessThan": "Value should be less than or equal to",
     "ratingAverage": "Rating Average",
-    "ratingNotes": "If no ratings are recorded, the rating will be calculated as zero\nThe maximum rating value is 5."
+    "ratingNotes": "If no ratings are recorded, the rating will be calculated as zero\nThe maximum rating value is 5.",
+    "noRatingsFound": "No ratings found",
+    "addRating": "Add Rating"
 }
  

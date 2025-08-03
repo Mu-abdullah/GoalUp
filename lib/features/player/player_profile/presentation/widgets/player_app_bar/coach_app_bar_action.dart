@@ -24,24 +24,17 @@ class CoachAppBarActions extends StatelessWidget {
     // final acdemyid = AppUserCubit.get(context).academyId;
     // final isCoach = player.academyId == acdemyid;
     final lac = locator<CancelRegistrationRepo>();
-
+    final noImage = player.image == null || player.image!.isEmpty;
     return BlocProvider(
       create: (context) => CancelRegistrationCubit(lac),
       child: ListView(
         shrinkWrap: true,
         children: [
-          // AppBarActionButton(
-          //   leading: HugeIcons.strokeRoundedStar,
-          //   title: LangKeys.ratings,
-          //   onTap: () {
-          //     context.pushNamed(
-          //       RoutesNames.playerRatingScreen,
-          //       arguments: {
-          //         'playerId': player.id,
-          //         'playerName': player.name},
-          //     );
-          //   },
-          // ),
+          AppBarActionButton(
+            leading: HugeIcons.strokeRoundedImageAdd01,
+            title: noImage ? LangKeys.addImage : LangKeys.changeImage,
+            onTap: () {},
+          ),
           AppBarActionButton(
             leading: HugeIcons.strokeRoundedCall,
             title: LangKeys.callPlayer,

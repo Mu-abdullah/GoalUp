@@ -82,7 +82,7 @@ class UserAuthScreenBody extends StatelessWidget {
                         cubit.checkIfRowExists();
                       },
                       text: LangKeys.login,
-                      backGroungColor: AppColors.blueAccent,
+                      backGroundColor: AppColors.blueAccent,
                     ),
                   ],
                 ),
