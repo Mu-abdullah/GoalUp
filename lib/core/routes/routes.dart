@@ -87,7 +87,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case RoutesNames.newPlayer:
       return BaseRoute(
-        page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
+        page: NewPlayerScreen(
+          nid: args?['nid'],
+          player: args?['player'],
+          isEdit: args?['isEdit'] ?? false,
+        ),
       );
 
     case RoutesNames.playerRatingScreen:

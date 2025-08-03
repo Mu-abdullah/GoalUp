@@ -16,9 +16,15 @@ import '../cubits/new_player_cubit/new_player_cubit.dart';
 import '../refactor/new_player_screen_body.dart';
 
 class NewPlayerScreen extends StatelessWidget {
-  const NewPlayerScreen({super.key, this.player, required this.nid});
+  const NewPlayerScreen({
+    super.key,
+    this.player,
+    required this.nid,
+    required this.isEdit,
+  });
   final NewPlayerModel? player;
   final String? nid;
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context) {
