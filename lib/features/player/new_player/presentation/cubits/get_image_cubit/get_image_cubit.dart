@@ -25,10 +25,10 @@ class GetImageCubit extends Cubit<GetImageState> {
   Future<void> pickImage() async {
     emit(GetImageLoading());
     try {
-      if (Platform.isAndroid || Platform.isIOS) {
-        image = await imageService.getImageFromGallery(picker: picker);
-      } else if (kIsWeb) {
+      if (kIsWeb) {
         pickedBytes = await imageService.getImageFromPC(picker: picker);
+      } else {
+        image = await imageService.getImageFromGallery(picker: picker);
       }
       emit(GetImageLoaded());
     } catch (e) {
@@ -39,28 +39,58 @@ class GetImageCubit extends Cubit<GetImageState> {
   Future<String?> uploadPhoto() async {
     emit(UploadImageLoading());
 
-    if (image == null) {
-      emit(UploadImageFailed(error: "No image selected"));
-      return null;
-    }
-
     try {
-      final uploadTask = await imageService.uploadPhotoFromAndroid(
-        image: image,
-      );
+      // 1. حذف الصورة القديمة (إن وجدت)
+      if (editImageUrl != null && editImageUrl!.isNotEmpty) {
+        final String? oldPath = _extractPathFromUrl(editImageUrl!);
+        if (oldPath != null) {
+          await supabase.storage.from('images').remove([oldPath]);
+        }
+      }
 
-      if (uploadTask != null) {
-        imageUrl = uploadTask;
-        emit(UploadImageSuccess());
-        debugPrint('uploaded image: $imageUrl');
-        return imageUrl;
+      // 2. رفع الصورة الجديدة
+      String? uploadUrl;
+
+      if (kIsWeb) {
+        if (pickedBytes == null) {
+          emit(UploadImageFailed(error: "No image selected"));
+          return null;
+        }
+
+        uploadUrl = await imageService.uploadImageFromPC(
+          imageBytes: pickedBytes!,
+        );
       } else {
-        emit(UploadImageFailed(error: "Failed to upload image"));
+        if (image == null) {
+          emit(UploadImageFailed(error: "No image selected"));
+          return null;
+        }
+
+        uploadUrl = await imageService.uploadPhotoFromAndroid(image: image);
+      }
+
+      if (uploadUrl != null) {
+        imageUrl = uploadUrl;
+        editImageUrl = uploadUrl;
+        emit(UploadImageSuccess());
+        return uploadUrl;
+      } else {
+        emit(UploadImageFailed(error: "Upload failed"));
         return null;
       }
     } catch (e) {
-      debugPrint('Error uploading image: $e');
       emit(UploadImageFailed(error: e.toString()));
+      return null;
+    }
+  }
+
+  String? _extractPathFromUrl(String url) {
+    try {
+      final uri = Uri.parse(url);
+      final pathIndex = uri.pathSegments.indexOf('object') + 1;
+      final fullPath = uri.pathSegments.sublist(pathIndex).join('/');
+      return Uri.decodeFull(fullPath);
+    } catch (e) {
       return null;
     }
   }

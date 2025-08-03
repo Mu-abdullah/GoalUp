@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,16 +35,36 @@ class NewPlayerImage extends StatelessWidget {
 
   ImageProvider _getImageProvider(GetImageCubit cubit) {
     if (cubit.isEdit) {
-      if (cubit.editImageUrl == null || cubit.editImageUrl!.isEmpty) {
-        return AssetImage(AppImages.player);
+      if (kIsWeb) {
+        if (cubit.pickedBytes != null) {
+          return MemoryImage(cubit.pickedBytes!);
+        } else if (cubit.editImageUrl?.isNotEmpty == true) {
+          return NetworkImage(cubit.editImageUrl!);
+        } else {
+          return AssetImage(AppImages.player);
+        }
       } else {
-        return NetworkImage(cubit.editImageUrl!) as ImageProvider;
+        if (cubit.image != null) {
+          return FileImage(cubit.image!);
+        } else if (cubit.editImageUrl?.isNotEmpty == true) {
+          return NetworkImage(cubit.editImageUrl!);
+        } else {
+          return AssetImage(AppImages.player);
+        }
       }
     } else {
-      if (cubit.image == null) {
-        return AssetImage(AppImages.player);
+      if (kIsWeb) {
+        if (cubit.pickedBytes != null) {
+          return MemoryImage(cubit.pickedBytes!);
+        } else {
+          return AssetImage(AppImages.player);
+        }
       } else {
-        return FileImage(cubit.image!);
+        if (cubit.image != null) {
+          return FileImage(cubit.image!);
+        } else {
+          return AssetImage(AppImages.player);
+        }
       }
     }
   }

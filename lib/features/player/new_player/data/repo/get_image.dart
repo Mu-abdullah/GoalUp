@@ -79,13 +79,10 @@ class ImageService {
     }
   }
 
-  Future<String?> uploadImageFromPC({
-    required String player,
-    required Uint8List imageBytes,
-  }) async {
+  Future<String?> uploadImageFromPC({required Uint8List imageBytes}) async {
     try {
       final path =
-          'GoulUp/$player/${DateTime.now().millisecondsSinceEpoch}.jpg';
+          'GoulUp/players/${DateTime.now().millisecondsSinceEpoch}.jpg';
       final file = imageBytes;
 
       await supabase.storage.from('images').uploadBinary(path, file);
