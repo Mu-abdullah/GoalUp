@@ -62,7 +62,7 @@ class RegisterButton extends StatelessWidget {
         final cubit = CreatePlayerCubit.get(context);
 
         return AppButton(
-          text: LangKeys.register,
+          text: cubit.isEdit ? LangKeys.update : LangKeys.register,
           isLoading:
               imageCubit.state is UploadImageLoading ||
               state is CreatePlayerLoading,

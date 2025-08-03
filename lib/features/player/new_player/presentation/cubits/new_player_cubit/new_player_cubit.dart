@@ -11,14 +11,18 @@ import '../../../data/model/new_player_model.dart';
 part 'new_player_state.dart';
 
 class NewPlayerCubit extends Cubit<NewPlayerState> {
-  NewPlayerCubit(BuildContext context, {this.nid, this.player})
-    : super(NewPlayerInitial()) {
+  NewPlayerCubit(
+    BuildContext context, {
+    this.nid,
+    this.player,
+    this.isEdit = false,
+  }) : super(NewPlayerInitial()) {
     init(context);
   }
   static NewPlayerCubit get(context) => BlocProvider.of(context);
   final NewPlayerModel? player;
   final String? nid;
-
+  bool isEdit;
   var formKey = GlobalKey<FormState>();
   var id = TextEditingController();
   var firstName = TextEditingController();
@@ -29,8 +33,8 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
   var birth = TextEditingController();
   var enroll = TextEditingController();
 
-   String? romanFirstName;
-   String? romanLastName;
+  String? romanFirstName;
+  String? romanLastName;
   final ArabicRomanConv romanizationService = ArabicRomanConv();
   String? romanized(String text) {
     var tex = romanizationService.romanized(text);
@@ -55,6 +59,8 @@ class NewPlayerCubit extends Cubit<NewPlayerState> {
     phone = TextEditingController(text: player?.contactNumber ?? '');
     nidController = TextEditingController(text: player?.nid ?? nid);
     birth = TextEditingController(text: player?.birthday ?? '');
-    
+
+    position = player?.position;
+    nationality = player?.nationality;
   }
 }

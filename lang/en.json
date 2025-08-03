@@ -37,6 +37,7 @@
     "mustBeNumber": "Must be a number",
     "changeImage": "Change image",
     "addImage": "Add image",
+    "update": "Update",
 
     "####AuthScreen":"",
     "email":"Email",

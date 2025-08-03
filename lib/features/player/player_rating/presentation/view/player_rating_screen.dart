@@ -25,7 +25,7 @@ class PlayerRatingScreen extends StatelessWidget {
         BlocProvider(create: (context) => SaveEvaluationsCubit(loc, playerId)),
       ],
       child: Scaffold(
-        appBar: CustomAppBar(title: playerName, translate: false),
+        appBar: CustomAppBar(title: playerName, tr: false),
         body: const CategoryCriteriaScreen(),
       ),
     );

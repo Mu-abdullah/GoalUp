@@ -15,7 +15,7 @@ class PreviewImage extends StatelessWidget {
   Widget build(BuildContext context) {
     PageController pageController = PageController();
     return Scaffold(
-      appBar: CustomAppBar(title: title ?? '', translate: false),
+      appBar: CustomAppBar(title: title ?? '', tr: false),
       body:
           imagesList == null
               ? Center(

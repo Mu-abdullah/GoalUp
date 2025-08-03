@@ -35,7 +35,12 @@ class NewPlayerScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create:
-              (context) => NewPlayerCubit(context, nid: nid, player: player),
+              (context) => NewPlayerCubit(
+                context,
+                nid: nid,
+                player: player,
+                isEdit: isEdit,
+              ),
         ),
         BlocProvider(
           create: (context) => CountriesCubit(repo)..fetchCountries(),
@@ -44,11 +49,20 @@ class NewPlayerScreen extends StatelessWidget {
           create:
               (context) => GetPositionsCubit(positionRepo)..fetchPositions(),
         ),
-        BlocProvider(create: (context) => GetImageCubit()),
-        BlocProvider(create: (context) => CreatePlayerCubit(createRepo)),
+        BlocProvider(
+          create:
+              (context) =>
+                  GetImageCubit(isEdit: isEdit, editImageUrl: player?.image),
+        ),
+        BlocProvider(
+          create: (context) => CreatePlayerCubit(createRepo, isEdit: isEdit),
+        ),
       ],
       child: Scaffold(
-        appBar: CustomAppBar(title: LangKeys.newPlayer),
+        appBar: CustomAppBar(
+          title: isEdit ? player!.name! : LangKeys.newPlayer,
+          tr: !isEdit,
+        ),
         body: BlocBuilder<NewPlayerCubit, NewPlayerState>(
           builder: (context, state) {
             var cubit = NewPlayerCubit.get(context);

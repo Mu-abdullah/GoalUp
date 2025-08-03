@@ -33,32 +33,42 @@ class NewPlayerForm extends StatelessWidget {
             enabled: false,
           ),
           Row(
-            spacing: 10,
+            spacing: cubit.isEdit ? 0 : 10,
             children: [
               Expanded(
                 child: NewPlayerTextForm(
                   controller: cubit.firstName,
-                  lable: LangKeys.firstName,
+                  lable: cubit.isEdit ? LangKeys.name : LangKeys.firstName,
                   icon: HugeIcons.strokeRoundedUser,
                   type: TextInputType.name,
-                  onChange: () {
-                    cubit.romanFirstName = cubit.romanized(
-                      cubit.firstName.text,
-                    );
-                  },
+                  onChange:
+                      cubit.isEdit
+                          ? null
+                          : () {
+                            cubit.romanFirstName = cubit.romanized(
+                              cubit.firstName.text,
+                            );
+                          },
                 ),
               ),
-              Expanded(
-                child: NewPlayerTextForm(
-                  controller: cubit.lastName,
-                  lable: LangKeys.lastName,
-                  icon: HugeIcons.strokeRoundedUser,
-                  type: TextInputType.name,
-                  onChange: () {
-                    cubit.romanLastName = cubit.romanized(cubit.lastName.text);
-                  },
-                ),
-              ),
+              cubit.isEdit
+                  ? SizedBox.shrink()
+                  : Expanded(
+                    child: NewPlayerTextForm(
+                      controller: cubit.lastName,
+                      lable: LangKeys.lastName,
+                      icon: HugeIcons.strokeRoundedUser,
+                      type: TextInputType.name,
+                      onChange:
+                          cubit.isEdit
+                              ? null
+                              : () {
+                                cubit.romanLastName = cubit.romanized(
+                                  cubit.lastName.text,
+                                );
+                              },
+                    ),
+                  ),
             ],
           ),
           NewPlayerTextForm(
@@ -86,19 +96,21 @@ class NewPlayerForm extends StatelessWidget {
               );
             },
           ),
-          NewPlayerTextForm(
-            controller: cubit.enroll,
-            lable: LangKeys.enrollmentDate,
-            icon: HugeIcons.strokeRoundedCalendar01,
-            type: TextInputType.text,
-            onTap: () {
-              selectData(
-                context: context,
+          cubit.isEdit
+              ? Container()
+              : NewPlayerTextForm(
                 controller: cubit.enroll,
-                content: LangKeys.enrollmentDate,
-              );
-            },
-          ),
+                lable: LangKeys.enrollmentDate,
+                icon: HugeIcons.strokeRoundedCalendar01,
+                type: TextInputType.text,
+                onTap: () {
+                  selectData(
+                    context: context,
+                    controller: cubit.enroll,
+                    content: LangKeys.enrollmentDate,
+                  );
+                },
+              ),
         ],
       ),
     );

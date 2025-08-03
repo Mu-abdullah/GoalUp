@@ -22,7 +22,7 @@ class PlayerProfileAppBar extends StatelessWidget
     final isCoach = player.player?.academyId == acdemyid;
     return CustomAppBar(
       title: "",
-      translate: false,
+      tr: false,
       actions: [
         Padding(
           padding: AppPadding.symmetric(horizontal: 16, vertical: 0),
@@ -56,4 +56,3 @@ class PlayerProfileAppBar extends StatelessWidget
   @override
   Size get preferredSize => Size.fromHeight(Statics.appBarHeight);
 }
-

@@ -37,7 +37,8 @@ class ChooseNational extends StatelessWidget {
                       debugPrint('nationality ${cubit.nationality}');
                     }
                   },
-                  hint: LangKeys.country,
+                  hint: cubit.nationality ?? LangKeys.country,
+                  trHint: cubit.nationality == null,
                 );
               } else if (state is CountriesError) {
                 return Text(state.message);
@@ -62,7 +63,8 @@ class ChooseNational extends StatelessWidget {
                       debugPrint('position ${cubit.position}');
                     }
                   },
-                  hint: LangKeys.position,
+                  hint: cubit.position ?? LangKeys.position,
+                  trHint: cubit.position == null,
                 );
               } else if (state is GetPositionsError) {
                 return AppText(state.message);

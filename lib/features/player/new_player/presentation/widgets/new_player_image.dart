@@ -13,7 +13,8 @@ class NewPlayerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GetImageCubit, GetImageState>(
       builder: (context, state) {
-        var cubit = GetImageCubit.get(context);
+        final cubit = GetImageCubit.get(context);
+
         return Container(
           height: Statics.defaultSize * 2.5,
           width: Statics.defaultSize * 2.5,
@@ -21,33 +22,48 @@ class NewPlayerImage extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(),
             image: DecorationImage(
-              image:
-                  cubit.image == null
-                      ? AssetImage(AppImages.player)
-                      : FileImage(cubit.image!),
+              image: _getImageProvider(cubit),
+              fit: BoxFit.cover,
             ),
           ),
-
-          child: Stack(
-            children: [
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: InkWell(
-                  onTap: () {
-                    cubit.pickImage();
-                  },
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.darkBlue,
-                    radius: 20,
-                    child: Icon(Icons.camera_alt, color: AppColors.white),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: _buildCameraButton(cubit),
         );
       },
+    );
+  }
+
+  ImageProvider _getImageProvider(GetImageCubit cubit) {
+    if (cubit.isEdit) {
+      if (cubit.editImageUrl == null || cubit.editImageUrl!.isEmpty) {
+        return AssetImage(AppImages.player);
+      } else {
+        return NetworkImage(cubit.editImageUrl!) as ImageProvider;
+      }
+    } else {
+      if (cubit.image == null) {
+        return AssetImage(AppImages.player);
+      } else {
+        return FileImage(cubit.image!);
+      }
+    }
+  }
+
+  Widget _buildCameraButton(GetImageCubit cubit) {
+    return Stack(
+      children: [
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: InkWell(
+            onTap: cubit.pickImage,
+            child: CircleAvatar(
+              backgroundColor: AppColors.darkBlue,
+              radius: 20,
+              child: Icon(Icons.camera_alt, color: AppColors.white),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

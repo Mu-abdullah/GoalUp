@@ -10,6 +10,7 @@ class GenericDropdown<T> extends StatelessWidget {
   final T? selectedValue;
   final void Function(T?) onChanged;
   final String hint;
+  final bool trHint;
 
   const GenericDropdown({
     super.key,
@@ -17,6 +18,7 @@ class GenericDropdown<T> extends StatelessWidget {
     required this.getDisplayText,
     required this.onChanged,
     required this.hint,
+    this.trHint = true,
     this.selectedValue,
   });
 
@@ -42,7 +44,10 @@ class GenericDropdown<T> extends StatelessWidget {
               ),
             );
           }).toList(),
-      hint: Padding(padding: EdgeInsets.only(left: 8), child: AppText(hint)),
+      hint: Padding(
+        padding: EdgeInsets.only(left: 8),
+        child: AppText(hint, translate: trHint),
+      ),
       borderRadius: AppBorderRadius.mediumRadius,
       icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 28),
       iconSize: 32,

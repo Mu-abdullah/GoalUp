@@ -38,6 +38,7 @@ class LangKeys {
   static const String mustBeNumber = 'mustBeNumber';
   static const String changeImage = 'changeImage';
   static const String addImage = 'addImage';
+  static const String update = 'update';
 
   ////[AUTH SCREEN]
   static const String email = 'email';

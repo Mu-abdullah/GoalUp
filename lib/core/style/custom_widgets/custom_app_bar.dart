@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
 
     this.title = '',
-    this.translate = true,
+    this.tr = true,
     this.isBack = true,
     this.hasDrawer = false,
     this.actions,
@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final String title;
-  final bool translate;
+  final bool tr;
   final bool isBack;
   final bool hasDrawer;
   final List<Widget>? actions;
@@ -48,12 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Navigator.pop(context),
               )
               : null,
-      title: AppText(
-        title,
-        translate: translate,
-        fontSize: fontSize,
-        isTitle: true,
-      ),
+      title: AppText(title, translate: tr, fontSize: fontSize, isTitle: true),
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

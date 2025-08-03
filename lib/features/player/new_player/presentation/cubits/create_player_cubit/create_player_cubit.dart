@@ -12,10 +12,11 @@ part 'create_player_state.dart';
 class CreatePlayerCubit extends Cubit<CreatePlayerState> {
   final CreatePlayerRepo repo;
 
-  CreatePlayerCubit(this.repo) : super(CreatePlayerInitial());
+  CreatePlayerCubit(this.repo, {this.isEdit = false})
+    : super(CreatePlayerInitial());
 
   static CreatePlayerCubit get(context) => BlocProvider.of(context);
-
+  bool isEdit;
   Future<void> createPlayer({
     required Map<String, dynamic> player,
     required CreateAcademyPlayer academyPlayer,

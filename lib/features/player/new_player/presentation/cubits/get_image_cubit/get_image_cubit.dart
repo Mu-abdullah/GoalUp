@@ -10,10 +10,12 @@ import '../../../data/repo/get_image.dart';
 part 'get_image_state.dart';
 
 class GetImageCubit extends Cubit<GetImageState> {
-  GetImageCubit() : super(GetImageInitial());
+  GetImageCubit({this.isEdit = false, this.editImageUrl})
+    : super(GetImageInitial());
   static GetImageCubit get(context) => BlocProvider.of(context);
   ImageService imageService = ImageService();
-
+  bool isEdit;
+  String? editImageUrl;
   File? image;
   final ImagePicker picker = ImagePicker();
   String? imagePath;
