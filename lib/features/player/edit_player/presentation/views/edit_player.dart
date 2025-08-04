@@ -8,6 +8,7 @@ import '../../../new_player/data/repo/update_player_repo.dart';
 import '../../../new_player/presentation/cubits/get_positions_cubit/get_positions_cubit.dart';
 import '../../../player_profile/data/model/player_profile_model.dart';
 import '../cubits/update_cubit/update_cubit.dart';
+import '../cubits/update_image_cubit/update_image_cubit.dart';
 import '../cubits/update_player_cubit/update_player_cubit.dart';
 import '../refactor/edit_player_body.dart';
 
@@ -27,6 +28,7 @@ class EditPlayerScreen extends StatelessWidget {
               (context) => GetPositionsCubit(positionRepo)..fetchPositions(),
         ),
         BlocProvider(create: (context) => UpdatePlayerCubit(repo: editRepo)),
+        BlocProvider(create: (context) => UpdateImageCubit()),
       ],
       child: Scaffold(
         appBar: CustomAppBar(title: player.name!, tr: false),
