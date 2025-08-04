@@ -139,6 +139,7 @@
     "ratingAverage": "Rating Average",
     "ratingNotes": "If no ratings are recorded, the rating will be calculated as zero\nThe maximum rating value is 5.",
     "noRatingsFound": "No ratings found",
-    "addRating": "Add Rating"
+    "addRating": "Add Rating",
+    "shareInfo": "Share Player Information"
 }
  

@@ -144,4 +144,5 @@ class LangKeys {
   static const String ratingNotes = 'ratingNotes';
   static const String noRatingsFound = 'noRatingsFound';
   static const String addRating = 'addRating';
+  static const String shareInfo = 'shareInfo';
 }

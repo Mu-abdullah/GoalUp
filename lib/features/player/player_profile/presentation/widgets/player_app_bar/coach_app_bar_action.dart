@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:sport/core/extextions/extentions.dart';
+import 'package:sport/core/style/custom_widgets/custom_bottom_sheet.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
@@ -10,6 +11,7 @@ import '../../../data/model/player_profile_model.dart';
 import '../../../data/repo/cancel_registration_repo.dart';
 import '../../cubits/cancel_registration_cubit/cancel_registration_cubit.dart';
 import 'app_bar_action_button.dart';
+import 'share_user_info.dart';
 import 'unregistration_button.dart';
 
 class CoachAppBarActions extends StatelessWidget {
@@ -47,19 +49,22 @@ class CoachAppBarActions extends StatelessWidget {
               context.call(phoneNumber: player.contactNumber!);
             },
           ),
+          AppBarActionButton(
+            leading: HugeIcons.strokeRoundedShare01,
+            title: LangKeys.shareInfo,
+            onTap: () {
+              Navigator.pop(context);
+              customShowBottomSheet(
+                context: context,
+                isScrollControlled: false,
+                widget: ShareUserInfo(playerId: player.id!),
+                title: LangKeys.shareInfo,
+              );
+            },
+          ),
 
           ///[LAST BUTTON IN BOTTOM SHEET]
           CancelRegistrationButton(player: player, refresh: onRefresh),
-          // isCoach
-          //     ? CancelRegistrationButton(player: player, refresh: onRefresh)
-          //     : player.academyId == null
-          //     ? AppBarActionButton(
-          //       leading: HugeIcons.strokeRoundedAddToList,
-          //       title: LangKeys.register,
-          //       color: AppColors.green,
-          //       onTap: () {},
-          //     )
-          //     : Container(),
         ],
       ),
     );

@@ -14,6 +14,7 @@ import '../../../features/player/edit_player/data/repo/update_player_repo.dart';
 import '../../../features/player/player_profile/data/repo/cancel_registration_repo.dart';
 import '../../../features/player/player_profile/data/repo/get_player_profile_repo.dart';
 import '../../../features/player/player_profile/data/repo/player_history_repo.dart';
+import '../../../features/player/player_profile/data/repo/user_info_repo.dart';
 import '../../../features/player/player_rating/data/repo/save_certina_repo.dart';
 import '../graph_ql/graph_ql.dart';
 import '../supabase/auth_service/auth_services.dart';
@@ -44,6 +45,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => PlayerHistoryRepo(locator()));
   locator.registerLazySingleton(() => SaveEvaluationsRepo(locator()));
   locator.registerLazySingleton(() => UpdatePlayerRepo(locator()));
+  locator.registerLazySingleton(() => UserInfoRepo(locator()));
 }
 
 void _registerServices() {
