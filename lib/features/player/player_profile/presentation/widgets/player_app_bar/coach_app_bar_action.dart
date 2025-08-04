@@ -6,7 +6,6 @@ import 'package:sport/core/extextions/extentions.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/get_it/git_it.dart';
-import '../../../../new_player/data/model/new_player_model.dart';
 import '../../../data/model/player_profile_model.dart';
 import '../../../data/repo/cancel_registration_repo.dart';
 import '../../cubits/cancel_registration_cubit/cancel_registration_cubit.dart';
@@ -26,30 +25,18 @@ class CoachAppBarActions extends StatelessWidget {
     // final acdemyid = AppUserCubit.get(context).academyId;
     // final isCoach = player.academyId == acdemyid;
     final lac = locator<CancelRegistrationRepo>();
-    final noImage = player.image == null || player.image!.isEmpty;
     return BlocProvider(
       create: (context) => CancelRegistrationCubit(lac),
       child: ListView(
         shrinkWrap: true,
         children: [
           AppBarActionButton(
-            leading: HugeIcons.strokeRoundedImageAdd01,
-            title: noImage ? LangKeys.addImage : LangKeys.changeImage,
+            leading: HugeIcons.strokeRoundedEdit01,
+            title: LangKeys.edit,
             onTap: () {
-              NewPlayerModel newPlayer = NewPlayerModel(
-                name: player.name,
-                image: player.image,
-                birthday: player.birthday,
-                contactNumber: player.contactNumber,
-                nationality: player.nationality,
-                position: player.position,
-                id: player.id,
-                nid: player.nid,
-                createdAt: player.createdAt,
-              );
               context.pushNamed(
-                RoutesNames.newPlayer,
-                arguments: {'player': newPlayer, 'isEdit': true},
+                RoutesNames.editPlayerScreen,
+                arguments: {'player': player},
               );
             },
           ),

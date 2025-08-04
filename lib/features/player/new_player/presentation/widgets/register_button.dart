@@ -62,7 +62,7 @@ class RegisterButton extends StatelessWidget {
         final cubit = CreatePlayerCubit.get(context);
 
         return AppButton(
-          text: cubit.isEdit ? LangKeys.update : LangKeys.register,
+          text: LangKeys.register,
           isLoading:
               imageCubit.state is UploadImageLoading ||
               state is CreatePlayerLoading,
@@ -89,10 +89,10 @@ class RegisterButton extends StatelessWidget {
     final playerCubit = newPlayerCubit;
     final now = DateTime.now();
 
-    // Validate required fields
-    if (imageCubit.image == null) {
-      return _showError(context, LangKeys.imageRequired);
-    }
+    // // Validate required fields
+    // if (imageCubit.image == null || imageCubit.pickedBytes == null) {
+    //   return _showError(context, LangKeys.imageRequired);
+    // }
 
     if (playerCubit.position == null || playerCubit.nationality == null) {
       return _showError(context, LangKeys.countryAndPositionRequired);

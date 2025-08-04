@@ -16,15 +16,9 @@ import '../cubits/new_player_cubit/new_player_cubit.dart';
 import '../refactor/new_player_screen_body.dart';
 
 class NewPlayerScreen extends StatelessWidget {
-  const NewPlayerScreen({
-    super.key,
-    this.player,
-    required this.nid,
-    required this.isEdit,
-  });
+  const NewPlayerScreen({super.key, this.player, required this.nid});
   final NewPlayerModel? player;
   final String? nid;
-  final bool isEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +29,7 @@ class NewPlayerScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create:
-              (context) => NewPlayerCubit(
-                context,
-                nid: nid,
-                player: player,
-                isEdit: isEdit,
-              ),
+              (context) => NewPlayerCubit(context, nid: nid, player: player),
         ),
         BlocProvider(
           create: (context) => CountriesCubit(repo)..fetchCountries(),
@@ -49,20 +38,11 @@ class NewPlayerScreen extends StatelessWidget {
           create:
               (context) => GetPositionsCubit(positionRepo)..fetchPositions(),
         ),
-        BlocProvider(
-          create:
-              (context) =>
-                  GetImageCubit(isEdit: isEdit, editImageUrl: player?.image),
-        ),
-        BlocProvider(
-          create: (context) => CreatePlayerCubit(createRepo, isEdit: isEdit),
-        ),
+        BlocProvider(create: (context) => GetImageCubit()),
+        BlocProvider(create: (context) => CreatePlayerCubit(createRepo)),
       ],
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: isEdit ? player!.name! : LangKeys.newPlayer,
-          tr: !isEdit,
-        ),
+        appBar: CustomAppBar(title: LangKeys.newPlayer),
         body: BlocBuilder<NewPlayerCubit, NewPlayerState>(
           builder: (context, state) {
             var cubit = NewPlayerCubit.get(context);

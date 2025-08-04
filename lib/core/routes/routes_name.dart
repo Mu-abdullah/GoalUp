@@ -22,4 +22,5 @@ class RoutesNames {
   static const String newPlayerNidScreen = 'newPlayerNidScreen';
   static const String playerRatingScreen = 'playerRatingScreen';
   static const String groupRatingScreen = 'groupRatingScreen';
+  static const String editPlayerScreen = 'editPlayerScreen';
 }

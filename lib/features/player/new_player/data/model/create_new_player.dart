@@ -2,15 +2,15 @@ import '../../../../../core/entities/player_entity.dart';
 
 class CreateNewPlayer extends PlayerEntity {
   CreateNewPlayer({
-    required super.id,
-    required super.name,
-    required super.contactNumber,
-    required super.nid,
-    required super.birthday,
-    required super.createdAt,
-     required super.position,
-    required super.nationality,
-    required super.image,
+    super.id,
+    super.name,
+    super.contactNumber,
+    super.nid,
+    super.birthday,
+    super.createdAt,
+    super.position,
+    super.nationality,
+    super.image,
   });
 
   factory CreateNewPlayer.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +21,7 @@ class CreateNewPlayer extends PlayerEntity {
         nid: json['nid'],
         birthday: json['birthday'],
         createdAt: json['created_at'],
-         position: json['position'],
+        position: json['position'],
         nationality: json['nationality'],
         image: json['image'],
       );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport/features/player/edit_player/presentation/views/edit_player.dart';
 
 import '../../features/admin/admin_academies/presentation/views/admin_academies.dart';
 import '../../features/admin/admin_home/presentation/views/admin_home.dart';
@@ -87,11 +88,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case RoutesNames.newPlayer:
       return BaseRoute(
-        page: NewPlayerScreen(
-          nid: args?['nid'],
-          player: args?['player'],
-          isEdit: args?['isEdit'] ?? false,
-        ),
+        page: NewPlayerScreen(nid: args?['nid'], player: args?['player']),
       );
 
     case RoutesNames.playerRatingScreen:
@@ -109,6 +106,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           player: args?['player'] ?? PlayerProfileModel(),
         ),
       );
+    case RoutesNames.editPlayerScreen:
+      return BaseRoute(page: EditPlayerScreen(player: args?['player'] ?? {}));
     case RoutesNames.newPlayerNidScreen:
       return BaseRoute(page: NewPlayerNidScreen());
     default:

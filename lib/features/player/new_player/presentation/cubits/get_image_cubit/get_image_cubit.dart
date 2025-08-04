@@ -10,12 +10,10 @@ import '../../../data/repo/get_image.dart';
 part 'get_image_state.dart';
 
 class GetImageCubit extends Cubit<GetImageState> {
-  GetImageCubit({this.isEdit = false, this.editImageUrl})
-    : super(GetImageInitial());
+  GetImageCubit() : super(GetImageInitial());
   static GetImageCubit get(context) => BlocProvider.of(context);
   ImageService imageService = ImageService();
-  bool isEdit;
-  String? editImageUrl;
+
   File? image;
   final ImagePicker picker = ImagePicker();
   String? imagePath;
@@ -40,15 +38,6 @@ class GetImageCubit extends Cubit<GetImageState> {
     emit(UploadImageLoading());
 
     try {
-      // 1. حذف الصورة القديمة (إن وجدت)
-      if (editImageUrl != null && editImageUrl!.isNotEmpty) {
-        final String? oldPath = _extractPathFromUrl(editImageUrl!);
-        if (oldPath != null) {
-          await supabase.storage.from('images').remove([oldPath]);
-        }
-      }
-
-      // 2. رفع الصورة الجديدة
       String? uploadUrl;
 
       if (kIsWeb) {
@@ -71,7 +60,6 @@ class GetImageCubit extends Cubit<GetImageState> {
 
       if (uploadUrl != null) {
         imageUrl = uploadUrl;
-        editImageUrl = uploadUrl;
         emit(UploadImageSuccess());
         return uploadUrl;
       } else {
@@ -80,17 +68,6 @@ class GetImageCubit extends Cubit<GetImageState> {
       }
     } catch (e) {
       emit(UploadImageFailed(error: e.toString()));
-      return null;
-    }
-  }
-
-  String? _extractPathFromUrl(String url) {
-    try {
-      final uri = Uri.parse(url);
-      final pathIndex = uri.pathSegments.indexOf('object') + 1;
-      final fullPath = uri.pathSegments.sublist(pathIndex).join('/');
-      return Uri.decodeFull(fullPath);
-    } catch (e) {
       return null;
     }
   }

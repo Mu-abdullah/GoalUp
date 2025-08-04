@@ -34,38 +34,14 @@ class NewPlayerImage extends StatelessWidget {
   }
 
   ImageProvider _getImageProvider(GetImageCubit cubit) {
-    if (cubit.isEdit) {
-      if (kIsWeb) {
-        if (cubit.pickedBytes != null) {
-          return MemoryImage(cubit.pickedBytes!);
-        } else if (cubit.editImageUrl?.isNotEmpty == true) {
-          return NetworkImage(cubit.editImageUrl!);
-        } else {
-          return AssetImage(AppImages.player);
-        }
-      } else {
-        if (cubit.image != null) {
-          return FileImage(cubit.image!);
-        } else if (cubit.editImageUrl?.isNotEmpty == true) {
-          return NetworkImage(cubit.editImageUrl!);
-        } else {
-          return AssetImage(AppImages.player);
-        }
-      }
+    if (kIsWeb) {
+      return cubit.pickedBytes != null
+          ? MemoryImage(cubit.pickedBytes!)
+          : AssetImage(AppImages.player);
     } else {
-      if (kIsWeb) {
-        if (cubit.pickedBytes != null) {
-          return MemoryImage(cubit.pickedBytes!);
-        } else {
-          return AssetImage(AppImages.player);
-        }
-      } else {
-        if (cubit.image != null) {
-          return FileImage(cubit.image!);
-        } else {
-          return AssetImage(AppImages.player);
-        }
-      }
+      return cubit.image != null
+          ? FileImage(cubit.image!)
+          : AssetImage(AppImages.player);
     }
   }
 
