@@ -25,7 +25,7 @@ class EditPlayerPosition extends StatelessWidget {
             getDisplayText: (PositionModel country) => country.code!,
             onChanged: (v) {
               if (v != null) {
-                cubit.position = v.code!;
+                cubit.updatePosition(v.code!);
                 debugPrint('position ${cubit.position}');
               }
             },

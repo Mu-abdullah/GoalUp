@@ -33,7 +33,7 @@ class ChooseNational extends StatelessWidget {
                           "${country.flag} ${country.name}",
                   onChanged: (v) {
                     if (v != null) {
-                      cubit.nationality = v.name!;
+                      cubit.nationality = v.flag!;
                       debugPrint('nationality ${cubit.nationality}');
                     }
                   },

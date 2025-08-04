@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../new_player/data/model/create_new_player.dart';
-import '../../../../new_player/data/repo/update_player_repo.dart';
+import '../../../data/repo/update_player_repo.dart';
 
 part 'update_player_state.dart';
 

@@ -3,7 +3,7 @@ import 'package:sport/core/error/custom_errors.dart';
 import 'package:sport/core/services/graph_ql/graph_ql.dart';
 import 'package:sport/core/services/supabase/backend_points.dart';
 
-import '../model/create_new_player.dart';
+import '../../../new_player/data/model/create_new_player.dart';
 
 class UpdatePlayerRepo {
   final GraphQLService service;

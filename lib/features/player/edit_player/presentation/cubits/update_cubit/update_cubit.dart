@@ -27,5 +27,11 @@ class UpdateCubit extends Cubit<UpdateState> {
     nidController.text = player.nid ?? '';
     academy.text = player.academy ?? '';
     birth.text = player.birthday ?? '';
+    position = player.position;
+  }
+
+  void updatePosition(String newPosition) {
+    position = newPosition;
+    emit(UpdatePositionChanged());
   }
 }

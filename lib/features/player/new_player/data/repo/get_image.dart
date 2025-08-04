@@ -117,4 +117,19 @@ class ImageService {
       return null;
     }
   }
+
+  Future<void> deleteOldImage(String? imageUrl) async {
+    if (imageUrl == null || imageUrl.isEmpty) return;
+
+    try {
+      final uri = Uri.parse(imageUrl);
+      final fullPath = uri.pathSegments
+          .skipWhile((v) => v != 'images')
+          .skip(1)
+          .join('/');
+      await supabase.storage.from(BackendPoint.imageBucket).remove([fullPath]);
+    } catch (e) {
+      debugPrint('Failed to delete image: $e');
+    }
+  }
 }

@@ -10,7 +10,7 @@ import '../../../features/coach/coach_home_page/data/repo/player_count_repo.dart
 import '../../../features/coach/coach_players/data/repo/get_coach_players.dart';
 import '../../../features/player/new_player/data/repo/check_nid_repo.dart';
 import '../../../features/player/new_player/data/repo/get_positions.dart';
-import '../../../features/player/new_player/data/repo/update_player_repo.dart';
+import '../../../features/player/edit_player/data/repo/update_player_repo.dart';
 import '../../../features/player/player_profile/data/repo/cancel_registration_repo.dart';
 import '../../../features/player/player_profile/data/repo/get_player_profile_repo.dart';
 import '../../../features/player/player_profile/data/repo/player_history_repo.dart';

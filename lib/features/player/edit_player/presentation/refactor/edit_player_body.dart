@@ -7,6 +7,7 @@ import '../cubits/update_cubit/update_cubit.dart';
 import '../widgets/edit_player_form.dart';
 import '../widgets/edit_player_image.dart';
 import '../widgets/edit_player_position.dart';
+import '../widgets/update_button.dart';
 
 class EditPlayerScreenBody extends StatelessWidget {
   const EditPlayerScreenBody({super.key});
@@ -30,6 +31,7 @@ class EditPlayerScreenBody extends StatelessWidget {
                 ),
                 EditPlayerFrom(cubit: cubit),
                 EditPlayerPosition(cubit: cubit),
+                UpdateButton(),
               ],
             ),
           ),

@@ -8,3 +8,5 @@ sealed class UpdateState extends Equatable {
 }
 
 final class UpdateInitial extends UpdateState {}
+
+final class UpdatePositionChanged extends UpdateState {}
