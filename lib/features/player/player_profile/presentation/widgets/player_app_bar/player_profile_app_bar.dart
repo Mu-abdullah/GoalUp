@@ -44,7 +44,13 @@ class PlayerProfileAppBar extends StatelessWidget
                                 player.player!.id!,
                               ),
                         )
-                        : UnCoachAppBarActions(player: player),
+                        : UnCoachAppBarActions(
+                          player: player,
+                          onRefresh:
+                              () => player.getPlayerProfileById(
+                                player.player!.id!,
+                              ),
+                        ),
               );
             },
           ),
