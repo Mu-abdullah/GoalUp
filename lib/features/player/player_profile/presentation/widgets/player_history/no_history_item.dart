@@ -21,18 +21,15 @@ class NoHistoryItem extends StatelessWidget {
                     ? AssetImage(AppImages.logo)
                     : NetworkImage(player.academyLogo!),
           ),
-          title: AppText(
-            player.academy ?? LangKeys.notRegistered,
-            translate: false,
-          ),
+          title: AppText(player.academy ?? LangKeys.notRegistered, tr: false),
           subtitle: Row(
             spacing: 5,
             children: [
               AppText(
                 player.enrollmentDate ?? LangKeys.notRegistered,
-                translate: player.enrollmentDate == null,
+                tr: player.enrollmentDate == null,
               ),
-              AppText("-", translate: false),
+              AppText("-", tr: false),
               AppText(LangKeys.untilNow),
             ],
           ),

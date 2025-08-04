@@ -67,7 +67,7 @@ class GroupDetailsPage extends StatelessWidget {
                 "$date ${RatingWidgetsBuilder._sumScores(dateRatings)} / ${RatingWidgetsBuilder._sumMax(dateRatings)}",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                translate: false,
+                tr: false,
               ),
               children:
                   categoryGroups.entries.map((entry) {
@@ -178,7 +178,7 @@ class RatingWidgetsBuilder {
       title: AppText(category),
       subtitle: AppText(
         '${context.tr(LangKeys.ratingAverage)} : $average',
-        translate: false,
+        tr: false,
         isBold: true,
         color: AppColors.grey,
       ),
@@ -203,14 +203,14 @@ class RatingWidgetsBuilder {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppText(date, fontSize: 18, isBold: true, translate: false),
+            AppText(date, fontSize: 18, isBold: true, tr: false),
             ...items.map(
               (item) => Card(
                 child: ListTile(
                   title: AppText(item.criteria ?? LangKeys.somethingWentWrong),
                   trailing: AppText(
                     '${item.playerScore ?? 0} / ${item.maxScore ?? 0}',
-                    translate: false,
+                    tr: false,
                     isBold: true,
                   ),
                 ),
@@ -221,7 +221,7 @@ class RatingWidgetsBuilder {
               title: AppText(LangKeys.total),
               trailing: AppText(
                 '${_sumScores(items)} / ${_sumMax(items)}',
-                translate: false,
+                tr: false,
                 isBold: true,
               ),
             ),

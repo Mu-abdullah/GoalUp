@@ -132,7 +132,7 @@ class _HomeCardState extends State<HomeCountCard>
                           AppText(
                             widget.cardCount!,
                             color: widget.textColor,
-                            translate: false,
+                            tr: false,
                           ),
                         const SizedBox(height: 8),
                         AppText(

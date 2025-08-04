@@ -113,12 +113,12 @@ class LanguageScreen extends StatelessWidget {
               child: Row(
                 spacing: 16,
                 children: [
-                  AppText(flag, translate: false),
+                  AppText(flag, tr: false),
                   Expanded(
                     child: AppText(
                       languageName,
                       isTitle: isSelected,
-                      translate: false,
+                      tr: false,
                       isBold: isSelected,
                       color: isSelected ? AppColors.black : AppColors.grey,
                     ),
@@ -155,7 +155,7 @@ class LanguageScreen extends StatelessWidget {
           '${context.tr(LangKeys.changeLanguage)} '
           '${context.tr(LangKeys.english)}',
           color: AppColors.white,
-          translate: false,
+          tr: false,
         ),
         action: SnackBarAction(
           label: context.tr(LangKeys.cancel),

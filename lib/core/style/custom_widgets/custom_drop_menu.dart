@@ -40,13 +40,13 @@ class GenericDropdown<T> extends StatelessWidget {
               value: item,
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 8),
-                child: AppText(getDisplayText(item), translate: false),
+                child: AppText(getDisplayText(item), tr: false),
               ),
             );
           }).toList(),
       hint: Padding(
         padding: EdgeInsets.only(left: 8),
-        child: AppText(hint, translate: trHint),
+        child: AppText(hint, tr: trHint),
       ),
       borderRadius: AppBorderRadius.mediumRadius,
       icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 28),
@@ -60,7 +60,7 @@ class GenericDropdown<T> extends StatelessWidget {
         return items.map((item) {
           return DropdownMenuItem<T>(
             value: item,
-            child: AppText(getDisplayText(item), translate: false),
+            child: AppText(getDisplayText(item), tr: false),
           );
         }).toList();
       },

@@ -33,10 +33,10 @@ class PlayerAge extends StatelessWidget {
           size: 16,
           color: Colors.amber,
         ),
-        AppText(formattedDate, color: AppColors.grey, translate: false),
-        AppText('($age $ageLabel)', color: AppColors.black, translate: false),
+        AppText(formattedDate, color: AppColors.grey, tr: false),
+        AppText('($age $ageLabel)', color: AppColors.black, tr: false),
         Spacer(),
-        AppText(flag, color: AppColors.black, translate: false),
+        AppText(flag, color: AppColors.black, tr: false),
       ],
     );
   }

@@ -20,9 +20,7 @@ class CoachPlayersBody extends StatelessWidget {
         if (state is CoachPlayersLoading) {
           return ListLoadingShimmer(height: 0.1);
         } else if (state is CoachPlayersError) {
-          return Center(
-            child: AppText(state.message, translate: false, maxLines: 20),
-          );
+          return Center(child: AppText(state.message, tr: false, maxLines: 20));
         } else if (state is CoachPlayersLoaded) {
           return RefreshIndicator(
             onRefresh: () async {

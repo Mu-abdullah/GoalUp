@@ -151,12 +151,7 @@ class CoachProfileBottomSheet extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 4),
-              child: AppText(
-                text,
-                translate: translate,
-                fontSize: 16,
-                maxLines: 3,
-              ),
+              child: AppText(text, tr: translate, fontSize: 16, maxLines: 3),
             ),
           ),
         ],

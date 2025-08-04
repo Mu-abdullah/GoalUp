@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Navigator.pop(context),
               )
               : null,
-      title: AppText(title, translate: tr, fontSize: fontSize, isTitle: true),
+      title: AppText(title, tr: tr, fontSize: fontSize, isTitle: true),
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

@@ -9,7 +9,7 @@ class AppText extends StatelessWidget {
     super.key,
     this.isTitle = false,
     this.isUpperCase = false,
-    this.translate = true,
+    this.tr = true,
     this.isBold = false,
     this.isUnderline = false,
     this.isOverLine = false,
@@ -33,7 +33,7 @@ class AppText extends StatelessWidget {
   final Color? lineColor;
   final double height;
   final bool isUpperCase;
-  final bool translate;
+  final bool tr;
   final bool isTitle;
   final bool isBold;
   final bool isUnderline;
@@ -45,7 +45,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayText = translate ? context.tr(text) : text;
+    final displayText = tr ? context.tr(text) : text;
     return Text(
       isUpperCase ? displayText.toUpperCase() : displayText,
       style: customTextStyle(

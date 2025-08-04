@@ -25,7 +25,7 @@ class PositionFilter extends StatelessWidget {
             child: FilterChip(
               label: AppText(
                 position,
-                translate: false,
+                tr: false,
                 color: isSelected ? AppColors.white : AppColors.black,
               ),
               selected: isSelected,

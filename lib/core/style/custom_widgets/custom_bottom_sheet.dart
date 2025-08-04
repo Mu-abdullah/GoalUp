@@ -35,7 +35,7 @@ Future<dynamic> customShowBottomSheet({
                 Expanded(
                   child: AppText(
                     title,
-                    translate: translated,
+                    tr: translated,
                     isBold: true,
                     isTitle: true,
                     textAlign: TextAlign.start,

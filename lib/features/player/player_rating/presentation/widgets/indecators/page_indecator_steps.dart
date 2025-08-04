@@ -110,7 +110,7 @@ class GlobalPageIndicator extends StatelessWidget {
                                             ? activeTextColor
                                             : inactiveTextColor,
                                     fontSize: indicatorSize * 0.5,
-                                    translate: false,
+                                    tr: false,
                                     key: ValueKey('text_$index'),
                                   ),
                         ),

@@ -106,7 +106,7 @@ class AcademyNameLogo extends StatelessWidget {
         // Main academy name
         AppText(
           academyName ?? LangKeys.somethingWentWrong,
-          translate: academyName == null,
+          tr: academyName == null,
           fontSize: 22,
           isBold: true,
           color: AppColors.black,

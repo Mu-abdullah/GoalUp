@@ -22,19 +22,19 @@ class HistoryItem extends StatelessWidget {
     final monthLabel = _getMonthLabel(lang, months);
     return ListTile(
       leading: CircleAvatar(backgroundImage: NetworkImage(player.academyLogo!)),
-      title: AppText(player.academyName!, translate: false),
+      title: AppText(player.academyName!, tr: false),
       subtitle: Row(
         spacing: 5,
         children: [
-          AppText(player.from!, translate: false),
-          AppText("-", translate: false),
-          AppText(player.to!, translate: false),
+          AppText(player.from!, tr: false),
+          AppText("-", tr: false),
+          AppText(player.to!, tr: false),
           const Spacer(),
           Row(
             children: [
-              AppText('$years $yearLabel', translate: false),
-              AppText(",", translate: false),
-              AppText('$months $monthLabel', translate: false),
+              AppText('$years $yearLabel', tr: false),
+              AppText(",", tr: false),
+              AppText('$months $monthLabel', tr: false),
             ],
           ),
         ],

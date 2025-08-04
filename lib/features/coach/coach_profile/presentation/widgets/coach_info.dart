@@ -43,14 +43,9 @@ class CoachInfo extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: AppText(
-              coach.name!,
-              isBold: true,
-              isTitle: true,
-              translate: false,
-            ),
+            child: AppText(coach.name!, isBold: true, isTitle: true, tr: false),
           ),
-          AppText(coach.nationality!, isTitle: true, translate: false),
+          AppText(coach.nationality!, isTitle: true, tr: false),
           InkWell(
             onTap: () {
               customShowBottomSheet(

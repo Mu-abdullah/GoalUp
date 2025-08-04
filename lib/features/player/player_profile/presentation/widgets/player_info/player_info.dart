@@ -50,7 +50,7 @@ class PlayerInfo extends StatelessWidget {
         Expanded(
           child: AppText(
             rightText ?? "",
-            translate: translate,
+            tr: translate,
             isTitle: isTitle,
             isBold: isBold,
             fontSize: fontSize,
@@ -59,7 +59,7 @@ class PlayerInfo extends StatelessWidget {
         ),
         AppText(
           leftText ?? "",
-          translate: leftTranslate,
+          tr: leftTranslate,
           isTitle: leftTitle,
           isBold: leftBold,
         ),

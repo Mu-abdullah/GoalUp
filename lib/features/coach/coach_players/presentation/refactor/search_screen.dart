@@ -95,7 +95,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   AppText(
                     '${context.tr(LangKeys.player)} (${_filteredPlayers.length})',
                     fontSize: 14,
-                    translate: false,
+                    tr: false,
                     color: Colors.grey,
                   ),
                   if (controller.text.isNotEmpty)

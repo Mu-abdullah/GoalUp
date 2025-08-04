@@ -24,7 +24,7 @@ class AppBarActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(leading, color: color),
-      title: AppText(title, isBold: true, color: color, translate: translate),
+      title: AppText(title, isBold: true, color: color, tr: translate),
       trailing: Icon(trailing, color: color),
       onTap: onTap,
     );

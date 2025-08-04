@@ -42,7 +42,7 @@ class CustomSnackbar {
                         message,
                         color: isError ? AppColors.white : textColor,
                         maxLines: 5,
-                        translate: translate,
+                        tr: translate,
                         textAlign: TextAlign.start,
                       ),
                     ),

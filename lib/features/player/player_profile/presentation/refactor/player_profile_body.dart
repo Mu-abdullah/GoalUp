@@ -25,7 +25,7 @@ class PlayerProfileBody extends StatelessWidget {
             child: AppText(
               state.error,
               color: AppColors.red,
-              translate: false,
+              tr: false,
               maxLines: 10,
             ),
           );

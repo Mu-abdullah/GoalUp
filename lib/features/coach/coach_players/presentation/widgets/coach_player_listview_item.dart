@@ -24,10 +24,7 @@ class CoachPlayerItem extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.playerProfile,
-          arguments: {
-            'playerId': player?.id,
-            'isCoach': true,
-          },
+          arguments: {'playerId': player?.id, 'isCoach': true},
         );
       },
       child: Container(
@@ -69,14 +66,14 @@ class CoachPlayerItem extends StatelessWidget {
                 children: [
                   AppText(
                     player?.player ?? LangKeys.unKnown,
-                    translate: translate,
+                    tr: translate,
                     isTitle: true,
                     isBold: true,
                   ),
 
                   AppText(
                     player?.position ?? 'Position not specified',
-                    translate: translate,
+                    tr: translate,
                     isBold: true,
                   ),
                   Row(
@@ -88,13 +85,13 @@ class CoachPlayerItem extends StatelessWidget {
                         ).toDateString(format: 'dd MMM, y', lang: lang),
 
                         color: AppColors.grey,
-                        translate: translate,
+                        tr: translate,
                       ),
                       AppText(
                         '( $age ${lang == 'ar' ? 'سنوات' : 'Years'})',
                         isBold: true,
                         color: AppColors.black,
-                        translate: translate,
+                        tr: translate,
                       ),
                     ],
                   ),

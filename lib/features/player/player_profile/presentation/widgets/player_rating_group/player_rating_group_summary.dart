@@ -107,7 +107,7 @@ class GroupSummaryPage extends StatelessWidget {
                                     return AppText(
                                       '$value',
                                       color: AppColors.black,
-                                      translate: false,
+                                      tr: false,
                                     );
                                   },
                                 ),
