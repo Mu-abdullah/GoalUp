@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:sport/core/language/lang_keys.dart';
 import 'package:sport/core/style/widgets/app_button.dart';
 
 import '../../../../../../core/services/get_it/git_it.dart';
@@ -56,6 +57,7 @@ class InfoForm extends StatelessWidget {
                 ShareParams(text: '${info.playerName}\n${info.email}'),
               );
             },
+            text: LangKeys.share,
           ),
         ],
       ),

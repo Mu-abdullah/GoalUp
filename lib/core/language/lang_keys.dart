@@ -39,6 +39,7 @@ class LangKeys {
   static const String changeImage = 'changeImage';
   static const String addImage = 'addImage';
   static const String update = 'update';
+  static const String share = 'share';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
