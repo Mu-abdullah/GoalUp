@@ -39,6 +39,8 @@
     "addImage": "Add image",
     "update": "Update",
     "share": "Share",
+    "doYouWantToRememberYou": "Do you want to remember you?",
+    "remeberMeLater": "Remeber me later",
 
     "####AuthScreen":"",
     "email":"Email",

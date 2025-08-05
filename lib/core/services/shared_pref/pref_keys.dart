@@ -5,5 +5,5 @@ class PrefKeys {
  
 
  // views
-  static const String gridView = 'gridView';
+  static const String rememberPlayer = 'rememberPlayer';
 }

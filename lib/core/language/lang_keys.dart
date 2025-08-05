@@ -40,6 +40,8 @@ class LangKeys {
   static const String addImage = 'addImage';
   static const String update = 'update';
   static const String share = 'share';
+  static const String doYouWantToRememberYou = 'doYouWantToRememberYou';
+  static const String remeberMeLater = 'remeberMeLater';
 
   ////[AUTH SCREEN]
   static const String email = 'email';
