@@ -57,6 +57,7 @@ class UserAuthScreenBody extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   spacing: 10,
                   children: [
                     AppLogo(),
@@ -84,20 +85,16 @@ class UserAuthScreenBody extends StatelessWidget {
                       text: LangKeys.login,
                       backGroundColor: AppColors.blueAccent,
                     ),
+                    InkWell(
+                      onTap: () => context.pushNamed(RoutesNames.auth),
+                      child: AppText(
+                        LangKeys.imCoach,
+                        textAlign: isArabic ? TextAlign.left : TextAlign.right,
+                        isUnderline: true,
+                        isBold: true,
+                      ),
+                    ),
                   ],
-                ),
-              ),
-              Positioned(
-                bottom: 10,
-                left: isArabic ? 10 : null,
-                right: isArabic ? null : 10,
-                child: TextButton(
-                  onPressed: () => context.pushNamed(RoutesNames.auth),
-                  child: AppText(
-                    LangKeys.imCoach,
-                    color: AppColors.blueAccent,
-                    isBold: true,
-                  ),
                 ),
               ),
             ],
