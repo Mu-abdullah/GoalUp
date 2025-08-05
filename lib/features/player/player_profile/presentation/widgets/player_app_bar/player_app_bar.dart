@@ -6,6 +6,8 @@ import 'package:sport/core/extextions/extentions.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/get_it/git_it.dart';
+import '../../../../../../core/services/shared_pref/pref_keys.dart';
+import '../../../../../../core/services/shared_pref/shared_pref.dart';
 import '../../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../data/model/player_profile_model.dart';
@@ -50,10 +52,14 @@ class PlayerAppBarButton extends StatelessWidget {
                   AppBarActionButton(
                     leading: HugeIcons.strokeRoundedLogout01,
                     title: LangKeys.logout,
-                    onTap: () {
-                      context.pushNamedAndRemoveUntil(
-                        RoutesNames.userAuthScreen,
-                      );
+                    onTap: () async {
+                      await SharedPref.removeData(key: PrefKeys.playerID);
+                      await SharedPref.removeData(key: PrefKeys.rememberPlayer);
+                      if (context.mounted) {
+                        context.pushNamedAndRemoveUntil(
+                          RoutesNames.userAuthScreen,
+                        );
+                      }
                     },
                   ),
                 ],

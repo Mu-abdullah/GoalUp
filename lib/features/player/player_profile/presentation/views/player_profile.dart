@@ -5,10 +5,7 @@ import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../../../../core/services/shared_pref/pref_keys.dart';
 import '../../../../../core/services/shared_pref/shared_pref.dart';
-import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
-import '../../../../../core/style/statics/app_statics.dart';
-import '../../../../../core/style/widgets/app_button.dart';
 import '../../data/repo/get_player_profile_repo.dart';
 import '../../data/repo/player_history_repo.dart';
 import '../cubits/get_player_rating_cubit/get_player_rating_cubit.dart';
@@ -16,115 +13,96 @@ import '../cubits/player_history_cubit/player_history_cubit.dart';
 import '../cubits/player_profile_cubit/player_profile_cubit.dart';
 import '../refactor/player_profile_body.dart';
 import '../widgets/player_app_bar/player_profile_app_bar.dart';
+import '../widgets/remmber_player.dart';
 
 class PlayerProfile extends StatefulWidget {
-  const PlayerProfile({
-    super.key,
-    this.isCoach = false,
-    required this.playerId,
-  });
+  const PlayerProfile({super.key, this.isCoach = false, this.playerId});
+
   final bool isCoach;
-  final String playerId;
+  final String? playerId;
 
   @override
   State<PlayerProfile> createState() => _PlayerProfileState();
 }
 
 class _PlayerProfileState extends State<PlayerProfile> {
+  String? _playerId;
+
   @override
   void initState() {
-    isPlayer();
     super.initState();
+    initPlayer();
   }
 
-  isPlayer() {
+  Future<void> initPlayer() async {
+    String? id = widget.playerId;
+
     if (!widget.isCoach) {
-      if (SharedPref.getData(key: PrefKeys.rememberPlayer) != true) {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _showLanguageBottomSheet(),
-        );
+      // لو مش جاي من البراميتر، نحاول نجيبه من SharedPref
+      if (id == null || id.isEmpty) {
+        id = await SharedPref.getData(key: PrefKeys.playerID);
       }
+
+      // لو المستخدم مش مفعل rememberPlayer، نعرض البوتوم شيت
+      final isRemembered = await SharedPref.getData(
+        key: PrefKeys.rememberPlayer,
+      );
+      if (isRemembered != true) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _showLanguageBottomSheet(id ?? '');
+        });
+      }
+    }
+
+    if (id != null && id.isNotEmpty) {
+      setState(() {
+        _playerId = id;
+      });
+    } else {
+      debugPrint("❌ لا يوجد playerId");
     }
   }
 
-  Future<void> _showLanguageBottomSheet() async {
+  Future<void> _showLanguageBottomSheet(String playerId) async {
     await customShowBottomSheet(
       context: context,
-      widget: RemmberPlayer(),
+      widget: RemmberPlayer(playerId: playerId),
       title: LangKeys.doYouWantToRememberYou,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_playerId == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     var lac = locator<GetPlayerProfileRepo>();
     var history = locator<PlayerHistoryRepo>();
-    // var rating = locator<GetPlayerRatingRepo>();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create:
               (context) =>
                   PlayerProfileCubit(lac, isCoach: widget.isCoach)
-                    ..getPlayerProfileById(widget.playerId),
+                    ..getPlayerProfileById(_playerId!),
         ),
         BlocProvider(
           create:
               (context) =>
-                  PlayerHistoryCubit(history)
-                    ..getPlayerHistory(widget.playerId),
+                  PlayerHistoryCubit(history)..getPlayerHistory(_playerId!),
         ),
         BlocProvider(
           create:
-              (context) =>
-                  GetPlayerRatingCubit()..getPlayerRating(widget.playerId),
+              (context) => GetPlayerRatingCubit()..getPlayerRating(_playerId!),
         ),
       ],
       child: Scaffold(
         appBar: PlayerProfileAppBar(isPlayer: widget.isCoach),
-        body: PlayerProfileBody(),
+        body: const PlayerProfileBody(),
       ),
     );
   }
 }
 
-class RemmberPlayer extends StatelessWidget {
-  const RemmberPlayer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: AppPadding.symmetric(),
-      child: Row(
-        spacing: 10,
-        children: [
-          Expanded(
-            flex: 2,
-            child: AppButton(
-              onTap: () async {
-                await SharedPref.saveData(
-                  key: PrefKeys.rememberPlayer,
-                  value: true,
-                ).then((onValue) {
-                  Navigator.pop(context);
-                });
-              },
-              text: LangKeys.remeberMe,
-              backGroundColor: AppColors.green,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: AppButton(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              text: LangKeys.remeberMeLater,
-              backGroundColor: AppColors.grey,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

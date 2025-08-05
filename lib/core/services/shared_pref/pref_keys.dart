@@ -6,4 +6,5 @@ class PrefKeys {
 
  // views
   static const String rememberPlayer = 'rememberPlayer';
+  static const String playerID = 'playerID';
 }

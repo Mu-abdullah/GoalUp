@@ -10,6 +10,8 @@ import '../core/language/app_localizations_setup.dart';
 import '../core/language/lang_keys.dart';
 import '../core/routes/routes.dart';
 import '../core/routes/routes_name.dart';
+import '../core/services/shared_pref/pref_keys.dart';
+import '../core/services/shared_pref/shared_pref.dart';
 import '../core/style/color/app_color.dart';
 import '../core/style/widgets/app_text.dart';
 
@@ -147,8 +149,17 @@ class _MainSportState extends State<MainSport> {
   }
 
   String _getConnectedInitialRoute() {
+    final isRemmberPlayer = SharedPref.getData(key: PrefKeys.rememberPlayer);
     final user = Supabase.instance.client.auth.currentUser;
-    return user != null ? RoutesNames.coachHome : RoutesNames.userAuthScreen;
+    if (user != null) {
+      return RoutesNames.coachHome;
+    } else if (isRemmberPlayer == true) {
+      return RoutesNames.playerProfile;
+    } else {
+      return RoutesNames.userAuthScreen;
+    }
+
+    // return user != null ? RoutesNames.coachHome : RoutesNames.userAuthScreen;
   }
 
   ThemeData get _appTheme => ThemeData(
