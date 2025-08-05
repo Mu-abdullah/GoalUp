@@ -14,7 +14,6 @@ import '../../../../core/style/widgets/app_text.dart';
 import '../../../../core/style/widgets/app_text_form_felid.dart';
 import '../cubits/user_auth_cubit/user_auth_cubit.dart';
 import '../widgets/app_logo.dart';
-import '../widgets/remmber_me.dart';
 
 class UserAuthScreenBody extends StatelessWidget {
   const UserAuthScreenBody({super.key});
@@ -58,6 +57,7 @@ class UserAuthScreenBody extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: Column(
+                  spacing: 10,
                   children: [
                     AppLogo(),
                     AppTextFormField(
@@ -76,7 +76,7 @@ class UserAuthScreenBody extends StatelessWidget {
                         return null;
                       },
                     ),
-                    RemmberMe(color: AppColors.blueAccent),
+                    // RemmberMe(color: AppColors.blueAccent),
                     AppButton(
                       onTap: () {
                         cubit.checkIfRowExists();
