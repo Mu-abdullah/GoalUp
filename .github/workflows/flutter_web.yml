@@ -3,7 +3,7 @@ name: Flutter Web Deploy
 on:
   push:
     branches:
-      - main # شغل الـ workflow لما تدفع كود على main
+      - master # شغل الـ workflow لما تدفع كود على main
 
 jobs:
   build:
