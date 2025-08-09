@@ -15,7 +15,7 @@ class HomeAcademyRepo {
     try {
       var response = await _service.fetchCollection(
         collection: BackendPoint.academy,
-        fields: ['logo', 'name'],
+        fields: ['logo', 'name', 'active_to'],
         fromJson: HomeAcademyModel.fromJson,
         filters: {
           'id': {'eq': id},

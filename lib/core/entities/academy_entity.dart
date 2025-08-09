@@ -3,7 +3,7 @@ class AcademyEntity {
   final String? name;
   final String? logo;
   final String? city;
-  final bool? isActive;
+  final String? activeTo;
 
-  AcademyEntity({this.isActive, this.id, this.name, this.logo, this.city});
+  AcademyEntity({this.activeTo, this.id, this.name, this.logo, this.city});
 }

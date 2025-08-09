@@ -9,6 +9,8 @@ import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/statics/image_test.dart';
+import '../../../../../core/style/widgets/app_text.dart';
+import '../../../coach_home_page/presentation/cubits/home_academy_cubit/home_academy_cubit.dart';
 import '../../../coach_players/presentation/cubits/coach_players_cubit/coach_players_cubit.dart';
 import '../cubits/bottom_bar_cubit/bottom_bar_cubit.dart';
 import '../widgets/bottom_bar/custom_bottom_navigation_bar.dart';
@@ -24,14 +26,97 @@ class BottomBarBody extends StatelessWidget {
         return BlocBuilder<BottomBarCubit, BottomBarState>(
           builder: (context, bottomBarState) {
             final cubit = BottomBarCubit.get(context);
-            return Scaffold(
-              appBar: CustomAppBar(
-                title: cubit.titles[cubit.currentIndex],
-                isBack: cubit.isAdmin,
-                actions: actions(context, cubit.titles, cubit.currentIndex),
+            final academy = context.watch<HomeAcademyCubit>().academy;
+
+            // لو البيانات لسه ما جتش
+            if (academy == null ||
+                academy.activeTo == null ||
+                academy.activeTo!.isEmpty) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            final daysLeft = academy.calcPeriod();
+
+            Widget bodyContent = Stack(
+              children: [
+                Positioned.fill(child: cubit.pages()[cubit.currentIndex]),
+                if (daysLeft == 1)
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    child: Padding(
+                      padding: AppPadding.symmetric(),
+                      child: Container(
+                        width: double.infinity,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: AppColors.red,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const Center(
+                          child: AppText(
+                            "باقي يوم على انتهاء الاشتراك",
+                            tr: false,
+                            isBold: true,
+                            color: AppColors.white,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+
+            if (daysLeft <= 0) {
+              bodyContent = ColorFiltered(
+                colorFilter: const ColorFilter.mode(
+                  Colors.grey,
+                  BlendMode.saturation,
+                ),
+                child: Stack(
+                  children: [
+                    Positioned.fill(child: cubit.pages()[cubit.currentIndex]),
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.8),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: AppText(
+                          LangKeys.subscriptionExpired,
+                          tr: false,
+                          isBold: true,
+                          color: AppColors.red,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+
+            return IgnorePointer(
+              ignoring: daysLeft <= 0,
+              child: Scaffold(
+                appBar: CustomAppBar(
+                  title: cubit.titles[cubit.currentIndex],
+                  isBack: cubit.isAdmin,
+                  actions: actions(context, cubit.titles, cubit.currentIndex),
+                ),
+                bottomNavigationBar: CustomBottomNavigationBar(cubit: cubit),
+                body: SafeArea(
+                  child: Container(
+                    margin: AppPadding.smallPadding,
+                    child: bodyContent,
+                  ),
+                ),
               ),
-              bottomNavigationBar: CustomBottomNavigationBar(cubit: cubit),
-              body: SafeArea(child: cubit.pages()[cubit.currentIndex]),
             );
           },
         );

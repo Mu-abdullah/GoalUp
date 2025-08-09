@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:intl/intl.dart';
 import 'package:sport/core/extextions/extentions.dart';
-import 'package:sport/core/style/color/app_color.dart';
-import 'package:sport/core/style/widgets/custom_divider.dart';
 
 import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
+import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../../../../core/style/widgets/custom_divider.dart';
 import '../../../data/model/player_profile_model.dart';
 import '../../../data/model/player_rating_model.dart';
 
@@ -64,7 +64,7 @@ class GroupDetailsPage extends StatelessWidget {
               maintainState: true,
               key: PageStorageKey<String>('expansion_$date'),
               title: AppText(
-                "$date ${RatingWidgetsBuilder._sumScores(dateRatings)} / ${RatingWidgetsBuilder._sumMax(dateRatings)}",
+                "$date (${RatingWidgetsBuilder._sumScores(dateRatings)} / ${RatingWidgetsBuilder._sumMax(dateRatings)})",
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 tr: false,

@@ -118,6 +118,9 @@ class LangKeys {
   static const String coachDetails = 'coachDetails';
   static const String edit = 'edit';
   static const String search = 'search';
+  static const String remainingDays = 'remainingDays';
+  static const String subscriptionExpired = 'subscriptionExpired';
+
 
   // players rules
 
@@ -148,4 +151,5 @@ class LangKeys {
   static const String noRatingsFound = 'noRatingsFound';
   static const String addRating = 'addRating';
   static const String shareInfo = 'shareInfo';
+  static const String playerAlreadyRatedToday = 'playerAlreadyRatedToday';
 }

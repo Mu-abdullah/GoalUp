@@ -10,6 +10,8 @@ class HomeAcademyCubit extends Cubit<HomeAcademyState> {
   HomeAcademyRepo repo;
   HomeAcademyCubit(this.repo) : super(CoachHomeInitial());
   static HomeAcademyCubit get(context) => BlocProvider.of(context);
+
+   HomeAcademyModel? academy;
   Future<void> getAcademy(String id) async {
     emit(HomeAcademyLoading());
     var response = await repo.getAcademy(id);
@@ -21,6 +23,7 @@ class HomeAcademyCubit extends Cubit<HomeAcademyState> {
       },
       (r) {
         if (!isClosed) {
+          academy = r;
           emit(HomeAcademyLoaded(r));
         }
       },

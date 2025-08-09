@@ -116,6 +116,8 @@
     "coachDetails":"Coach Details",
     "edit":"Edit",
     "search":"Search",
+    "remainingDays":"باقي يوم على انتهاء الاشتراك",
+    "subscriptionExpired":"انتهت مدةالاشتراك",
 
     "#######PlayerRules":"",
     "Dribbling": "Dribbling",
@@ -143,6 +145,7 @@
     "ratingNotes": "If no ratings are recorded, the rating will be calculated as zero\nThe maximum rating value is 5.",
     "noRatingsFound": "No ratings found",
     "addRating": "Add Rating",
-    "shareInfo": "Share Player Information"
-}
+    "shareInfo": "Share Player Information",
+    "playerAlreadyRatedToday":"Player has already been rated today"
+ }
  
