@@ -56,10 +56,10 @@ class BottomBarBody extends StatelessWidget {
                           color: AppColors.red,
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: AppText(
-                            "باقي يوم على انتهاء الاشتراك",
-                            tr: false,
+                            LangKeys.remainingDays,
+
                             isBold: true,
                             color: AppColors.white,
                             textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class BottomBarBody extends StatelessWidget {
                         ),
                         child: AppText(
                           LangKeys.subscriptionExpired,
-                          tr: false,
+
                           isBold: true,
                           color: AppColors.red,
                           textAlign: TextAlign.center,
