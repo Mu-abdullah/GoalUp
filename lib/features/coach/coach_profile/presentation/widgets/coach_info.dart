@@ -50,6 +50,7 @@ class CoachInfo extends StatelessWidget {
           ),
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(coach.name!, isBold: true, isTitle: true, tr: false),
                 AppText(
