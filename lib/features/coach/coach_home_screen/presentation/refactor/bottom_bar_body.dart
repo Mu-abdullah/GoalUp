@@ -4,6 +4,7 @@ import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/services/status/subscription_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_app_bar.dart';
 import '../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
@@ -28,7 +29,6 @@ class BottomBarBody extends StatelessWidget {
             final cubit = BottomBarCubit.get(context);
             final academy = context.watch<HomeAcademyCubit>().academy;
 
-            // لو البيانات لسه ما جتش
             if (academy == null ||
                 academy.activeTo == null ||
                 academy.activeTo!.isEmpty) {
@@ -36,7 +36,18 @@ class BottomBarBody extends StatelessWidget {
                 body: Center(child: CircularProgressIndicator()),
               );
             }
-
+            if (academy.subscriptionStatus == SubscriptionStatus.demo) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: AppText(LangKeys.demo, color: AppColors.white),
+                    backgroundColor: AppColors.red,
+                    behavior: SnackBarBehavior.floating,
+                    duration: Duration(days: 1),
+                  ),
+                );
+              });
+            }
             final daysLeft = academy.calcPeriod();
 
             Widget bodyContent = Stack(
@@ -59,7 +70,6 @@ class BottomBarBody extends StatelessWidget {
                         child: Center(
                           child: AppText(
                             LangKeys.remainingDays,
-
                             isBold: true,
                             color: AppColors.white,
                             textAlign: TextAlign.center,

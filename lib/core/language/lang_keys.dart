@@ -119,8 +119,10 @@ class LangKeys {
   static const String edit = 'edit';
   static const String search = 'search';
   static const String remainingDays = 'remainingDays';
-  static const String subscriptionExpired = 'subscriptionExpired';
 
+  static const String subscriptionExpired = 'subscriptionExpired';
+  static const String subscriptionUntil = 'subscriptionUntil';
+  static const String demo = 'demo';
 
   // players rules
 

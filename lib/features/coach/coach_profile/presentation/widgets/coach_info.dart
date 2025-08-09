@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sport/core/extextions/extentions.dart';
 
+import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/services/status/subscription_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/custom_widgets/custom_bottom_sheet.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_text.dart';
+import '../../../coach_home_page/presentation/cubits/home_academy_cubit/home_academy_cubit.dart';
 import '../../data/model/coach_model.dart';
 import 'coach_profile_bottom_sheet.dart';
 
@@ -12,6 +16,8 @@ class CoachInfo extends StatelessWidget {
   final CoachModel coach;
   @override
   Widget build(BuildContext context) {
+    var daysActive = HomeAcademyCubit.get(context).academy;
+    bool isDemo = daysActive!.subscriptionStatus == SubscriptionStatus.demo;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -43,7 +49,20 @@ class CoachInfo extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: AppText(coach.name!, isBold: true, isTitle: true, tr: false),
+            child: Column(
+              children: [
+                AppText(coach.name!, isBold: true, isTitle: true, tr: false),
+                AppText(
+                  isDemo
+                      ? context.tr(LangKeys.demo)
+                      : "${context.tr(LangKeys.subscriptionUntil)} ${daysActive.activeTo!}",
+                  maxLines: 3,
+                  tr: false,
+                  isBold: isDemo,
+                  color: isDemo ? AppColors.red : AppColors.black,
+                ),
+              ],
+            ),
           ),
           AppText(coach.nationality!, isTitle: true, tr: false),
           InkWell(

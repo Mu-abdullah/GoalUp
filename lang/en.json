@@ -116,8 +116,10 @@
     "coachDetails":"Coach Details",
     "edit":"Edit",
     "search":"Search",
-    "remainingDays":"باقي يوم على انتهاء الاشتراك",
-    "subscriptionExpired":"انتهت مدةالاشتراك",
+    "remainingDays":"One day left until the subscription expires",
+    "subscriptionExpired":"Subscription expired",
+    "subscriptionUntil":"Subscription until",
+    "demo":"You are in the trial period",
 
     "#######PlayerRules":"",
     "Dribbling": "Dribbling",

@@ -119,6 +119,8 @@
     "search":"بحث",
     "remainingDays":"باقي يوم على انتهاء الاشتراك",
     "subscriptionExpired":"انتهت مدةالاشتراك",
+    "subscriptionUntil":"الاشتراك حتى",
+    "demo":"انت في الفترة التجريبية",
 
     "#######PlayerRules":"",
     "Dribbling": "المراوغة",

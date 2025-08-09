@@ -1,15 +1,24 @@
 import 'package:intl/intl.dart' as intl;
 
 import '../../../../../core/entities/academy_entity.dart';
+import '../../../../../core/services/status/subscription_status.dart';
 
 class HomeAcademyModel extends AcademyEntity {
-  HomeAcademyModel({super.name, super.logo, super.activeTo});
+  HomeAcademyModel({
+    super.name,
+    super.logo,
+    super.activeTo,
+    super.subscriptionStatus,
+  });
 
   factory HomeAcademyModel.fromJson(Map<String, dynamic> json) =>
       HomeAcademyModel(
         name: json['name'],
         logo: json['logo'],
         activeTo: json['active_to'],
+        subscriptionStatus: SubscriptionStatusExt.fromString(
+          json['subscription_status'],
+        ),
       );
 
   int calcPeriod() {
