@@ -17,3 +17,20 @@ The app allows coaches and admins to **register players**, record their **traini
 - 📊 Export player data to Excel
 - 🎨 Beautiful animations with Lottie
 - 📤 Share reports via `share_plus`
+
+
+## 🏗 Architecture & Patterns
+
+This project follows a **clean and maintainable architecture** that ensures scalability and testability:
+
+- **State Management** → `Cubit` (BLoC Pattern) for predictable and reactive UI updates.
+- **Architecture Pattern** → `MVVM` (Model–View–ViewModel) for separation of concerns.
+- **Data Fetching**:
+  - **GraphQL API** → For efficient querying and precise data fetching from Supabase.
+  - **RESTful API** → For standard HTTP endpoints when needed.
+- **Layered Folder Structure**:
+  - lib/
+    ├── data/ # Models & Repositories
+    ├── presentation/ # Cubits, Views, Widgets
+    ├── core/ # Constants, Themes, Utilities
+    ├── # Localization (AR/EN)
