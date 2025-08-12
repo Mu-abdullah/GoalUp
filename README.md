@@ -1,16 +1,19 @@
-# sport
+# ⚽ Football Player Management App
 
-A new Flutter project.
+A **Flutter** application for managing football players' data in **academies** and **clubs**.  
+The app allows coaches and admins to **register players**, record their **training results**, and **evaluate performance** over time — all powered by **Supabase** backend and **BLoC** state management.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 📝 **Player registration** with personal details (name, birthdate, phone, national ID, academy, position, photo)
+- 🏟 **Academy & Club management** (link players to their teams)
+- 📊 **Training result recording** for each player
+- ⭐ **Performance evaluations** grouped by categories and criteria
+- 🌐 Multi-language support (Arabic & English)
+- 📂 File & Image picker for player photos
+- 📡 Internet connectivity detection
+- 📊 Export player data to Excel
+- 🎨 Beautiful animations with Lottie
+- 📤 Share reports via `share_plus`
